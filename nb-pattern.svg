@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <!-- Bola de tennis preenchida -->
+  <circle cx="40" cy="40" r="28" fill="#C8D400"/>
+  <!-- Costura da bola (duas curvas simétricas) -->
+  <path d="M40 12 C57 22 57 58 40 68" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M40 12 C23 22 23 58 40 68" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- n em azul navy -->
+  <text x="23" y="47" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#1a3066">n</text>
+  <!-- b em amarelo escuro -->
+  <text x="40" y="47" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#7a8c00">b</text>
+</svg>

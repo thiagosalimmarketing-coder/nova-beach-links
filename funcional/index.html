@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Beach</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background-color: #1a3066;
+      background-image: url('../nb-pattern.svg');
+      background-repeat: repeat;
+      background-size: 80px 80px;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      font-family: Arial, sans-serif;
+    }
+    .logo {
+      width: 200px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+    }
+    .msg {
+      color: #ffffff;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+    .dots span {
+      display: inline-block;
+      animation: blink 1.2s infinite;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0; }
+      40% { opacity: 1; }
+    }
+  </style>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1397968278475446');
+    fbq('track', 'PageView');
+    fbq('track', 'Lead', {
+      content_name: 'funcional_areia',
+      content_category: 'instagram_dm',
+      source: 'redes_sociais'
+    });
+    setTimeout(function() {
+      window.location.href = 'https://wa.me/5519999178194?text=Ol%C3%A1+vim+das+redes+sociais+e+quero+saber+mais+sobre+treino+funcional';
+    }, 1000);
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
+    <meta http-equiv="refresh" content="0;url=https://wa.me/5519999178194?text=Ol%C3%A1+vim+das+redes+sociais+e+quero+saber+mais+sobre+treino+funcional">
+  </noscript>
+</head>
+<body>
+  <img class="logo" src="../logo-novabeach.png" alt="Nova Beach">
+  <p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+</body>
+</html>
