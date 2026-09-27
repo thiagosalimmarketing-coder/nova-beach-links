@@ -13,7 +13,7 @@ PRODUCTS=(
   "bt|5519995575156|beach_tennis|Beach Tennis"
   "bt-1x|5519995575156|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
   "bt-2x|5519995575156|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
-  "clubinho|5519995575156|clubinho_kids|Clubinho (Beach Tennis Kids)"
+  "clubinho|5519995575156|clubinho|Clubinho (jogo livre de beach tennis sem professor)"
   "experimental|5519995575156|aula_experimental|aula experimental de Beach Tennis"
   "quadra|5519995575156|locacao_quadra|aluguel de quadra avulsa"
   "reservas|5519995575156|day_use_empresarial|Day Use Empresarial"
