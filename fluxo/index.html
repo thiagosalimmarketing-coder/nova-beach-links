@@ -811,40 +811,14 @@ flowchart TD
         <div class="dns-why-icon">💬</div>
         <div class="dns-why-body">
           <h3>Como esses links aparecem na prática</h3>
-          <p>Toda vez que a NOVA (IA) precisa encaminhar um lead, ela envia um desses links dentro do WhatsApp. Hoje eles aparecem como <code class="old-mini">nova-beach-links.vercel.app/handoff/bt-1x</code> — parece um serviço de terceiro. Depois do apontamento DNS (seção 05), passam a aparecer como <code class="new-mini">links.novabeachcampinas.com.br/handoff/bt-1x</code> — assinatura Nova Beach do começo ao fim.</p>
+          <p>Toda vez que a NOVA (IA) precisa encaminhar um lead, ela envia um desses links dentro do WhatsApp. Hoje eles aparecem como <code class="old-mini">nova-beach-links.vercel.app/handoff/bt-1x</code> — parece um serviço de terceiro. Depois do apontamento DNS (seção 04), passam a aparecer como <code class="new-mini">links.novabeachcampinas.com.br/handoff/bt-1x</code> — assinatura Nova Beach do começo ao fim.</p>
           <p style="margin-top:12px">Isso reduz o medo do lead de clicar (menos abandono), evita bloqueio de spam do WhatsApp em domínios de terceiros, e passa credibilidade profissional em cada interação da IA.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2><span class="num">03</span>Rotas ao vivo</h2>
-      <p class="h2-sub">14 rotas em produção. Pixel <code>Lead</code> em <code>/ads</code> e <code>/site</code>. Pixel <code>Purchase</code>/<code>Schedule</code> em <code>/handoff</code>.</p>
-      <table>
-        <thead>
-          <tr><th>Rota</th><th>Destino</th><th>Evento</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><code>/ads/bt-1x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/ads/bt-2x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/ads/clubinho</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/ads/experimental</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/ads/quadra</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/ads/reservas</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/site/bt-1x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/site/bt-2x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/site/clubinho</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/site/experimental</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
-          <tr><td><code>/handoff/bt-1x</code></td><td>Humano (5156)</td><td><span class="pill p">Purchase</span></td></tr>
-          <tr><td><code>/handoff/bt-2x</code></td><td>Humano (5156)</td><td><span class="pill p">Purchase</span></td></tr>
-          <tr><td><code>/handoff/clubinho</code></td><td>Humano (5156)</td><td><span class="pill p">Purchase</span></td></tr>
-          <tr><td><code>/handoff/experimental</code></td><td>Humano (5156)</td><td><span class="pill s">Schedule</span></td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2><span class="num">04</span>Ciclo de vida do lead</h2>
+      <h2><span class="num">03</span>Ciclo de vida do lead</h2>
       <p class="h2-sub">Do clique no anúncio até a matrícula fechada.</p>
       <ol class="steps">
         <li>
@@ -875,7 +849,7 @@ flowchart TD
     </section>
 
     <section>
-      <h2><span class="num">05</span>Publicação em domínio próprio</h2>
+      <h2><span class="num">04</span>Publicação em domínio próprio</h2>
       <p class="h2-sub">Hoje os links estão sob <code>nova-beach-links.vercel.app</code>. Para publicar sob o domínio próprio (motivos explicados na seção 02), a empresa que hospeda o site da Nova Beach precisa fazer <strong>alguns apontamentos no DNS</strong>. Depois disso, todos os links da NOVA passam a rodar sob a marca Nova Beach.</p>
 
       <div class="dns-explainer">
@@ -951,7 +925,7 @@ flowchart TD
     </section>
 
     <section>
-      <h2><span class="num">06</span>O que isso destrava — campanhas de Conversão</h2>
+      <h2><span class="num">05</span>O que isso destrava — campanhas de Conversão</h2>
       <p class="h2-sub">Toda essa infraestrutura (pixel + rotas trackeadas + eventos Lead/Purchase) libera algo que hoje não conseguimos fazer: rodar campanhas de Meta Ads com objetivo <strong>Conversão</strong>, otimizando pela ação que realmente importa — o lead qualificado chegando no humano.</p>
 
       <div class="conv-grid">
@@ -998,7 +972,7 @@ flowchart TD
     </section>
 
     <section>
-      <h2><span class="num">07</span>Projeção de resultados</h2>
+      <h2><span class="num">06</span>Projeção de resultados</h2>
       <p class="h2-sub">Baseado no histórico real da conta Meta Ads (últimos 90 dias) e nos ganhos esperados com o fluxo IA completo + Conversion. Os cenários abaixo são projeções, não promessas — dependem de execução consistente e de manter o padrão de qualidade dos criativos.</p>
 
       <div class="proj-intro">
@@ -1096,7 +1070,7 @@ flowchart TD
     </section>
 
     <section>
-      <h2><span class="num">08</span>Todos os links (36 rotas)</h2>
+      <h2><span class="num">07</span>Todos os links (36 rotas)</h2>
       <p class="h2-sub">Cada linha mostra o endereço atual no Vercel e como vai ficar depois do apontamento DNS. Nada precisa ser refeito — os endereços novos são aliases do domínio próprio pros mesmos destinos.</p>
 
       <div class="links-legend">
@@ -1194,7 +1168,7 @@ flowchart TD
     </section>
 
     <section>
-      <h2><span class="num">09</span>UTMs recomendadas</h2>
+      <h2><span class="num">08</span>UTMs recomendadas</h2>
       <p class="h2-sub">As URLs Vercel não vêm com UTMs cravadas de propósito — o parâmetro varia por criativo e campanha. Abaixo o padrão que usamos: cada anúncio ou botão do site adiciona a UTM na hora, e o pixel do Meta continua rastreando sem depender disso.</p>
 
       <h3 class="links-group-title">Padrão para Meta Ads (/ads/*)</h3>
