@@ -501,7 +501,7 @@
     <header>
       <span class="eyebrow">Documentação técnica · Agi Genies</span>
       <h1>Fluxo <em>NOVA</em> — todo lead passa pela IA antes do humano</h1>
-      <p class="lead">Arquitetura unificada de atendimento: tráfego pago, orgânico e site caem no mesmo agente. A NOVA qualifica em até 3 perguntas, e só encaminha para o time humano quando há intenção clara de fechar.</p>
+      <p class="lead">Arquitetura unificada de atendimento: anúncios, site e bio caem no mesmo agente. A NOVA qualifica em até 3 perguntas e só encaminha para o time humano quando há intenção clara de fechar.</p>
       <div class="meta-strip">
         <span>Versão <strong>2026-09-28</strong></span>
         <span>Pixel <strong>1397968278475446</strong></span>
@@ -516,7 +516,7 @@
         <div class="num-badge">🤖 IA · Agi Genies</div>
         <div class="num-role">Atendente NOVA</div>
         <div class="num-phone">+55 19 98972-5983</div>
-        <div class="num-caption">Qualifica todo lead (tráfego pago + orgânico + site) antes de encaminhar</div>
+        <div class="num-caption">Qualifica todo lead (anúncios, site, bio) antes de encaminhar</div>
       </div>
       <div class="num-card num-human">
         <div class="num-badge">👤 Humano</div>
@@ -532,8 +532,8 @@
       <div class="diagram-wrap">
         <div class="mermaid">
 flowchart TD
-    A1["Anúncio Meta Ads<br/>tráfego pago"]:::entry --> B1["/ads/*<br/>pixel LEAD<br/>tag: meta_ads"]:::pageAds
-    A2["Botão no site<br/>tráfego orgânico"]:::entry --> B2["/site/*<br/>pixel LEAD<br/>tag: site"]:::pageSite
+    A1["Anúncio Meta Ads<br/>clique direto"]:::entry --> B1["/ads/*<br/>pixel LEAD<br/>tag: meta_ads"]:::pageAds
+    A2["Botão WhatsApp<br/>no site"]:::entry --> B2["/site/*<br/>pixel LEAD<br/>tag: site"]:::pageSite
     A3["Bio Instagram<br/>linktree"]:::entry --> B2
 
     B1 --> C["WhatsApp NOVA<br/>+55 19 98972-5983"]:::ai
@@ -589,8 +589,8 @@ flowchart TD
         </div>
         <div class="card">
           <span class="tag entry">/site/*</span>
-          <h3>Entrada orgânica</h3>
-          <p>Destino dos botões do site oficial, bio Instagram e linktree. Dispara <code>Lead</code> com tag <code>site</code> e redireciona pra NOVA.</p>
+          <h3>Entrada via site / bio</h3>
+          <p>Destino dos botões do site oficial, bio Instagram e linktree. Grande parte desse tráfego também vem de mídia paga que passou primeiro pelo site. Dispara <code>Lead</code> com tag <code>site</code> e redireciona pra NOVA.</p>
         </div>
         <div class="card">
           <span class="tag handoff">/handoff/*</span>
@@ -664,7 +664,16 @@ flowchart TD
 
     <section>
       <h2><span class="num">05</span>Publicação em domínio próprio</h2>
-      <p class="h2-sub">Hoje os links estão sob <code>nova-beach-links.vercel.app</code>. Para ficar profissional e ganhar a confiança dos leads, a empresa que hospeda o site da Nova Beach precisa fazer <strong>um único apontamento no DNS</strong>. Depois disso, os links passam a rodar sob o domínio próprio.</p>
+      <p class="h2-sub">A NOVA (IA) precisa enviar links no meio das conversas do WhatsApp — pra encaminhar cada lead ao atendimento correto (matrícula, aula experimental, empresarial, quadra, dúvida). Esses links precisam parecer da Nova Beach, e não de um serviço externo.</p>
+
+      <div class="dns-why">
+        <div class="dns-why-icon">💬</div>
+        <div class="dns-why-body">
+          <h3>Por que isso importa</h3>
+          <p>Toda vez que a NOVA qualifica um lead e manda ele pro humano, envia um link dentro do WhatsApp. Hoje esse link vai como <code class="old-mini">nova-beach-links.vercel.app/handoff/bt-1x</code> — parece um serviço de terceiro. Depois do apontamento DNS, ele vai como <code class="new-mini">links.novabeachcampinas.com.br/handoff/bt-1x</code> — assinatura Nova Beach do começo ao fim.</p>
+          <p style="margin-top:12px">Isso reduz o medo do lead de clicar (menos abandono), evita bloqueio de spam do WhatsApp em domínios de terceiros, e passa credibilidade profissional em cada interação da IA.</p>
+        </div>
+      </div>
 
       <div class="dns-explainer">
         <div class="dns-explainer-row">
@@ -717,7 +726,7 @@ flowchart TD
             <div class="dns-row"><span>Valor</span><code>google-site-verification=[código]</code></div>
             <div class="dns-row"><span>TTL</span><code>3600</code></div>
           </div>
-          <p class="dns-hint">Melhora rastreio orgânico e libera relatórios de tráfego do domínio no Google.</p>
+          <p class="dns-hint">Libera relatórios de tráfego do domínio no Google e permite rastrear performance por página.</p>
 
           <div class="dns-eyebrow" style="margin-top:28px">O que eu (TSS) faço depois</div>
           <ol class="dns-steps dns-steps-alt">
