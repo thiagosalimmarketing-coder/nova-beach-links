@@ -88,8 +88,8 @@
 
     .numbers-hero {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
       margin-bottom: 56px;
     }
     @media (max-width: 780px) { .numbers-hero { grid-template-columns: 1fr; } }
@@ -120,6 +120,16 @@
       background: linear-gradient(135deg, #1a3066 0%, #0e1e42 100%);
       color: white;
       box-shadow: 0 8px 32px rgba(14, 30, 66, 0.25);
+    }
+    .num-eventos {
+      background: linear-gradient(135deg, #2a4a8a 0%, #1a3066 100%);
+      color: white;
+      box-shadow: 0 8px 32px rgba(26, 48, 102, 0.22);
+    }
+    .num-crm {
+      background: linear-gradient(135deg, #6b4bc9 0%, #4a2e8f 100%);
+      color: white;
+      box-shadow: 0 8px 32px rgba(74, 46, 143, 0.25);
     }
     .num-badge {
       font-family: 'JetBrains Mono', monospace;
@@ -529,6 +539,54 @@
       .dns-why-icon { font-size: 28px; }
     }
 
+    .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 780px) { .conv-grid { grid-template-columns: 1fr; } }
+    .conv-side { padding: 24px 26px; border-radius: 14px; border: 1px solid var(--nb-border); background: white; }
+    .conv-before { border-left: 4px solid #c85a5a; }
+    .conv-after { border-left: 4px solid #2ea043; }
+    .conv-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+    .conv-before .conv-eyebrow { color: #8a2b2b; }
+    .conv-after .conv-eyebrow { color: #1b6a2a; }
+    .conv-list { list-style: none; }
+    .conv-list li { padding: 8px 0 8px 22px; position: relative; font-size: 14px; color: var(--nb-ink); opacity: 0.85; line-height: 1.55; }
+    .conv-list li::before { content: '•'; position: absolute; left: 4px; top: 8px; font-size: 18px; }
+    .conv-before .conv-list li::before { color: #c85a5a; }
+    .conv-after .conv-list li::before { color: #2ea043; }
+    .conv-list code { font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 1px 6px; border-radius: 4px; background: var(--nb-sand); color: var(--nb-navy); }
+    .conv-list strong { color: var(--nb-navy); font-weight: 600; }
+    .conv-payoff { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 20px; }
+    .conv-payoff-item { background: linear-gradient(135deg, rgba(255, 181, 71, 0.12) 0%, rgba(255, 181, 71, 0.02) 100%); border: 1px solid rgba(255, 181, 71, 0.35); border-radius: 12px; padding: 18px 22px; }
+    .conv-payoff-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(28px, 4vw, 36px); font-weight: 700; color: var(--nb-navy); line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .conv-payoff-label { font-size: 12px; color: var(--nb-mute); line-height: 1.5; }
+    .conv-note { margin-top: 20px; padding: 16px 20px; background: var(--nb-sand); border-radius: 10px; font-size: 13px; color: var(--nb-mute); line-height: 1.6; }
+    .conv-note strong { color: var(--nb-navy); }
+
+    .proj-intro { background: white; border-radius: 14px; padding: 24px 28px; border: 1px solid var(--nb-border); margin-top: 20px; }
+    .proj-intro-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nb-mute); font-weight: 600; margin-bottom: 12px; }
+    .proj-baseline { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+    .proj-baseline-cell { text-align: left; }
+    .proj-baseline-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--nb-navy); line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em; }
+    .proj-baseline-label { font-size: 11px; color: var(--nb-mute); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .proj-scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    @media (max-width: 900px) { .proj-scenarios { grid-template-columns: 1fr; } }
+    .proj-card { padding: 24px 26px; border-radius: 14px; position: relative; overflow: hidden; }
+    .proj-card.p1 { background: linear-gradient(160deg, #f3f5fa 0%, #e8ecf5 100%); border: 1px solid var(--nb-border); }
+    .proj-card.p2 { background: linear-gradient(160deg, #1a3066 0%, #0e1e42 100%); color: white; }
+    .proj-card.p3 { background: linear-gradient(160deg, #ffb547 0%, #ff9a1a 100%); color: #2a1a00; }
+    .proj-phase { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; opacity: 0.7; margin-bottom: 4px; }
+    .proj-title { font-size: 20px; font-weight: 800; margin-bottom: 2px; letter-spacing: -0.01em; }
+    .proj-window { font-size: 12px; opacity: 0.75; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+    .proj-metric { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .proj-card.p2 .proj-metric { border-bottom-color: rgba(255,255,255,0.15); }
+    .proj-card.p3 .proj-metric { border-bottom-color: rgba(0,0,0,0.08); }
+    .proj-metric:last-child { border-bottom: none; }
+    .proj-metric-label { font-size: 12px; opacity: 0.7; font-weight: 500; }
+    .proj-metric-value { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+    .proj-highlight { margin-top: 18px; padding: 12px 14px; background: rgba(0,0,0,0.06); border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center; }
+    .proj-card.p2 .proj-highlight { background: rgba(255, 181, 71, 0.2); color: #ffb547; }
+    .proj-card.p3 .proj-highlight { background: rgba(255,255,255,0.35); color: #2a1a00; }
+    .proj-disclaimer { margin-top: 20px; font-size: 12px; color: var(--nb-mute); line-height: 1.6; padding: 14px 18px; background: var(--nb-sand); border-radius: 10px; font-style: italic; }
+
     footer {
       margin-top: 64px;
       padding-top: 32px;
@@ -555,8 +613,10 @@
         <span>Versão <strong>2026-09-28</strong></span>
         <span>Pixel <strong>1397968278475446</strong></span>
         <span>Domínio <strong>nova-beach-links.vercel.app</strong></span>
-        <span>IA <strong>+55 19 98972-5983</strong></span>
-        <span>Humano <strong>+55 19 99557-5156</strong></span>
+        <span>IA <strong>+55 19 99455-7698</strong></span>
+        <span>CRM <strong>+55 19 98972-5983</strong></span>
+        <span>Humano BT <strong>+55 19 99557-5156</strong></span>
+        <span>Humano Eventos <strong>+55 19 99917-8194</strong></span>
       </div>
     </header>
 
@@ -564,14 +624,26 @@
       <div class="num-card num-ai">
         <div class="num-badge">🤖 IA · Agi Genies</div>
         <div class="num-role">Atendente NOVA</div>
+        <div class="num-phone">+55 19 99455-7698</div>
+        <div class="num-caption">Recebe TODO lead novo (anúncios, site, bio). Qualifica em até 3 perguntas e encaminha pro humano certo.</div>
+      </div>
+      <div class="num-card num-crm">
+        <div class="num-badge">🔄 CRM · Reportana</div>
+        <div class="num-role">Reengajamento automático</div>
         <div class="num-phone">+55 19 98972-5983</div>
-        <div class="num-caption">Qualifica todo lead (anúncios, site, bio) antes de encaminhar</div>
+        <div class="num-caption">Recupera lead que sumiu sem responder. Envia follow-up em 48h, 7d e reativação em 15d. Não atende — só dispara.</div>
       </div>
       <div class="num-card num-human">
-        <div class="num-badge">👤 Humano</div>
+        <div class="num-badge">👤 Humano · Beach Tennis</div>
         <div class="num-role">Recepção Nova Beach</div>
         <div class="num-phone">+55 19 99557-5156</div>
-        <div class="num-caption">Recebe só lead qualificado, com mensagem pronta indicando o produto</div>
+        <div class="num-caption">Fecha matrículas de BT, Clubinho e aulas experimentais. Recebe lead já qualificado pela IA.</div>
+      </div>
+      <div class="num-card num-eventos">
+        <div class="num-badge">🎉 Humano · Eventos</div>
+        <div class="num-role">Atendimento Eventos & Aulão</div>
+        <div class="num-phone">+55 19 99917-8194</div>
+        <div class="num-caption">Cuida de Day Use Empresarial, aulão funcional pontual e reservas de aniversário. Também recebe qualificado pela IA.</div>
       </div>
     </div>
 
@@ -581,47 +653,54 @@
       <div class="diagram-wrap">
         <div class="mermaid">
 flowchart TD
-    A1["Anúncio Meta Ads<br/>clique direto"]:::entry --> B1["/ads/*<br/>pixel LEAD<br/>tag: meta_ads"]:::pageAds
-    A2["Botão WhatsApp<br/>no site"]:::entry --> B2["/site/*<br/>pixel LEAD<br/>tag: site"]:::pageSite
+    A1["Anúncio Meta Ads<br/>clique direto"]:::entry --> B1["/ads/*<br/>pixel LEAD"]:::pageAds
+    A2["Botão WhatsApp<br/>no site"]:::entry --> B2["/site/*<br/>pixel LEAD"]:::pageSite
     A3["Bio Instagram<br/>linktree"]:::entry --> B2
 
-    B1 --> C["WhatsApp NOVA<br/>+55 19 98972-5983"]:::ai
+    B1 --> C["🤖 NOVA (IA · Agi Genies)<br/><b>+55 19 99455-7698</b><br/>recebe todo lead novo"]:::ai
     B2 --> C
 
-    C --> D["NOVA lê mensagem<br/>e identifica interesse"]:::ai
-    D --> E{"Qualificação<br/>até 3 perguntas"}:::decision
+    C --> D["NOVA lê mensagem<br/>e qualifica<br/>(até 3 perguntas)"]:::ai
+    D --> E{"Classificação<br/>do interesse"}:::decision
 
-    E -->|"Fechar BT 1x"| G1["/handoff/bt-1x<br/>pixel PURCHASE<br/>(intenção)"]:::handoff
-    E -->|"Fechar BT 2x"| G2["/handoff/bt-2x<br/>pixel PURCHASE<br/>(intenção)"]:::handoff
-    E -->|"Fechar Clubinho"| G3["/handoff/clubinho<br/>pixel PURCHASE<br/>(intenção)"]:::handoff
-    E -->|"Agendar experimental"| G4["/handoff/experimental<br/>pixel SCHEDULE"]:::handoff
+    E -->|"Fechar BT 1x"| G1["/handoff/bt-1x<br/>pixel PURCHASE"]:::handoff
+    E -->|"Fechar BT 2x"| G2["/handoff/bt-2x<br/>pixel PURCHASE"]:::handoff
+    E -->|"Fechar Clubinho"| G3["/handoff/clubinho<br/>pixel PURCHASE"]:::handoff
+    E -->|"Agendar experimental"| G4["/handoff/experimental<br/>pixel PURCHASE"]:::handoff
+    E -->|"Locação de quadra"| G5["/handoff/quadra<br/>pixel PURCHASE"]:::handoff
 
-    E -->|"Dúvida complexa"| X1["wa.me humano<br/>link direto"]:::direct
-    E -->|"Day Use Empresarial"| X2["wa.me humano<br/>link direto"]:::direct
-    E -->|"Quadra avulsa"| X3["wa.me humano<br/>link direto"]:::direct
+    E -->|"Day Use Empresarial<br/>(após qualificar grupo)"| GE1["/handoff/reservas<br/>pixel PURCHASE"]:::handoff-ev
+    E -->|"Aulão / evento pontual"| GE2["Contato registrado<br/>tag: aguardando_evento"]:::soft
 
-    E -->|"Funcional descontinuado"| I["Coleta contato<br/>tag: aguardando_funcional<br/>Reportana"]:::soft
+    E -->|"Sem resposta<br/>lead sumiu ou hesitou"| CRM["🔄 CRM · Reportana<br/><b>+55 19 98972-5983</b><br/>dispara mensagem de<br/>reativação em 48h/7d/15d<br/>com link que volta pra IA"]:::crm
+
     E -->|"B2B / spam"| J["Encerra<br/>tag: descartado"]:::soft
 
-    G1 --> K["WhatsApp HUMANO<br/>+55 19 99557-5156"]:::human
+    G1 --> K["👤 HUMANO · Beach Tennis<br/><b>+55 19 99557-5156</b><br/>fecha matrícula BT/Clubinho<br/>e aula experimental"]:::human
     G2 --> K
     G3 --> K
     G4 --> K
-    X1 --> K
-    X2 --> K
-    X3 --> K
+    G5 --> K
+
+    GE1 --> KE["🎉 HUMANO · Eventos<br/><b>+55 19 99917-8194</b><br/>fecha Day Use, aulão, reservas"]:::human-ev
+    GE2 --> KE
+
+    CRM -.->|"lead clica no link<br/>de reativação"| C
 
     K --> M["Recepção recebe<br/>lead PRONTO<br/>confirma pagamento<br/>agenda 1ª aula"]:::success
+    KE --> M2["Time de eventos<br/>envia proposta<br/>ou confirma reserva"]:::success
 
     classDef entry fill:#e8ecf5,stroke:#1a3066,stroke-width:1.5px,color:#0e1e42,rx:8,ry:8
     classDef pageAds fill:#fff1d6,stroke:#c48a1e,stroke-width:1.5px,color:#5a3800
     classDef pageSite fill:#e0edff,stroke:#3b6db3,stroke-width:1.5px,color:#1e3a6b
-    classDef ai fill:#ffb547,stroke:#c48a1e,stroke-width:2px,color:#3a2500
+    classDef ai fill:#ffb547,stroke:#c48a1e,stroke-width:2.5px,color:#3a2500
+    classDef crm fill:#d9c9f2,stroke:#4a2e8f,stroke-width:2.5px,color:#2a1a5a
     classDef decision fill:#1a3066,stroke:#0e1e42,stroke-width:2px,color:#fff
     classDef handoff fill:#c7ecc9,stroke:#1b6a2a,stroke-width:1.5px,color:#0d4a1a
-    classDef direct fill:#f0d8d8,stroke:#8a2b2b,stroke-width:1.5px,color:#5a1c1c
+    classDef handoff-ev fill:#c9e0f2,stroke:#2a4a8a,stroke-width:1.5px,color:#0d2a5a
     classDef soft fill:#f3f5fa,stroke:#64708f,stroke-width:1px,color:#495571
-    classDef human fill:#0e1e42,stroke:#0e1e42,stroke-width:2px,color:#fff
+    classDef human fill:#0e1e42,stroke:#0e1e42,stroke-width:2.5px,color:#fff
+    classDef human-ev fill:#2a4a8a,stroke:#0e1e42,stroke-width:2.5px,color:#fff
     classDef success fill:#2ea043,stroke:#1b6a2a,stroke-width:2px,color:#fff
         </div>
       </div>
@@ -796,6 +875,128 @@ flowchart TD
       </div>
     </section>
 
+    <section>
+      <h2><span class="num">06</span>O que isso destrava — campanhas de Conversão</h2>
+      <p class="h2-sub">Toda essa infraestrutura (pixel + rotas trackeadas + eventos Lead/Purchase) libera algo que hoje não conseguimos fazer: rodar campanhas de Meta Ads com objetivo <strong>Conversão</strong>, otimizando pela ação que realmente importa — o lead qualificado chegando no humano.</p>
+
+      <div class="conv-grid">
+        <div class="conv-side conv-before">
+          <div class="conv-eyebrow">Hoje (Messages)</div>
+          <ul class="conv-list">
+            <li>Anúncio abre WhatsApp direto</li>
+            <li>Meta otimiza por "conversas iniciadas" — qualquer pessoa que abriu o chat</li>
+            <li>Sem visibilidade sobre quem realmente vai fechar</li>
+            <li>Time humano recebe curioso, vendedor B2B e lead frio junto com o interessado</li>
+            <li>Impossível provar quanto do ad → matrícula</li>
+          </ul>
+        </div>
+        <div class="conv-side conv-after">
+          <div class="conv-eyebrow">Depois (Conversão)</div>
+          <ul class="conv-list">
+            <li>Anúncio → LP com pixel → NOVA qualifica → handoff pro humano</li>
+            <li>Meta otimiza por evento <code>Purchase</code> (chegou no humano qualificado)</li>
+            <li>Algoritmo aprende quem tem <strong>maior chance de virar handoff</strong>, não só clicar</li>
+            <li>Menos lead ruim chega ao time humano — só quem passou pelo filtro da IA</li>
+            <li>Dashboard mostra: gastei R$X → gerei Y handoffs → viraram Z matrículas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conv-payoff">
+        <div class="conv-payoff-item">
+          <div class="conv-payoff-num">−30%</div>
+          <div class="conv-payoff-label">CAC de matrícula esperado após o Meta aprender (60-90 dias)</div>
+        </div>
+        <div class="conv-payoff-item">
+          <div class="conv-payoff-num">10×</div>
+          <div class="conv-payoff-label">Escalabilidade — mais fácil aumentar verba com sinal de qualidade certo</div>
+        </div>
+        <div class="conv-payoff-item">
+          <div class="conv-payoff-num">100%</div>
+          <div class="conv-payoff-label">Atribuição real — cada matrícula rastreável até o anúncio que gerou</div>
+        </div>
+      </div>
+
+      <div class="conv-note">
+        <strong>Nota importante:</strong> Conversion precisa de volume mínimo de eventos pra sair do "learning phase" do Meta — cerca de 50 Purchases por semana por ad set. Vamos migrar em fases: primeiro rodamos <strong>Tráfego otimizando por Landing Page View</strong> por 2-3 semanas pra acumular sinal no pixel, depois migramos gradualmente pra Conversion à medida que o histórico ganha volume.
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span>Projeção de resultados</h2>
+      <p class="h2-sub">Baseado no histórico real da conta Meta Ads (últimos 90 dias) e nos ganhos esperados com o fluxo IA completo + Conversion. Os cenários abaixo são projeções, não promessas — dependem de execução consistente e de manter o padrão de qualidade dos criativos.</p>
+
+      <div class="proj-intro">
+        <div class="proj-intro-eyebrow">Baseline atual (dados reais da conta — últimos 90 dias)</div>
+        <div class="proj-baseline">
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">R$ 355</div><div class="proj-baseline-label">Verba mensal</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">~30</div><div class="proj-baseline-label">Conversas/mês</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">R$ 10</div><div class="proj-baseline-label">CPA por conversa</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">2,19%</div><div class="proj-baseline-label">CTR médio</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">~5</div><div class="proj-baseline-label">Matrículas/mês estimadas</div></div>
+        </div>
+      </div>
+
+      <div class="proj-scenarios">
+
+        <div class="proj-card p1">
+          <div class="proj-phase">Fase 1 · 0–30 dias</div>
+          <div class="proj-title">Só ligar a IA</div>
+          <div class="proj-window">Mesma verba · sem escalar · só filtrar</div>
+          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 355</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~25</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~14</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">8–10</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 40</span></div>
+          <div class="proj-highlight">+60 a 100% vs baseline</div>
+        </div>
+
+        <div class="proj-card p2">
+          <div class="proj-phase">Fase 2 · 30–60 dias</div>
+          <div class="proj-title">Escalar verba</div>
+          <div class="proj-window">Meta aprende · Conversion inicia</div>
+          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 1.000</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~65</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~38</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">22–26</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 40</span></div>
+          <div class="proj-highlight">4–5× vs baseline</div>
+        </div>
+
+        <div class="proj-card p3">
+          <div class="proj-phase">Fase 3 · 60–120 dias</div>
+          <div class="proj-title">Máquina rodando</div>
+          <div class="proj-window">Conversion otimizando · CRM ativo</div>
+          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 1.500</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~105</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~65</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">35–42</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 38</span></div>
+          <div class="proj-highlight">6–8× vs baseline</div>
+        </div>
+
+      </div>
+
+      <div class="conv-payoff" style="margin-top:24px">
+        <div class="conv-payoff-item">
+          <div class="conv-payoff-num">R$ 40</div>
+          <div class="conv-payoff-label">CAC de matrícula projetado (fase 2+). Ticket médio BT ~R$ 400/mês.</div>
+        </div>
+        <div class="conv-payoff-item">
+          <div class="conv-payoff-num">10×</div>
+          <div class="conv-payoff-label">ROAS estimado no 1º mês da matrícula. Sobe pra 60× considerando LTV de 6 meses.</div>
+        </div>
+        <div class="conv-payoff-item">
+          <div class="conv-payoff-num">3–4 meses</div>
+          <div class="conv-payoff-label">Prazo pra estabilizar Fase 3 (Meta precisa acumular sinal de Purchase).</div>
+        </div>
+      </div>
+
+      <div class="proj-disclaimer">
+        <strong>Como leio essa projeção:</strong> os números partem do histórico real da conta (353 conversas geradas na vida da conta, CPA médio R$10 por conversa, CTR 2,19%). O ganho projetado depende de 3 fatores fora do meu controle: (1) time humano fechar o lead que a IA entrega qualificado, (2) manter padrão de qualidade nos criativos, (3) verba disponível. Se algum desses falhar, os cenários caem 20–40%. Se todos executarem bem, os cenários podem superar em 10–20%.
+      </div>
+    </section>
+
     <details class="tech-block">
       <summary>
         <span class="tech-eye">⚙</span>
@@ -810,10 +1011,11 @@ flowchart TD
         5. Timeout de 24h — se lead não responde, sai do fluxo e vai pro CRM Reportana pra follow-up.<br>
         6. Limite de tokens por conversa e custo mensal estimado pra 40-80 conversas/semana.</p>
         <div class="contacts">
-          <div><strong>NOVA (IA)</strong>+55 19 98972-5983</div>
-          <div><strong>Recepção humana</strong>+55 19 99557-5156</div>
+          <div><strong>NOVA (IA · Agi Genies)</strong>+55 19 99455-7698</div>
+          <div><strong>CRM (Reportana)</strong>+55 19 98972-5983</div>
+          <div><strong>Humano Beach Tennis</strong>+55 19 99557-5156</div>
+          <div><strong>Humano Eventos</strong>+55 19 99917-8194</div>
           <div><strong>Pixel Meta</strong>1397968278475446</div>
-          <div><strong>CRM secundário</strong>Reportana</div>
         </div>
       </div>
     </details>

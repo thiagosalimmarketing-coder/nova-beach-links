@@ -22,7 +22,14 @@ cd "$(dirname "$0")"
 
 PIXEL="1397968278475446"
 
-AI_PHONE="5519989725983"
+# Ajuste 2026-09-28: numeros reatribuidos.
+#   IA (Agi Genies)   -> 5519994557698 (linha nova dedicada ao bot)
+#   CRM (Reportana)   -> 5519989725983 (linha antiga do "atendimento app", agora usada
+#                        para disparos/nutricao automatizada pelo CRM)
+#   Humano (recepcao) -> 5519995575156 (sem mudanca)
+#   Funcional         -> 5519999178194 (legacy, modalidade descontinuada)
+AI_PHONE="5519994557698"
+CRM_PHONE="5519989725983"
 HUMAN_PHONE="5519995575156"
 FUNCIONAL_PHONE="5519999178194"
 
@@ -42,14 +49,39 @@ PRODUCTS=(
 )
 
 # ─────────────────────────────────────────────────────────────
+# TABLE 2b: CRM reactivation paths (drives /crm/*)
+# Reportana envia mensagem de reativação com 2 botões:
+#   "Quero saber mais"  → /crm/saber-mais  → IA qualifica de novo
+#   "Falar com humano"  → /crm/falar-*    → direto para o humano
+# Cada rota carrega tag específica pra medir efetividade da reativação.
+# Formato: slot|phone|pixel_event|content_name|prefilled_message
+# ─────────────────────────────────────────────────────────────
+CRM_PATHS=(
+  "saber-mais|${AI_PHONE}|Lead|reativacao_saber_mais|Oi! Recebi a mensagem de vocês. Quero saber mais sobre a Nova Beach."
+  "falar-humano-bt|${HUMAN_PHONE}|Purchase|reativacao_humano_bt|Oi! Recebi a mensagem de vocês. Quero falar direto com o atendimento sobre Beach Tennis."
+  "falar-humano-eventos|${FUNCIONAL_PHONE}|Purchase|reativacao_humano_eventos|Oi! Recebi a mensagem de vocês. Quero falar direto sobre eventos / Day Use."
+)
+
+# ─────────────────────────────────────────────────────────────
 # TABLE 2: Handoffs (drives /handoff/*) — bot uses these after qualifying
 # slot | pixel_event | content_name | prefilled_message
+#
+# Modelo de 2 eventos:
+#   Lead     -> chegou na pagina /ads/* ou /site/* (topo de funil)
+#   Purchase -> lead foi encaminhado ao humano via /handoff/* (fundo de funil)
+#
+# Purchase aqui significa: lead qualificado pela IA que chegou ao humano.
+# NAO significa matricula fechada. Todos os produtos usam Purchase — para
+# medirmos exatamente quantos leads o time humano recebe qualificados.
 # ─────────────────────────────────────────────────────────────
+# Formato: slot|phone|pixel_event|content_name|prefilled_message
 HANDOFFS=(
-  "bt-1x|Purchase|matricula_bt_1x|Olá! Gostaria de prosseguir com a matrícula no plano Beach Tennis 1x por semana."
-  "bt-2x|Purchase|matricula_bt_2x|Olá! Gostaria de prosseguir com a matrícula no plano Beach Tennis 2x por semana."
-  "clubinho|Purchase|matricula_clubinho|Olá! Gostaria de prosseguir com a inscrição no Clubinho."
-  "experimental|Schedule|agendamento_experimental|Olá! Gostaria de confirmar meu horário para a aula experimental."
+  "bt-1x|${HUMAN_PHONE}|Purchase|matricula_bt_1x|Olá! Gostaria de prosseguir com a matrícula no plano Beach Tennis 1x por semana."
+  "bt-2x|${HUMAN_PHONE}|Purchase|matricula_bt_2x|Olá! Gostaria de prosseguir com a matrícula no plano Beach Tennis 2x por semana."
+  "clubinho|${HUMAN_PHONE}|Purchase|matricula_clubinho|Olá! Gostaria de prosseguir com a inscrição no Clubinho."
+  "experimental|${HUMAN_PHONE}|Purchase|agendamento_experimental|Olá! Gostaria de confirmar meu horário para a aula experimental."
+  "quadra|${HUMAN_PHONE}|Purchase|locacao_quadra|Olá! Gostaria de reservar uma quadra avulsa."
+  "reservas|${FUNCIONAL_PHONE}|Purchase|day_use_empresarial|Olá! Tenho interesse no Day Use Empresarial. Gostaria de receber uma proposta."
 )
 
 # ─────────────────────────────────────────────────────────────
@@ -145,14 +177,23 @@ done
 # Build /handoff/*
 # ─────────────────────────────────────────────────────────────
 echo ""
+echo "Building /crm/*..."
+for c in "${CRM_PATHS[@]}"; do
+  IFS='|' read -r slot phone event content_name message <<< "$c"
+  wa_url="https://wa.me/${phone}?text=$(url_encode "$message")"
+  write_page "crm/${slot}" "$event" "$content_name" "crm_reativacao" "$wa_url"
+  echo "  ✓ /crm/${slot}/  → ${phone}  (${event})"
+done
+
+echo ""
 echo "Building /handoff/*..."
 for h in "${HANDOFFS[@]}"; do
-  IFS='|' read -r slot event content_name message <<< "$h"
-  wa_url="https://wa.me/${HUMAN_PHONE}?text=$(url_encode "$message")"
+  IFS='|' read -r slot phone event content_name message <<< "$h"
+  wa_url="https://wa.me/${phone}?text=$(url_encode "$message")"
   write_page "handoff/${slot}" "$event" "$content_name" "handoff" "$wa_url"
-  echo "  ✓ /handoff/${slot}/  → ${HUMAN_PHONE}  (${event})"
+  echo "  ✓ /handoff/${slot}/  → ${phone}  (${event})"
 done
 
 echo ""
 echo "Done. Structure:"
-find ads site handoff -name index.html 2>/dev/null | sort
+find ads site handoff crm -name index.html 2>/dev/null | sort
