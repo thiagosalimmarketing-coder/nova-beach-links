@@ -722,6 +722,12 @@
       </div>
     </div>
 
+    <div style="margin: 24px 0 48px; padding: 24px 28px; background: linear-gradient(135deg, #fff8ec 0%, #fff2d6 100%); border-left: 4px solid #ffb547; border-radius: 12px;">
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #a56a00; text-transform: uppercase; margin-bottom: 8px;">Regra do projeto</div>
+      <p style="font-size: 15px; line-height: 1.6; color: #3a2500; margin: 0 0 10px;"><strong>Toda URL do Vercel é single-purpose.</strong> Nunca tem dois botões de escolha (IA vs Humano) numa página deste domínio. Cada rota redireciona direto pra um único destino: entry-points → NOVA IA · handoffs → humano correto do produto.</p>
+      <p style="font-size: 14px; line-height: 1.6; color: #5a4200; margin: 0;">A escolha entre "falar com a IA" ou "falar com humano" só existe <strong>fora do Vercel</strong> — no Linktree externo da bio do Instagram e nos botões da mensagem do WhatsApp CRM (Reportana). Dentro do Vercel, cada link cumpre uma função só.</p>
+    </div>
+
     <section>
       <h2><span class="num">01</span>Diagrama</h2>
       <p class="h2-sub">Fluxo end-to-end em um único diagrama. Zoom com scroll horizontal se necessário.</p>
@@ -1089,7 +1095,7 @@ flowchart TD
         <thead><tr><th>Slug</th><th>Vai para</th><th>Evento</th><th>Uso</th></tr></thead>
         <tbody>
           <tr><td><code>/bt</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Link Beach Tennis (bio Instagram)</td></tr>
-          <tr><td><code>/funcional</code></td><td><span class="lp lp-hev">Funcional</span></td><td><span class="lp lp-lead">Lead</span></td><td>Link Aulão / eventos pontuais</td></tr>
+          <tr><td><code>/funcional</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Link Aulão / eventos pontuais</td></tr>
           <tr><td><code>/reservas</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Reservas gerais</td></tr>
           <tr><td><code>/aluno</code></td><td>—</td><td>—</td><td>Portal do aluno (redirect)</td></tr>
           <tr><td><code>/local</code></td><td>—</td><td>—</td><td>Google Maps (endereço)</td></tr>
@@ -1109,7 +1115,7 @@ flowchart TD
           <tr><td><code>/ads/reservas</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Empresarial</td></tr>
           <tr><td><code>/ads/day-use-individual</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Individual (R$45/pessoa)</td></tr>
           <tr><td><code>/ads/aniversario</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aniversário / evento</td></tr>
-          <tr><td><code>/ads/funcional</code></td><td><span class="lp lp-hev">Funcional</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aulão pontual</td></tr>
+          <tr><td><code>/ads/funcional</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aulão pontual</td></tr>
         </tbody>
       </table>
 
@@ -1126,7 +1132,7 @@ flowchart TD
           <tr><td><code>/site/reservas</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Empresarial</td></tr>
           <tr><td><code>/site/day-use-individual</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Individual</td></tr>
           <tr><td><code>/site/aniversario</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aniversário / evento</td></tr>
-          <tr><td><code>/site/funcional</code></td><td><span class="lp lp-hev">Funcional</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Funcional</td></tr>
+          <tr><td><code>/site/funcional</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Funcional</td></tr>
         </tbody>
       </table>
 
