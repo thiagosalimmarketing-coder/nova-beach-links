@@ -85,6 +85,70 @@
     .meta-strip strong { color: var(--nb-navy); font-weight: 600; }
 
     section { margin-bottom: 56px; }
+
+    .numbers-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    @media (max-width: 780px) { .numbers-hero { grid-template-columns: 1fr; } }
+    .num-card {
+      padding: 28px 32px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .num-card:hover { transform: translateY(-2px); }
+    .num-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../nb-ball.png');
+      background-size: 120px;
+      background-repeat: repeat;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .num-ai {
+      background: linear-gradient(135deg, #ffb547 0%, #ff9a1a 100%);
+      color: #2a1a00;
+      box-shadow: 0 8px 32px rgba(255, 154, 26, 0.25);
+    }
+    .num-human {
+      background: linear-gradient(135deg, #1a3066 0%, #0e1e42 100%);
+      color: white;
+      box-shadow: 0 8px 32px rgba(14, 30, 66, 0.25);
+    }
+    .num-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+    .num-role {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .num-phone {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(24px, 3.6vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .num-caption {
+      font-size: 13px;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
     h2 {
       font-size: 28px;
       font-weight: 800;
@@ -386,6 +450,21 @@
         <span>Humano <strong>+55 19 99557-5156</strong></span>
       </div>
     </header>
+
+    <div class="numbers-hero">
+      <div class="num-card num-ai">
+        <div class="num-badge">🤖 IA · Agi Genies</div>
+        <div class="num-role">Atendente NOVA</div>
+        <div class="num-phone">+55 19 98972-5983</div>
+        <div class="num-caption">Qualifica todo lead (tráfego pago + orgânico + site) antes de encaminhar</div>
+      </div>
+      <div class="num-card num-human">
+        <div class="num-badge">👤 Humano</div>
+        <div class="num-role">Recepção Nova Beach</div>
+        <div class="num-phone">+55 19 99557-5156</div>
+        <div class="num-caption">Recebe só lead qualificado, com mensagem pronta indicando o produto</div>
+      </div>
+    </div>
 
     <section>
       <h2><span class="num">01</span>Diagrama</h2>
