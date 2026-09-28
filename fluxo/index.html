@@ -563,6 +563,81 @@
 
     .proj-intro { background: white; border-radius: 14px; padding: 24px 28px; border: 1px solid var(--nb-border); margin-top: 20px; }
     .proj-intro-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nb-mute); font-weight: 600; margin-bottom: 12px; }
+    .proj-baseline { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+    .proj-baseline-cell { text-align: left; }
+    .proj-baseline-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(20px, 2.4vw, 26px); font-weight: 700; color: var(--nb-navy); line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em; }
+    .proj-baseline-label { font-size: 11px; color: var(--nb-mute); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .proj-scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    @media (max-width: 900px) { .proj-scenarios { grid-template-columns: 1fr; } }
+    .proj-card { padding: 24px 26px; border-radius: 14px; position: relative; overflow: hidden; }
+    .proj-card.p1 { background: linear-gradient(160deg, #f3f5fa 0%, #e8ecf5 100%); border: 1px solid var(--nb-border); }
+    .proj-card.p2 { background: linear-gradient(160deg, #1a3066 0%, #0e1e42 100%); color: white; }
+    .proj-card.p3 { background: linear-gradient(160deg, #ffb547 0%, #ff9a1a 100%); color: #2a1a00; }
+    .proj-phase { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; opacity: 0.7; margin-bottom: 4px; }
+    .proj-title { font-size: 20px; font-weight: 800; margin-bottom: 2px; letter-spacing: -0.01em; }
+    .proj-window { font-size: 12px; opacity: 0.75; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+    .proj-metric { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .proj-card.p2 .proj-metric { border-bottom-color: rgba(255,255,255,0.15); }
+    .proj-card.p3 .proj-metric { border-bottom-color: rgba(0,0,0,0.08); }
+    .proj-metric:last-of-type { border-bottom: none; }
+    .proj-metric-label { font-size: 12px; opacity: 0.7; font-weight: 500; }
+    .proj-metric-value { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+    .proj-highlight { margin-top: 18px; padding: 12px 14px; background: rgba(0,0,0,0.06); border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center; }
+    .proj-card.p2 .proj-highlight { background: rgba(255, 181, 71, 0.2); color: #ffb547; }
+    .proj-card.p3 .proj-highlight { background: rgba(255,255,255,0.35); color: #2a1a00; }
+    .proj-disclaimer { margin-top: 20px; font-size: 12px; color: var(--nb-mute); line-height: 1.6; padding: 14px 18px; background: var(--nb-sand); border-radius: 10px; font-style: italic; }
+    .proj-commit { margin-top: 24px; padding: 24px 28px; background: linear-gradient(135deg, #2ea043 0%, #1b6a2a 100%); color: white; border-radius: 14px; box-shadow: 0 8px 24px rgba(27, 106, 42, 0.25); }
+    .proj-commit-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; margin-bottom: 6px; font-weight: 600; }
+    .proj-commit h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .proj-commit p { font-size: 14px; opacity: 0.95; line-height: 1.7; }
+    .proj-commit strong { color: #ffdb99; }
+
+    .links-legend { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 24px; padding: 14px 18px; background: white; border: 1px solid var(--nb-border); border-radius: 10px; }
+    .lp { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; }
+    .lp-ai { background: rgba(255, 181, 71, 0.2); color: #7a5100; }
+    .lp-crm { background: rgba(107, 75, 201, 0.15); color: #4a2e8f; }
+    .lp-hbt { background: rgba(14, 30, 66, 0.1); color: #0e1e42; }
+    .lp-hev { background: rgba(42, 74, 138, 0.15); color: #1a3066; }
+    .lp-lead { background: rgba(255, 181, 71, 0.15); color: #7a5100; }
+    .lp-purchase { background: rgba(46, 160, 67, 0.15); color: #1b6a2a; }
+    .links-group-title { font-size: 15px; font-weight: 700; color: var(--nb-navy); margin: 28px 0 10px; letter-spacing: -0.005em; }
+    .links-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(14, 30, 66, 0.04); font-size: 13px; }
+    .links-table thead th { background: var(--nb-navy); color: white; text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    .links-table tbody td { padding: 10px 14px; border-top: 1px solid var(--nb-border); vertical-align: middle; }
+    .links-table tbody tr:hover { background: rgba(26, 48, 102, 0.02); }
+    .links-table tbody code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--nb-navy-2); background: none; padding: 0; font-weight: 600; }
+    .links-migration { background: white; border-radius: 14px; padding: 22px 26px; border: 1px solid var(--nb-border); margin-top: 32px; text-align: center; }
+    .links-migration-item { padding: 8px 0; }
+    .links-migration-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nb-mute); font-weight: 600; margin-bottom: 6px; }
+    .links-migration code { font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 6px 12px; border-radius: 6px; background: var(--nb-sand); color: var(--nb-navy); display: inline-block; }
+    .links-migration code em { font-style: normal; color: var(--nb-accent); font-weight: 700; }
+    .links-migration-arrow { color: var(--nb-mute); font-size: 12px; font-family: 'JetBrains Mono', monospace; padding: 8px 0; }
+    .links-migration-note { margin-top: 14px; font-size: 12px; color: var(--nb-mute); line-height: 1.6; text-align: left; padding-top: 14px; border-top: 1px dashed var(--nb-border); }
+
+    .conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    @media (max-width: 780px) { .conv-grid { grid-template-columns: 1fr; } }
+    .conv-side { padding: 24px 26px; border-radius: 14px; border: 1px solid var(--nb-border); background: white; }
+    .conv-before { border-left: 4px solid #c85a5a; }
+    .conv-after { border-left: 4px solid #2ea043; }
+    .conv-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+    .conv-before .conv-eyebrow { color: #8a2b2b; }
+    .conv-after .conv-eyebrow { color: #1b6a2a; }
+    .conv-list { list-style: none; }
+    .conv-list li { padding: 8px 0 8px 22px; position: relative; font-size: 14px; color: var(--nb-ink); opacity: 0.85; line-height: 1.55; }
+    .conv-list li::before { content: '•'; position: absolute; left: 4px; top: 8px; font-size: 18px; }
+    .conv-before .conv-list li::before { color: #c85a5a; }
+    .conv-after .conv-list li::before { color: #2ea043; }
+    .conv-list code { font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 1px 6px; border-radius: 4px; background: var(--nb-sand); color: var(--nb-navy); }
+    .conv-list strong { color: var(--nb-navy); font-weight: 600; }
+    .conv-payoff { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 20px; }
+    .conv-payoff-item { background: linear-gradient(135deg, rgba(255, 181, 71, 0.12) 0%, rgba(255, 181, 71, 0.02) 100%); border: 1px solid rgba(255, 181, 71, 0.35); border-radius: 12px; padding: 18px 22px; }
+    .conv-payoff-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(28px, 4vw, 36px); font-weight: 700; color: var(--nb-navy); line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .conv-payoff-label { font-size: 12px; color: var(--nb-mute); line-height: 1.5; }
+    .conv-note { margin-top: 20px; padding: 16px 20px; background: var(--nb-sand); border-radius: 10px; font-size: 13px; color: var(--nb-mute); line-height: 1.6; }
+    .conv-note strong { color: var(--nb-navy); }
+
+    .proj-intro { background: white; border-radius: 14px; padding: 24px 28px; border: 1px solid var(--nb-border); margin-top: 20px; }
+    .proj-intro-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nb-mute); font-weight: 600; margin-bottom: 12px; }
     .proj-baseline { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
     .proj-baseline-cell { text-align: left; }
     .proj-baseline-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--nb-navy); line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em; }
@@ -927,73 +1002,193 @@ flowchart TD
       <p class="h2-sub">Baseado no histórico real da conta Meta Ads (últimos 90 dias) e nos ganhos esperados com o fluxo IA completo + Conversion. Os cenários abaixo são projeções, não promessas — dependem de execução consistente e de manter o padrão de qualidade dos criativos.</p>
 
       <div class="proj-intro">
-        <div class="proj-intro-eyebrow">Baseline atual (dados reais da conta — últimos 90 dias)</div>
+        <div class="proj-intro-eyebrow">Situação atual do Nova Beach</div>
         <div class="proj-baseline">
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">R$ 355</div><div class="proj-baseline-label">Verba mensal</div></div>
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">~30</div><div class="proj-baseline-label">Conversas/mês</div></div>
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">R$ 10</div><div class="proj-baseline-label">CPA por conversa</div></div>
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">2,19%</div><div class="proj-baseline-label">CTR médio</div></div>
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">~5</div><div class="proj-baseline-label">Matrículas/mês estimadas</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">200</div><div class="proj-baseline-label">Alunos ativos hoje</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">270</div><div class="proj-baseline-label">Capacidade máxima</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">70</div><div class="proj-baseline-label">Espaço pra crescer</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">10-16</div><div class="proj-baseline-label">Churn mensal estimado (5-8%)</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">R$ 355</div><div class="proj-baseline-label">Verba atual em ads</div></div>
         </div>
+        <p style="margin-top:16px;font-size:13px;color:var(--nb-mute);line-height:1.6"><strong style="color:var(--nb-navy)">Meta real:</strong> repor o churn (10-16 saem/mês) + crescer 5-8 líquidos/mês = precisa fechar <strong style="color:var(--nb-navy)">15-24 matrículas/mês</strong>. Ir muito além disso enche a arena rápido demais e depois tem que frear (gera lead sem vaga, prejudicando imagem).</p>
       </div>
 
       <div class="proj-scenarios">
 
         <div class="proj-card p1">
           <div class="proj-phase">Fase 1 · 0–30 dias</div>
-          <div class="proj-title">Só ligar a IA</div>
-          <div class="proj-window">Mesma verba · sem escalar · só filtrar</div>
+          <div class="proj-title">Ligar a IA</div>
+          <div class="proj-window">Mesma verba · calibrar bot · cobrir churn</div>
           <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 355</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~25</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~14</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~22</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~12</span></div>
           <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">8–10</span></div>
           <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 40</span></div>
-          <div class="proj-highlight">+60 a 100% vs baseline</div>
+          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">200 → 200</span></div>
+          <div class="proj-highlight">Cobre churn quase inteiro</div>
         </div>
 
         <div class="proj-card p2">
-          <div class="proj-phase">Fase 2 · 30–60 dias</div>
-          <div class="proj-title">Escalar verba</div>
-          <div class="proj-window">Meta aprende · Conversion inicia</div>
-          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 1.000</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~65</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~38</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">22–26</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 40</span></div>
-          <div class="proj-highlight">4–5× vs baseline</div>
+          <div class="proj-phase">Fase 2 · 30–90 dias</div>
+          <div class="proj-title">Repor + crescer</div>
+          <div class="proj-window">Verba escala · Conversion inicia</div>
+          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 800</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~50</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~28</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">12–15</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 60</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">200 → 215</span></div>
+          <div class="proj-highlight">Repõe churn + cresce +3-5</div>
         </div>
 
         <div class="proj-card p3">
-          <div class="proj-phase">Fase 3 · 60–120 dias</div>
-          <div class="proj-title">Máquina rodando</div>
-          <div class="proj-window">Conversion otimizando · CRM ativo</div>
-          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 1.500</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~105</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~65</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">35–42</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 38</span></div>
-          <div class="proj-highlight">6–8× vs baseline</div>
+          <div class="proj-phase">Fase 3 · 90–180 dias</div>
+          <div class="proj-title">Regime permanente</div>
+          <div class="proj-window">Conversion aprendida · CRM ativo</div>
+          <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 1.100</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~75</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~40</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">15–20</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 65</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">215 → 240</span></div>
+          <div class="proj-highlight">Cresce +5-8 líquidos/mês</div>
         </div>
 
+      </div>
+
+      <div class="proj-commit">
+        <div class="proj-commit-eyebrow">Compromisso de ROI</div>
+        <h3>Desde a Fase 1, a operação de tráfego se paga sozinha</h3>
+        <p><strong>Fase 1:</strong> 8-10 matrículas × R$400 (1º mês) = <strong>R$3.200-4.000 receita</strong> vs R$355 investido = <strong>9-11× no 1º mês</strong>.<br>
+        <strong>Fase 3:</strong> receita gerada cobre <strong>verba de ads + fee mensal do TSS</strong> ainda no 1º mês da coorte. Considerando LTV de 6 meses, o retorno total sobe pra <strong>40-50× o investido</strong>.<br>
+        <strong>Aos 12 meses:</strong> arena cheia (~270 alunos), lista de espera criada e ticket com margem pra aumento de 10-15%.</p>
       </div>
 
       <div class="conv-payoff" style="margin-top:24px">
         <div class="conv-payoff-item">
-          <div class="conv-payoff-num">R$ 40</div>
-          <div class="conv-payoff-label">CAC de matrícula projetado (fase 2+). Ticket médio BT ~R$ 400/mês.</div>
+          <div class="conv-payoff-num">R$ 60</div>
+          <div class="conv-payoff-label">CAC de matrícula projetado (Fase 2+). Ticket médio BT ~R$ 400/mês.</div>
         </div>
         <div class="conv-payoff-item">
-          <div class="conv-payoff-num">10×</div>
-          <div class="conv-payoff-label">ROAS estimado no 1º mês da matrícula. Sobe pra 60× considerando LTV de 6 meses.</div>
+          <div class="conv-payoff-num">7×</div>
+          <div class="conv-payoff-label">ROAS no 1º mês da matrícula. Sobe pra 40× considerando LTV de 6 meses.</div>
         </div>
         <div class="conv-payoff-item">
-          <div class="conv-payoff-num">3–4 meses</div>
-          <div class="conv-payoff-label">Prazo pra estabilizar Fase 3 (Meta precisa acumular sinal de Purchase).</div>
+          <div class="conv-payoff-num">8-12 meses</div>
+          <div class="conv-payoff-label">Prazo pra arena saturar (270 alunos) mantendo esse ritmo.</div>
         </div>
       </div>
 
+      <div class="proj-commit" style="background:linear-gradient(135deg, #1a3066 0%, #0e1e42 100%);">
+        <div class="proj-commit-eyebrow">Quando arena aproximar dos 270 (~pós 180 dias)</div>
+        <h3 style="color:#ffb547">Freia verba. Não escala mais. Otimiza.</h3>
+        <p>Continuar aumentando verba com arena cheia = leads frustrados sem vaga = churn de imagem. Nesse ponto a jogada muda:<br>
+        • <strong>Criar lista de espera</strong> — posiciona como produto premium/desejado<br>
+        • <strong>Aumentar ticket 10-15%</strong> em nova coorte (base cheia aguenta preço)<br>
+        • <strong>Reduzir churn</strong> — onboarding, retenção, comunidade (menos venda necessária)<br>
+        • <strong>Se quiser mais volume:</strong> abrir novos horários ou 2ª unidade</p>
+      </div>
+
       <div class="proj-disclaimer">
-        <strong>Como leio essa projeção:</strong> os números partem do histórico real da conta (353 conversas geradas na vida da conta, CPA médio R$10 por conversa, CTR 2,19%). O ganho projetado depende de 3 fatores fora do meu controle: (1) time humano fechar o lead que a IA entrega qualificado, (2) manter padrão de qualidade nos criativos, (3) verba disponível. Se algum desses falhar, os cenários caem 20–40%. Se todos executarem bem, os cenários podem superar em 10–20%.
+        <strong>Como leio essa projeção:</strong> os números partem do histórico real (353 conversas geradas, CPA R$10, CTR 2,19%) e do teto físico da arena (270 alunos, 200 hoje, 70 de espaço). Depende de 3 fatores fora do meu controle: (1) time humano fechar o lead que a IA entrega qualificado, (2) manter padrão de qualidade nos criativos, (3) verba disponível. Se algum falhar, cenários caem 20-40%. Se todos executarem bem, superam em 10-20% — mas nunca faz sentido superar o teto físico.
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span>Todos os links (36 rotas)</h2>
+      <p class="h2-sub">Cada linha mostra o endereço atual no Vercel e como vai ficar depois do apontamento DNS. Nada precisa ser refeito — os endereços novos são aliases do domínio próprio pros mesmos destinos.</p>
+
+      <div class="links-legend">
+        <span class="lp lp-ai">🤖 IA · 7698</span>
+        <span class="lp lp-crm">🔄 CRM · 5983</span>
+        <span class="lp lp-hbt">👤 Humano BT · 5156</span>
+        <span class="lp lp-hev">🎉 Humano Eventos · 8194</span>
+        <span class="lp lp-lead">Lead</span>
+        <span class="lp lp-purchase">Purchase</span>
+      </div>
+
+      <h3 class="links-group-title">Raiz — hubs de bio Instagram e cartão de visita</h3>
+      <table class="links-table">
+        <thead><tr><th>Slug</th><th>Vai para</th><th>Evento</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>/bt</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Link Beach Tennis (bio Instagram)</td></tr>
+          <tr><td><code>/funcional</code></td><td><span class="lp lp-hev">Funcional</span></td><td><span class="lp lp-lead">Lead</span></td><td>Link Aulão / eventos pontuais</td></tr>
+          <tr><td><code>/reservas</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Reservas gerais</td></tr>
+          <tr><td><code>/aluno</code></td><td>—</td><td>—</td><td>Portal do aluno (redirect)</td></tr>
+          <tr><td><code>/local</code></td><td>—</td><td>—</td><td>Google Maps (endereço)</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="links-group-title">/ads/* — destino de tráfego pago (Meta Ads, Google Ads)</h3>
+      <table class="links-table">
+        <thead><tr><th>Slug</th><th>Vai para</th><th>Evento</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>/ads/bt</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Campanha genérica Beach Tennis</td></tr>
+          <tr><td><code>/ads/bt-1x</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Plano BT 1x por semana</td></tr>
+          <tr><td><code>/ads/bt-2x</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Plano BT 2x por semana</td></tr>
+          <tr><td><code>/ads/clubinho</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Clubinho (jogo livre)</td></tr>
+          <tr><td><code>/ads/experimental</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aula experimental (R$60)</td></tr>
+          <tr><td><code>/ads/quadra</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Locação de quadra avulsa</td></tr>
+          <tr><td><code>/ads/reservas</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Empresarial</td></tr>
+          <tr><td><code>/ads/day-use-individual</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Individual (R$45/pessoa)</td></tr>
+          <tr><td><code>/ads/aniversario</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aniversário / evento</td></tr>
+          <tr><td><code>/ads/funcional</code></td><td><span class="lp lp-hev">Funcional</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aulão pontual</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="links-group-title">/site/* — destino dos botões WhatsApp no site oficial</h3>
+      <table class="links-table">
+        <thead><tr><th>Slug</th><th>Vai para</th><th>Evento</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>/site/bt</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Beach Tennis do site</td></tr>
+          <tr><td><code>/site/bt-1x</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Plano BT 1x</td></tr>
+          <tr><td><code>/site/bt-2x</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Plano BT 2x</td></tr>
+          <tr><td><code>/site/clubinho</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Clubinho</td></tr>
+          <tr><td><code>/site/experimental</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Aula Experimental</td></tr>
+          <tr><td><code>/site/quadra</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Reserva de quadra</td></tr>
+          <tr><td><code>/site/reservas</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Empresarial</td></tr>
+          <tr><td><code>/site/day-use-individual</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Day Use Individual</td></tr>
+          <tr><td><code>/site/aniversario</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Aniversário / evento</td></tr>
+          <tr><td><code>/site/funcional</code></td><td><span class="lp lp-hev">Funcional</span></td><td><span class="lp lp-lead">Lead</span></td><td>Página Funcional</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="links-group-title">/handoff/* — usadas pela IA depois de qualificar o lead</h3>
+      <table class="links-table">
+        <thead><tr><th>Slug</th><th>Vai para</th><th>Evento</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>/handoff/bt-1x</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Fechar matrícula BT 1x</td></tr>
+          <tr><td><code>/handoff/bt-2x</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Fechar matrícula BT 2x</td></tr>
+          <tr><td><code>/handoff/clubinho</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Fechar Clubinho</td></tr>
+          <tr><td><code>/handoff/experimental</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Confirmar experimental</td></tr>
+          <tr><td><code>/handoff/quadra</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Reservar quadra</td></tr>
+          <tr><td><code>/handoff/day-use-individual</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Reservar Day Use Individual</td></tr>
+          <tr><td><code>/handoff/reservas</code></td><td><span class="lp lp-hev">Humano Eventos</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Day Use Empresarial</td></tr>
+          <tr><td><code>/handoff/aniversario</code></td><td><span class="lp lp-hev">Humano Eventos</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Aniversário / evento</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="links-group-title">/crm/* — usadas pela Reportana nas mensagens de reativação</h3>
+      <table class="links-table">
+        <thead><tr><th>Slug</th><th>Vai para</th><th>Evento</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>/crm/saber-mais</code></td><td><span class="lp lp-ai">IA</span></td><td><span class="lp lp-lead">Lead</span></td><td>Botão "Quero saber mais"</td></tr>
+          <tr><td><code>/crm/falar-humano-bt</code></td><td><span class="lp lp-hbt">Humano BT</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Botão "Falar com atendimento BT"</td></tr>
+          <tr><td><code>/crm/falar-humano-eventos</code></td><td><span class="lp lp-hev">Humano Eventos</span></td><td><span class="lp lp-purchase">Purchase</span></td><td>Botão "Falar com atendimento Eventos"</td></tr>
+        </tbody>
+      </table>
+
+      <div class="links-migration">
+        <div class="links-migration-item">
+          <div class="links-migration-eyebrow">Hoje</div>
+          <code>https://nova-beach-links.vercel.app/<em>[slug]</em></code>
+        </div>
+        <div class="links-migration-arrow">↓ após apontamento DNS ↓</div>
+        <div class="links-migration-item">
+          <div class="links-migration-eyebrow">Depois</div>
+          <code>https://links.novabeachcampinas.com.br/<em>[slug]</em></code>
+        </div>
+        <p class="links-migration-note">Todos os endereços continuam funcionando pelos dois domínios. A migração é gradual, sem downtime. Nenhum ajuste precisa ser feito nas campanhas, no bot ou no pixel — apenas trocar o CTA das campanhas quando conveniente pra ganhar credibilidade de marca.</p>
       </div>
     </section>
 
