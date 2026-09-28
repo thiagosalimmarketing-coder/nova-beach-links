@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluxo NOVA — Nova Beach Campinas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nb-navy: #0e1e42;
+      --nb-navy-2: #1a3066;
+      --nb-accent: #ffb547;
+      --nb-sand: #f3f5fa;
+      --nb-ink: #0a1428;
+      --nb-mute: #64708f;
+      --nb-border: rgba(14, 30, 66, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100vh; }
+    body {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      background: var(--nb-sand);
+      color: var(--nb-ink);
+      line-height: 1.55;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(255, 181, 71, 0.08) 0, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(26, 48, 102, 0.06) 0, transparent 40%);
+    }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    header {
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--nb-border);
+      margin-bottom: 40px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--nb-navy-2);
+      background: rgba(26, 48, 102, 0.08);
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--nb-accent);
+      border-radius: 50%;
+    }
+    h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--nb-navy);
+      margin-bottom: 16px;
+    }
+    h1 em { color: var(--nb-accent); font-style: normal; }
+    .lead {
+      font-size: 18px;
+      color: var(--nb-mute);
+      max-width: 780px;
+    }
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--nb-mute);
+    }
+    .meta-strip span { display: inline-flex; align-items: center; gap: 6px; }
+    .meta-strip strong { color: var(--nb-navy); font-weight: 600; }
+
+    section { margin-bottom: 56px; }
+    h2 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      color: var(--nb-navy);
+    }
+    h2 .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--nb-accent);
+      font-weight: 600;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+    .h2-sub {
+      color: var(--nb-mute);
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    .diagram-wrap {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(14, 30, 66, 0.06);
+      border: 1px solid var(--nb-border);
+      overflow-x: auto;
+    }
+    .mermaid { display: flex; justify-content: center; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      border: 1px solid var(--nb-border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14, 30, 66, 0.08); }
+    .card .tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .tag.entry { background: rgba(26, 48, 102, 0.1); color: var(--nb-navy-2); }
+    .tag.ai { background: rgba(255, 181, 71, 0.18); color: #7a5100; }
+    .tag.handoff { background: rgba(46, 160, 67, 0.12); color: #1b6a2a; }
+    .tag.direct { background: rgba(200, 90, 90, 0.1); color: #8a2b2b; }
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--nb-navy);
+    }
+    .card p { font-size: 14px; color: var(--nb-mute); }
+    .card code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: var(--nb-sand);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--nb-navy);
+    }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(14, 30, 66, 0.04); }
+    thead th {
+      background: var(--nb-navy);
+      color: white;
+      text-align: left;
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    tbody td { padding: 14px 18px; border-top: 1px solid var(--nb-border); font-size: 14px; }
+    tbody tr:hover { background: rgba(26, 48, 102, 0.02); }
+    tbody code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--nb-navy-2); }
+    .pill { display: inline-block; padding: 3px 9px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; }
+    .pill.p { background: rgba(46, 160, 67, 0.12); color: #1b6a2a; }
+    .pill.s { background: rgba(66, 130, 200, 0.12); color: #244a72; }
+    .pill.l { background: rgba(255, 181, 71, 0.18); color: #7a5100; }
+
+    ol.steps { list-style: none; counter-reset: step; }
+    ol.steps li {
+      position: relative;
+      padding: 20px 24px 20px 68px;
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid var(--nb-border);
+      counter-increment: step;
+    }
+    ol.steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 32px; height: 32px;
+      background: var(--nb-navy);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    ol.steps li strong { color: var(--nb-navy); }
+    ol.steps li p { color: var(--nb-mute); font-size: 14px; margin-top: 4px; }
+
+    .callout {
+      background: linear-gradient(135deg, var(--nb-navy) 0%, var(--nb-navy-2) 100%);
+      color: white;
+      padding: 32px;
+      border-radius: 16px;
+      margin: 40px 0;
+    }
+    .callout h3 { font-size: 22px; margin-bottom: 12px; color: var(--nb-accent); }
+    .callout p { opacity: 0.9; font-size: 15px; line-height: 1.6; }
+    .callout .contacts { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .callout .contacts div { background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 8px; }
+    .callout .contacts strong { display: block; opacity: 0.7; text-transform: uppercase; font-size: 10px; letter-spacing: 0.08em; margin-bottom: 4px; font-weight: 600; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--nb-border);
+      font-size: 12px;
+      color: var(--nb-mute);
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    @media (max-width: 640px) {
+      .container { padding: 32px 16px 60px; }
+      h1 { font-size: 34px; }
+      .diagram-wrap { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="eyebrow">Documentação técnica · Agi Genies</span>
+      <h1>Fluxo <em>NOVA</em> — todo lead passa pela IA antes do humano</h1>
+      <p class="lead">Arquitetura unificada de atendimento: tráfego pago, orgânico e site caem no mesmo agente. A NOVA qualifica em até 3 perguntas, e só encaminha para o time humano quando há intenção clara de fechar.</p>
+      <div class="meta-strip">
+        <span>Versão <strong>2026-09-28</strong></span>
+        <span>Pixel <strong>1397968278475446</strong></span>
+        <span>Domínio <strong>nova-beach-links.vercel.app</strong></span>
+        <span>IA <strong>+55 19 98972-5983</strong></span>
+        <span>Humano <strong>+55 19 99557-5156</strong></span>
+      </div>
+    </header>
+
+    <section>
+      <h2><span class="num">01</span>Diagrama</h2>
+      <p class="h2-sub">Fluxo end-to-end em um único diagrama. Zoom com scroll horizontal se necessário.</p>
+      <div class="diagram-wrap">
+        <div class="mermaid">
+flowchart TD
+    A1["Anúncio Meta Ads<br/>tráfego pago"]:::entry --> B1["/ads/*<br/>pixel LEAD<br/>tag: meta_ads"]:::pageAds
+    A2["Botão no site<br/>tráfego orgânico"]:::entry --> B2["/site/*<br/>pixel LEAD<br/>tag: site"]:::pageSite
+    A3["Bio Instagram<br/>linktree"]:::entry --> B2
+
+    B1 --> C["WhatsApp NOVA<br/>+55 19 98972-5983"]:::ai
+    B2 --> C
+
+    C --> D["NOVA lê mensagem<br/>e identifica interesse"]:::ai
+    D --> E{"Qualificação<br/>até 3 perguntas"}:::decision
+
+    E -->|"Fechar BT 1x"| G1["/handoff/bt-1x<br/>pixel PURCHASE"]:::handoff
+    E -->|"Fechar BT 2x"| G2["/handoff/bt-2x<br/>pixel PURCHASE"]:::handoff
+    E -->|"Fechar Clubinho"| G3["/handoff/clubinho<br/>pixel PURCHASE"]:::handoff
+    E -->|"Agendar experimental"| G4["/handoff/experimental<br/>pixel SCHEDULE"]:::handoff
+
+    E -->|"Dúvida complexa"| X1["wa.me humano<br/>link direto"]:::direct
+    E -->|"Day Use Empresarial"| X2["wa.me humano<br/>link direto"]:::direct
+    E -->|"Quadra avulsa"| X3["wa.me humano<br/>link direto"]:::direct
+
+    E -->|"Funcional descontinuado"| I["Coleta contato<br/>tag: aguardando_funcional<br/>Reportana"]:::soft
+    E -->|"B2B / spam"| J["Encerra<br/>tag: descartado"]:::soft
+
+    G1 --> K["WhatsApp HUMANO<br/>+55 19 99557-5156"]:::human
+    G2 --> K
+    G3 --> K
+    G4 --> K
+    X1 --> K
+    X2 --> K
+    X3 --> K
+
+    K --> M["Recepção recebe<br/>lead PRONTO<br/>confirma pagamento<br/>agenda 1ª aula"]:::success
+
+    classDef entry fill:#e8ecf5,stroke:#1a3066,stroke-width:1.5px,color:#0e1e42,rx:8,ry:8
+    classDef pageAds fill:#fff1d6,stroke:#c48a1e,stroke-width:1.5px,color:#5a3800
+    classDef pageSite fill:#e0edff,stroke:#3b6db3,stroke-width:1.5px,color:#1e3a6b
+    classDef ai fill:#ffb547,stroke:#c48a1e,stroke-width:2px,color:#3a2500
+    classDef decision fill:#1a3066,stroke:#0e1e42,stroke-width:2px,color:#fff
+    classDef handoff fill:#c7ecc9,stroke:#1b6a2a,stroke-width:1.5px,color:#0d4a1a
+    classDef direct fill:#f0d8d8,stroke:#8a2b2b,stroke-width:1.5px,color:#5a1c1c
+    classDef soft fill:#f3f5fa,stroke:#64708f,stroke-width:1px,color:#495571
+    classDef human fill:#0e1e42,stroke:#0e1e42,stroke-width:2px,color:#fff
+    classDef success fill:#2ea043,stroke:#1b6a2a,stroke-width:2px,color:#fff
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span>Namespaces de URL</h2>
+      <p class="h2-sub">Três namespaces, três funções. IA no meio de todos.</p>
+      <div class="grid">
+        <div class="card">
+          <span class="tag entry">/ads/*</span>
+          <h3>Entrada de tráfego pago</h3>
+          <p>Destino dos anúncios Meta Ads e Google Ads. Dispara pixel <code>Lead</code> com tag <code>meta_ads</code> e redireciona pra NOVA em 3s.</p>
+        </div>
+        <div class="card">
+          <span class="tag entry">/site/*</span>
+          <h3>Entrada orgânica</h3>
+          <p>Destino dos botões do site oficial, bio Instagram e linktree. Dispara <code>Lead</code> com tag <code>site</code> e redireciona pra NOVA.</p>
+        </div>
+        <div class="card">
+          <span class="tag handoff">/handoff/*</span>
+          <h3>Saída para o humano</h3>
+          <p>Usado só pela NOVA depois de qualificar. Dispara <code>Purchase</code> (matrículas) ou <code>Schedule</code> (experimental) e leva ao humano com mensagem pronta.</p>
+        </div>
+        <div class="card">
+          <span class="tag direct">wa.me direto</span>
+          <h3>Transferência sem fechamento</h3>
+          <p>Quando NOVA precisa passar pro humano sem intenção clara de fechar (dúvida, quadra, empresarial). Link WhatsApp direto, sem novo evento no pixel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span>Rotas ao vivo</h2>
+      <p class="h2-sub">14 rotas em produção. Pixel <code>Lead</code> em <code>/ads</code> e <code>/site</code>. Pixel <code>Purchase</code>/<code>Schedule</code> em <code>/handoff</code>.</p>
+      <table>
+        <thead>
+          <tr><th>Rota</th><th>Destino</th><th>Evento</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>/ads/bt-1x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/ads/bt-2x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/ads/clubinho</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/ads/experimental</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/ads/quadra</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/ads/reservas</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/site/bt-1x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/site/bt-2x</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/site/clubinho</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/site/experimental</code></td><td>NOVA (5983)</td><td><span class="pill l">Lead</span></td></tr>
+          <tr><td><code>/handoff/bt-1x</code></td><td>Humano (5156)</td><td><span class="pill p">Purchase</span></td></tr>
+          <tr><td><code>/handoff/bt-2x</code></td><td>Humano (5156)</td><td><span class="pill p">Purchase</span></td></tr>
+          <tr><td><code>/handoff/clubinho</code></td><td>Humano (5156)</td><td><span class="pill p">Purchase</span></td></tr>
+          <tr><td><code>/handoff/experimental</code></td><td>Humano (5156)</td><td><span class="pill s">Schedule</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span>Ciclo de vida do lead</h2>
+      <p class="h2-sub">Do clique no anúncio até a matrícula fechada.</p>
+      <ol class="steps">
+        <li>
+          <strong>Entrada</strong>
+          <p>Lead clica em anúncio ou botão do site. Cai em <code>/ads/*</code> ou <code>/site/*</code>. Pixel dispara <code>Lead</code>. 3s depois abre WhatsApp da NOVA.</p>
+        </li>
+        <li>
+          <strong>Identificação</strong>
+          <p>NOVA lê a mensagem pré-preenchida (varia por produto e origem) e ativa o fluxo específico daquele interesse.</p>
+        </li>
+        <li>
+          <strong>Qualificação</strong>
+          <p>Até 3 perguntas: já treinou, prefere manhã ou noite, mora perto de Campinas. Preço só é apresentado se o lead pedir.</p>
+        </li>
+        <li>
+          <strong>Classificação</strong>
+          <p>NOVA decide entre 9 caminhos: fechar plano (4 opções), duvida complexa, empresarial, quadra avulsa, funcional descontinuado, ou lead inválido.</p>
+        </li>
+        <li>
+          <strong>Handoff ou transferência</strong>
+          <p>Se lead confirmou fechar, NOVA envia <code>/handoff/*</code> (dispara <code>Purchase</code>/<code>Schedule</code>). Se apenas precisa de humano sem fechar, envia <code>wa.me</code> direto.</p>
+        </li>
+        <li>
+          <strong>Recepção humana</strong>
+          <p>Time recebe lead PRONTO com mensagem já pré-preenchida indicando o produto. Só precisa confirmar pagamento e agendar primeira aula.</p>
+        </li>
+      </ol>
+    </section>
+
+    <div class="callout">
+      <h3>O que preciso do suporte Agi Genies</h3>
+      <p>1. Confirmar conexão do número IA com Meta Cloud API ou provider (Twilio, 360dialog).<br>
+      2. Configurar gatilho inicial baseado na mensagem pré-preenchida do lead (identifica produto + origem).<br>
+      3. Registrar tag <code>source</code> no perfil do lead (ads vs site) pra cruzar com pixel depois.<br>
+      4. Injetar variáveis nos links de handoff (nome, horário escolhido) na mensagem pré-preenchida ao humano.<br>
+      5. Timeout de 24h — se lead não responde, sai do fluxo e vai pro CRM Reportana pra follow-up.<br>
+      6. Limite de tokens por conversa e custo mensal estimado pra 40-80 conversas/semana.</p>
+      <div class="contacts">
+        <div><strong>NOVA (IA)</strong>+55 19 98972-5983</div>
+        <div><strong>Recepção humana</strong>+55 19 99557-5156</div>
+        <div><strong>Pixel Meta</strong>1397968278475446</div>
+        <div><strong>CRM secundário</strong>Reportana</div>
+      </div>
+    </div>
+
+    <footer>
+      Nova Beach Campinas · Documento vivo · Última atualização 2026-09-28 · Migração para links.novabeachcampinas.com.br em setembro-outubro/2026
+    </footer>
+  </div>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        fontFamily: 'Bricolage Grotesque, system-ui, sans-serif',
+        primaryColor: '#1a3066',
+        primaryTextColor: '#0e1e42',
+        primaryBorderColor: '#1a3066',
+        lineColor: '#64708f',
+        secondaryColor: '#ffb547',
+        tertiaryColor: '#f3f5fa'
+      },
+      flowchart: { curve: 'basis', htmlLabels: true, useMaxWidth: true }
+    });
+  </script>
+</body>
+</html>
