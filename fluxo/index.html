@@ -1007,61 +1007,62 @@ flowchart TD
           <div class="proj-baseline-cell"><div class="proj-baseline-num">200</div><div class="proj-baseline-label">Alunos ativos hoje</div></div>
           <div class="proj-baseline-cell"><div class="proj-baseline-num">270</div><div class="proj-baseline-label">Capacidade máxima</div></div>
           <div class="proj-baseline-cell"><div class="proj-baseline-num">70</div><div class="proj-baseline-label">Espaço pra crescer</div></div>
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">10-16</div><div class="proj-baseline-label">Churn mensal estimado (5-8%)</div></div>
-          <div class="proj-baseline-cell"><div class="proj-baseline-num">R$ 355</div><div class="proj-baseline-label">Verba atual em ads</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">10-16</div><div class="proj-baseline-label">Churn mensal (5-8%)</div></div>
+          <div class="proj-baseline-cell"><div class="proj-baseline-num">?</div><div class="proj-baseline-label">Matrículas do tráfego hoje</div></div>
         </div>
-        <p style="margin-top:16px;font-size:13px;color:var(--nb-mute);line-height:1.6"><strong style="color:var(--nb-navy)">Meta real:</strong> repor o churn (10-16 saem/mês) + crescer 5-8 líquidos/mês = precisa fechar <strong style="color:var(--nb-navy)">15-24 matrículas/mês</strong>. Ir muito além disso enche a arena rápido demais e depois tem que frear (gera lead sem vaga, prejudicando imagem).</p>
+        <p style="margin-top:16px;font-size:13px;color:var(--nb-mute);line-height:1.6"><strong style="color:#8a2b2b">O buraco principal hoje:</strong> ninguém sabe quantas matrículas o tráfego pago realmente gera. O time do Nova Beach diz "não fecha nada do tráfego", mas nunca comprovou com número. O pixel <code>Purchase</code> nos <code>/handoff/*</code> resolve isso — <strong style="color:var(--nb-navy)">pela primeira vez vamos ter dado real, não opinião</strong>.</p>
       </div>
 
       <div class="proj-scenarios">
 
         <div class="proj-card p1">
-          <div class="proj-phase">Fase 1 · 0–30 dias</div>
-          <div class="proj-title">Ligar a IA</div>
-          <div class="proj-window">Mesma verba · calibrar bot · cobrir churn</div>
+          <div class="proj-phase">Fase 1 · 0–60 dias</div>
+          <div class="proj-title">Estabelecer verdade</div>
+          <div class="proj-window">Criar baseline mensurável · calibrar bot</div>
           <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 355</span></div>
           <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~22</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~12</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">8–10</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 40</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">200 → 200</span></div>
-          <div class="proj-highlight">Cobre churn quase inteiro</div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~10</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">3–5</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 70-120</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">200 → 190</span></div>
+          <div class="proj-highlight">Primeiro dado real do funil</div>
         </div>
 
         <div class="proj-card p2">
-          <div class="proj-phase">Fase 2 · 30–90 dias</div>
-          <div class="proj-title">Repor + crescer</div>
-          <div class="proj-window">Verba escala · Conversion inicia</div>
+          <div class="proj-phase">Fase 2 · 60–120 dias</div>
+          <div class="proj-title">Escalar com controle</div>
+          <div class="proj-window">Verba dobra · Conversion inicia</div>
           <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 800</span></div>
           <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~50</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~28</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">12–15</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 60</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">200 → 215</span></div>
-          <div class="proj-highlight">Repõe churn + cresce +3-5</div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~22</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">8–11</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 75-90</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">195 → 200</span></div>
+          <div class="proj-highlight">Repõe o churn integralmente</div>
         </div>
 
         <div class="proj-card p3">
-          <div class="proj-phase">Fase 3 · 90–180 dias</div>
+          <div class="proj-phase">Fase 3 · 120–240 dias</div>
           <div class="proj-title">Regime permanente</div>
           <div class="proj-window">Conversion aprendida · CRM ativo</div>
           <div class="proj-metric"><span class="proj-metric-label">Verba mensal</span><span class="proj-metric-value">R$ 1.100</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~75</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~40</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">15–20</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 65</span></div>
-          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">215 → 240</span></div>
-          <div class="proj-highlight">Cresce +5-8 líquidos/mês</div>
+          <div class="proj-metric"><span class="proj-metric-label">Conversas qualificadas</span><span class="proj-metric-value">~70</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Handoffs → humano</span><span class="proj-metric-value">~32</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Matrículas fechadas</span><span class="proj-metric-value">12–16</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">CAC de matrícula</span><span class="proj-metric-value">~R$ 75</span></div>
+          <div class="proj-metric"><span class="proj-metric-label">Alunos ativos ao fim</span><span class="proj-metric-value">200 → 230</span></div>
+          <div class="proj-highlight">Cresce +3-5 líquidos/mês</div>
         </div>
 
       </div>
 
       <div class="proj-commit">
         <div class="proj-commit-eyebrow">Compromisso de ROI</div>
-        <h3>Desde a Fase 1, a operação de tráfego se paga sozinha</h3>
-        <p><strong>Fase 1:</strong> 8-10 matrículas × R$400 (1º mês) = <strong>R$3.200-4.000 receita</strong> vs R$355 investido = <strong>9-11× no 1º mês</strong>.<br>
-        <strong>Fase 3:</strong> receita gerada cobre <strong>verba de ads + fee mensal do TSS</strong> ainda no 1º mês da coorte. Considerando LTV de 6 meses, o retorno total sobe pra <strong>40-50× o investido</strong>.<br>
-        <strong>Aos 12 meses:</strong> arena cheia (~270 alunos), lista de espera criada e ticket com margem pra aumento de 10-15%.</p>
+        <h3>A partir da Fase 2, a operação de tráfego se paga</h3>
+        <p><strong>Fase 1 (baseline):</strong> mesmo com 3-5 matrículas × R$400 = <strong>R$1.200-2.000 receita</strong> vs R$355 investido = <strong>3-5× no 1º mês</strong>. E gera o primeiro dado real do funil, coisa que hoje simplesmente não existe.<br>
+        <strong>Fase 2:</strong> 8-11 matrículas × R$400 = <strong>R$3.200-4.400</strong> vs R$800 investido = <strong>4-5× no 1º mês</strong>. LTV 6 meses = 25-30×.<br>
+        <strong>Fase 3:</strong> receita cobre <strong>verba de ads + fee mensal TSS</strong> já no 1º mês da coorte. LTV total sobe pra 30-40×.<br>
+        <strong>Aos 15-18 meses:</strong> arena cheia (~270 alunos), lista de espera criada, ticket com margem pra aumento de 10-15%.</p>
       </div>
 
       <div class="conv-payoff" style="margin-top:24px">
