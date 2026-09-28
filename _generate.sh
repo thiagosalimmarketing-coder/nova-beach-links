@@ -46,6 +46,8 @@ PRODUCTS=(
   "quadra|${AI_PHONE}|${AI_PHONE}|locacao_quadra|locação de quadra avulsa"
   "reservas|${AI_PHONE}|${AI_PHONE}|day_use_empresarial|Day Use Empresarial"
   "funcional|${FUNCIONAL_PHONE}|${FUNCIONAL_PHONE}|aulao_funcional|Aulão de Funcional na Areia"
+  "day-use-individual|${AI_PHONE}|${AI_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
+  "aniversario|${AI_PHONE}|${AI_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
 )
 
 # ─────────────────────────────────────────────────────────────
@@ -82,6 +84,8 @@ HANDOFFS=(
   "experimental|${HUMAN_PHONE}|Purchase|agendamento_experimental|Olá! Gostaria de confirmar meu horário para a aula experimental."
   "quadra|${HUMAN_PHONE}|Purchase|locacao_quadra|Olá! Gostaria de reservar uma quadra avulsa."
   "reservas|${FUNCIONAL_PHONE}|Purchase|day_use_empresarial|Olá! Tenho interesse no Day Use Empresarial. Gostaria de receber uma proposta."
+  "day-use-individual|${HUMAN_PHONE}|Purchase|day_use_individual|Olá! Quero passar o dia usando as quadras. Como faço para reservar?"
+  "aniversario|${FUNCIONAL_PHONE}|Purchase|reserva_aniversario|Olá! Quero fazer minha reserva de aniversário na Nova Beach."
 )
 
 # ─────────────────────────────────────────────────────────────
