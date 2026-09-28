@@ -420,6 +420,66 @@
     .dns-benefits strong { color: var(--nb-navy); display: block; margin-bottom: 2px; font-size: 15px; }
     .dns-benefits code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--nb-navy-2); }
 
+    .dns-explainer {
+      background: white;
+      border-radius: 14px;
+      padding: 24px 28px;
+      border: 1px solid var(--nb-border);
+      margin: 20px 0 32px;
+    }
+    .dns-explainer-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .dns-explainer-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--nb-mute);
+      font-weight: 600;
+      min-width: 140px;
+    }
+    .dns-explainer-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(14px, 2vw, 18px);
+      padding: 10px 16px;
+      border-radius: 8px;
+      word-break: break-all;
+    }
+    .dns-explainer-url.old {
+      background: rgba(200, 90, 90, 0.08);
+      color: #8a2b2b;
+      text-decoration: line-through;
+      text-decoration-color: rgba(138, 43, 43, 0.4);
+    }
+    .dns-explainer-url.new {
+      background: rgba(46, 160, 67, 0.1);
+      color: #1b6a2a;
+      font-weight: 600;
+    }
+    .dns-explainer-arrow {
+      text-align: center;
+      padding: 12px 0;
+      color: var(--nb-mute);
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dns-record-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--nb-navy);
+      margin: 20px 0 8px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--nb-border);
+    }
+    .dns-record-label:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .dns-steps-alt li::before { background: var(--nb-navy-2); color: white; }
+
     footer {
       margin-top: 64px;
       padding-top: 32px;
@@ -482,9 +542,9 @@ flowchart TD
     C --> D["NOVA lê mensagem<br/>e identifica interesse"]:::ai
     D --> E{"Qualificação<br/>até 3 perguntas"}:::decision
 
-    E -->|"Fechar BT 1x"| G1["/handoff/bt-1x<br/>pixel PURCHASE"]:::handoff
-    E -->|"Fechar BT 2x"| G2["/handoff/bt-2x<br/>pixel PURCHASE"]:::handoff
-    E -->|"Fechar Clubinho"| G3["/handoff/clubinho<br/>pixel PURCHASE"]:::handoff
+    E -->|"Fechar BT 1x"| G1["/handoff/bt-1x<br/>pixel PURCHASE<br/>(intenção)"]:::handoff
+    E -->|"Fechar BT 2x"| G2["/handoff/bt-2x<br/>pixel PURCHASE<br/>(intenção)"]:::handoff
+    E -->|"Fechar Clubinho"| G3["/handoff/clubinho<br/>pixel PURCHASE<br/>(intenção)"]:::handoff
     E -->|"Agendar experimental"| G4["/handoff/experimental<br/>pixel SCHEDULE"]:::handoff
 
     E -->|"Dúvida complexa"| X1["wa.me humano<br/>link direto"]:::direct
@@ -604,35 +664,77 @@ flowchart TD
 
     <section>
       <h2><span class="num">05</span>Publicação em domínio próprio</h2>
-      <p class="h2-sub">Migração de <code>nova-beach-links.vercel.app</code> para <code>links.novabeachcampinas.com.br</code>. Zero downtime, ambos endereços continuam válidos.</p>
+      <p class="h2-sub">Hoje os links estão sob <code>nova-beach-links.vercel.app</code>. Para ficar profissional e ganhar a confiança dos leads, a empresa que hospeda o site da Nova Beach precisa fazer <strong>um único apontamento no DNS</strong>. Depois disso, os links passam a rodar sob o domínio próprio.</p>
+
+      <div class="dns-explainer">
+        <div class="dns-explainer-row">
+          <div class="dns-explainer-label">Como está hoje</div>
+          <code class="dns-explainer-url old">https://nova-beach-links.vercel.app/bt/</code>
+        </div>
+        <div class="dns-explainer-arrow">↓ após o apontamento DNS ↓</div>
+        <div class="dns-explainer-row">
+          <div class="dns-explainer-label">Como vai ficar</div>
+          <code class="dns-explainer-url new">https://links.novabeachcampinas.com.br/bt/</code>
+        </div>
+      </div>
 
       <div class="dns-block">
         <div class="dns-side">
-          <div class="dns-eyebrow">O que fazer</div>
+          <div class="dns-eyebrow">O que a empresa de hospedagem precisa fazer</div>
           <ol class="dns-steps">
-            <li><strong>Empresa que hospeda o DNS</strong> adiciona um registro CNAME apontando pra Vercel</li>
-            <li><strong>No Vercel</strong> (Settings → Domains) adicionamos <code>links.novabeachcampinas.com.br</code></li>
-            <li><strong>Certificado SSL</strong> emitido automaticamente 5-10 min após propagação</li>
-            <li><strong>Business Manager</strong> — verificação de <code>novabeachcampinas.com.br</code> já cobre o subdomínio</li>
-            <li><strong>Campanhas ativas</strong> migradas gradualmente: ad por ad, sem parar ninguém</li>
+            <li><strong>Acessar o painel de DNS</strong> do domínio <code>novabeachcampinas.com.br</code> (Registro.br, cPanel, HostGator, GoDaddy — o que estiverem usando)</li>
+            <li><strong>Criar um novo registro</strong> tipo <code>CNAME</code> com os dados da tabela ao lado</li>
+            <li><strong>Salvar e aguardar propagação</strong> (leva de 15 minutos até 2 horas, geralmente rápido)</li>
+            <li><strong>Avisar quando concluído</strong> — a partir daí eu ativo do lado do Vercel e o link já responde no novo domínio</li>
           </ol>
+          <p class="dns-hint" style="margin-top:16px">Não precisam mexer no site atual. Isso não afeta o funcionamento de <code>novabeachcampinas.com.br</code> — só adiciona um subdomínio novo (<code>links.</code>) que aponta pra nossa estrutura.</p>
         </div>
         <div class="dns-side">
-          <div class="dns-eyebrow">Registro DNS a criar</div>
+          <div class="dns-eyebrow">Registros DNS a criar (3 apontamentos)</div>
+
+          <div class="dns-record-label">1 · Subdomínio dos links (Vercel)</div>
           <div class="dns-record">
             <div class="dns-row"><span>Tipo</span><code>CNAME</code></div>
             <div class="dns-row"><span>Nome / Host</span><code>links</code></div>
             <div class="dns-row"><span>Valor / Destino</span><code>cname.vercel-dns.com</code></div>
             <div class="dns-row"><span>TTL</span><code>3600</code></div>
           </div>
-          <p class="dns-hint">Se a hospedagem não aceitar CNAME, usar registro A → <code>76.76.21.21</code></p>
+          <p class="dns-hint">Fallback se o painel não permitir CNAME em subdomínio: registro <code>A</code> em <code>links</code> apontando para <code>76.76.21.21</code></p>
+
+          <div class="dns-record-label">2 · Verificação de domínio Meta (obrigatório iOS 14+)</div>
+          <div class="dns-record">
+            <div class="dns-row"><span>Tipo</span><code>TXT</code></div>
+            <div class="dns-row"><span>Nome / Host</span><code>@</code> (raiz)</div>
+            <div class="dns-row"><span>Valor</span><code>facebook-domain-verification=[código]</code></div>
+            <div class="dns-row"><span>TTL</span><code>3600</code></div>
+          </div>
+          <p class="dns-hint">O código único é gerado no Business Manager (Configurações → Segurança da marca → Domínios). Envio junto no momento da solicitação.</p>
+
+          <div class="dns-record-label">3 · Google Search Console (recomendado)</div>
+          <div class="dns-record">
+            <div class="dns-row"><span>Tipo</span><code>TXT</code></div>
+            <div class="dns-row"><span>Nome / Host</span><code>@</code> (raiz)</div>
+            <div class="dns-row"><span>Valor</span><code>google-site-verification=[código]</code></div>
+            <div class="dns-row"><span>TTL</span><code>3600</code></div>
+          </div>
+          <p class="dns-hint">Melhora rastreio orgânico e libera relatórios de tráfego do domínio no Google.</p>
+
+          <div class="dns-eyebrow" style="margin-top:28px">O que eu (TSS) faço depois</div>
+          <ol class="dns-steps dns-steps-alt">
+            <li>Adiciono o subdomínio no painel do Vercel (Settings → Domains)</li>
+            <li>Vercel emite o certificado SSL automaticamente (5-10 min)</li>
+            <li>Confirmo a verificação de domínio no Business Manager</li>
+            <li>Configuro o Aggregated Event Measurement (evento Purchase como prioridade #1)</li>
+            <li>Ativo o Search Console no Google (leitura do TXT)</li>
+            <li>Migro os CTAs das campanhas ativas gradualmente pro novo domínio</li>
+          </ol>
         </div>
       </div>
 
       <div class="dns-benefits">
-        <div><strong>+10-20% CTR</strong> — domínio próprio inspira confiança</div>
-        <div><strong>Brand trust</strong> — cliente vê <code>novabeachcampinas.com.br</code> em vez de <code>.vercel.app</code></div>
-        <div><strong>Zero migração</strong> — Vercel URL segue funcionando como fallback</div>
+        <div><strong>+10-20% CTR</strong> — domínio próprio inspira confiança e reduz bloqueio de spam</div>
+        <div><strong>Brand trust</strong> — o lead vê <code>novabeachcampinas.com.br</code> no lugar de um domínio de terceiro</div>
+        <div><strong>Zero downtime</strong> — o link atual do Vercel continua funcionando como fallback durante toda a migração</div>
       </div>
     </section>
 
