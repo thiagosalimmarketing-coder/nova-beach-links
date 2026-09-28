@@ -97,8 +97,7 @@ url_encode() {
 
 # ─────────────────────────────────────────────────────────────
 # HTML template writer
-# Args: 1=output_dir  2=pixel_event  3=content_name  4=source_label  5=wa_url  6=depth
-# depth = number of "../" to reach repo root (2 for /ads/*, /site/*, /handoff/*)
+# Args: 1=output_dir  2=pixel_event  3=content_name  4=source_label  5=wa_url  6=og_title  7=og_desc
 # ─────────────────────────────────────────────────────────────
 write_page() {
   local dir="$1"
@@ -106,7 +105,10 @@ write_page() {
   local cname="$3"
   local source="$4"
   local wa_url="$5"
+  local og_title="${6:-Nova Beach Campinas}"
+  local og_desc="${7:-Beach Tennis, Funcional na Areia e eventos. Fale com a gente pelo WhatsApp.}"
   local up="../.."
+  local canonical="https://nova-beach-links.vercel.app/${dir}/"
 
   mkdir -p "$dir"
   cat > "$dir/index.html" <<HTML
@@ -115,7 +117,22 @@ write_page() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Beach</title>
+  <title>${og_title}</title>
+  <meta name="description" content="${og_desc}">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="${canonical}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nova Beach Campinas">
+  <meta property="og:title" content="${og_title}">
+  <meta property="og:description" content="${og_desc}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="https://nova-beach-links.vercel.app/logo-novabeach.png">
+  <meta property="og:image:alt" content="Nova Beach Campinas">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="${og_title}">
+  <meta name="twitter:description" content="${og_desc}">
+  <meta name="twitter:image" content="https://nova-beach-links.vercel.app/logo-novabeach.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { min-height: 100vh; background: #f3f5fa; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; position: relative; }
@@ -164,16 +181,19 @@ echo "Building /ads/* and /site/*..."
 for prod in "${PRODUCTS[@]}"; do
   IFS='|' read -r slot ads_phone site_phone content_name label <<< "$prod"
 
+  og_title="Nova Beach Campinas — ${label}"
+  og_desc="Fale com a Nova Beach pelo WhatsApp sobre ${label}. Beach Tennis e Funcional na Areia em Campinas."
+
   # /ads/<slot>
   ads_msg="Olá! Vim pelo anúncio e gostaria de saber mais sobre ${label}."
   ads_url="https://wa.me/${ads_phone}?text=$(url_encode "$ads_msg")"
-  write_page "ads/${slot}" "Lead" "$content_name" "meta_ads" "$ads_url"
+  write_page "ads/${slot}" "Lead" "$content_name" "meta_ads" "$ads_url" "$og_title" "$og_desc"
   echo "  ✓ /ads/${slot}/  → ${ads_phone}"
 
   # /site/<slot>
   site_msg="Olá! Vim pelo site e gostaria de saber mais sobre ${label}."
   site_url="https://wa.me/${site_phone}?text=$(url_encode "$site_msg")"
-  write_page "site/${slot}" "Lead" "$content_name" "site" "$site_url"
+  write_page "site/${slot}" "Lead" "$content_name" "site" "$site_url" "$og_title" "$og_desc"
   echo "  ✓ /site/${slot}/  → ${site_phone}"
 done
 
@@ -185,7 +205,9 @@ echo "Building /crm/*..."
 for c in "${CRM_PATHS[@]}"; do
   IFS='|' read -r slot phone event content_name message <<< "$c"
   wa_url="https://wa.me/${phone}?text=$(url_encode "$message")"
-  write_page "crm/${slot}" "$event" "$content_name" "crm_reativacao" "$wa_url"
+  og_title="Nova Beach Campinas"
+  og_desc="Reativação Nova Beach. Fale com a gente pelo WhatsApp."
+  write_page "crm/${slot}" "$event" "$content_name" "crm_reativacao" "$wa_url" "$og_title" "$og_desc"
   echo "  ✓ /crm/${slot}/  → ${phone}  (${event})"
 done
 
@@ -194,7 +216,9 @@ echo "Building /handoff/*..."
 for h in "${HANDOFFS[@]}"; do
   IFS='|' read -r slot phone event content_name message <<< "$h"
   wa_url="https://wa.me/${phone}?text=$(url_encode "$message")"
-  write_page "handoff/${slot}" "$event" "$content_name" "handoff" "$wa_url"
+  og_title="Nova Beach Campinas"
+  og_desc="Encaminhamento para atendimento Nova Beach via WhatsApp."
+  write_page "handoff/${slot}" "$event" "$content_name" "handoff" "$wa_url" "$og_title" "$og_desc"
   echo "  ✓ /handoff/${slot}/  → ${phone}  (${event})"
 done
 
