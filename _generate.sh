@@ -31,13 +31,13 @@ FUNCIONAL_PHONE="5519999178194"
 # slot | ads_phone | site_phone | content_name | product_label
 # ─────────────────────────────────────────────────────────────
 PRODUCTS=(
-  "bt|${AI_PHONE}|${HUMAN_PHONE}|beach_tennis|Beach Tennis"
-  "bt-1x|${AI_PHONE}|${HUMAN_PHONE}|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
-  "bt-2x|${AI_PHONE}|${HUMAN_PHONE}|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
-  "clubinho|${AI_PHONE}|${HUMAN_PHONE}|clubinho|Clubinho (jogo livre de Beach Tennis)"
-  "experimental|${AI_PHONE}|${HUMAN_PHONE}|aula_experimental|aula experimental de Beach Tennis"
-  "quadra|${HUMAN_PHONE}|${HUMAN_PHONE}|locacao_quadra|locação de quadra avulsa"
-  "reservas|${HUMAN_PHONE}|${HUMAN_PHONE}|day_use_empresarial|Day Use Empresarial"
+  "bt|${AI_PHONE}|${AI_PHONE}|beach_tennis|Beach Tennis"
+  "bt-1x|${AI_PHONE}|${AI_PHONE}|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
+  "bt-2x|${AI_PHONE}|${AI_PHONE}|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
+  "clubinho|${AI_PHONE}|${AI_PHONE}|clubinho|Clubinho (jogo livre de Beach Tennis)"
+  "experimental|${AI_PHONE}|${AI_PHONE}|aula_experimental|aula experimental de Beach Tennis"
+  "quadra|${AI_PHONE}|${AI_PHONE}|locacao_quadra|locação de quadra avulsa"
+  "reservas|${AI_PHONE}|${AI_PHONE}|day_use_empresarial|Day Use Empresarial"
   "funcional|${FUNCIONAL_PHONE}|${FUNCIONAL_PHONE}|aulao_funcional|Aulão de Funcional na Areia"
 )
 
