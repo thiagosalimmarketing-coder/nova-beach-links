@@ -1193,6 +1193,69 @@ flowchart TD
       </div>
     </section>
 
+    <section>
+      <h2><span class="num">09</span>UTMs recomendadas</h2>
+      <p class="h2-sub">As URLs Vercel não vêm com UTMs cravadas de propósito — o parâmetro varia por criativo e campanha. Abaixo o padrão que usamos: cada anúncio ou botão do site adiciona a UTM na hora, e o pixel do Meta continua rastreando sem depender disso.</p>
+
+      <h3 class="links-group-title">Padrão para Meta Ads (/ads/*)</h3>
+      <table class="links-table">
+        <thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><code>utm_source</code></td><td><code>meta</code></td></tr>
+          <tr><td><code>utm_medium</code></td><td><code>paid_social</code></td></tr>
+          <tr><td><code>utm_campaign</code></td><td><code>{{campaign.name}}</code> (macro do Meta)</td></tr>
+          <tr><td><code>utm_content</code></td><td><code>{{ad.name}}</code> (macro do Meta)</td></tr>
+          <tr><td><code>utm_term</code></td><td><code>{{adset.name}}</code> (macro do Meta)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--nb-mute);margin-top:8px">Exemplo final: <code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--nb-sand);padding:2px 6px;border-radius:4px">https://nova-beach-links.vercel.app/ads/bt-1x?utm_source=meta&utm_medium=paid_social&utm_campaign=bt1x_prospeccao_out2026&utm_content=video_antesdepois&utm_term=publico_amplo_camp</code></p>
+
+      <h3 class="links-group-title">Padrão para o site oficial (/site/*)</h3>
+      <table class="links-table">
+        <thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><code>utm_source</code></td><td><code>site</code></td></tr>
+          <tr><td><code>utm_medium</code></td><td><code>cta_whatsapp</code></td></tr>
+          <tr><td><code>utm_campaign</code></td><td><code>[nome-da-pagina]</code> (ex: <code>home</code>, <code>plano-bt-1x</code>, <code>reservas</code>)</td></tr>
+          <tr><td><code>utm_content</code></td><td><code>[posicao-do-botao]</code> (ex: <code>hero</code>, <code>footer</code>, <code>preco-tabela</code>)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--nb-mute);margin-top:8px">Exemplo: <code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--nb-sand);padding:2px 6px;border-radius:4px">https://nova-beach-links.vercel.app/site/bt-1x?utm_source=site&utm_medium=cta_whatsapp&utm_campaign=plano-bt-1x&utm_content=hero</code></p>
+
+      <h3 class="links-group-title">Padrão para Google Ads</h3>
+      <table class="links-table">
+        <thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><code>utm_source</code></td><td><code>google</code></td></tr>
+          <tr><td><code>utm_medium</code></td><td><code>cpc</code></td></tr>
+          <tr><td><code>utm_campaign</code></td><td><code>{campaignid}</code> (parâmetro ValueTrack)</td></tr>
+          <tr><td><code>utm_content</code></td><td><code>{adgroupid}</code></td></tr>
+          <tr><td><code>utm_term</code></td><td><code>{keyword}</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="links-group-title">Padrão para bio Instagram / Linktree</h3>
+      <table class="links-table">
+        <thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><code>utm_source</code></td><td><code>instagram</code> ou <code>linktree</code></td></tr>
+          <tr><td><code>utm_medium</code></td><td><code>bio</code></td></tr>
+          <tr><td><code>utm_campaign</code></td><td><code>[produto]</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="dns-why" style="margin-top:24px">
+        <div class="dns-why-icon">📊</div>
+        <div class="dns-why-body">
+          <h3>Onde ver os dados</h3>
+          <p>As UTMs viajam junto até o momento do redirect pro WhatsApp. A partir daí, o WhatsApp não repassa o parâmetro pra frente. Onde consultamos:</p>
+          <p style="margin-top:10px">• <strong>Pixel Meta</strong> — mostra qual URL trouxe o Lead/Purchase (Business Manager → Eventos)<br>
+          • <strong>Google Analytics 4</strong> — mostra sessão + UTM completa (todas as origens em um único relatório)<br>
+          • <strong>Dashboard nova-beach-dashboard</strong> — cruzamento futuro de UTM × matrícula quando a Reportana passar a etiquetar</p>
+        </div>
+      </div>
+    </section>
+
     <details class="tech-block">
       <summary>
         <span class="tech-eye">⚙</span>
