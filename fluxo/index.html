@@ -217,6 +217,59 @@
     .callout .contacts div { background: rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 8px; }
     .callout .contacts strong { display: block; opacity: 0.7; text-transform: uppercase; font-size: 10px; letter-spacing: 0.08em; margin-bottom: 4px; font-weight: 600; }
 
+    .tech-block {
+      margin: 40px 0;
+      background: white;
+      border: 1px solid var(--nb-border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .tech-block:hover { box-shadow: 0 4px 20px rgba(14, 30, 66, 0.06); }
+    .tech-block summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--nb-navy);
+      user-select: none;
+    }
+    .tech-block summary::-webkit-details-marker { display: none; }
+    .tech-eye {
+      display: inline-flex;
+      width: 28px; height: 28px;
+      background: var(--nb-sand);
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--nb-navy-2);
+    }
+    .tech-chev {
+      margin-left: auto;
+      font-size: 22px;
+      color: var(--nb-mute);
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .tech-block[open] .tech-chev { transform: rotate(90deg); }
+    .tech-body {
+      padding: 4px 24px 28px 64px;
+      color: var(--nb-mute);
+      font-size: 14px;
+      line-height: 1.7;
+      border-top: 1px solid var(--nb-border);
+    }
+    .tech-body p { margin-bottom: 20px; padding-top: 16px; }
+    .tech-body code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--nb-sand); padding: 2px 6px; border-radius: 4px; color: var(--nb-navy); }
+    .tech-body .contacts { margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .tech-body .contacts div { background: var(--nb-sand); padding: 10px 14px; border-radius: 8px; color: var(--nb-navy); }
+    .tech-body .contacts strong { display: block; opacity: 0.6; text-transform: uppercase; font-size: 10px; letter-spacing: 0.08em; margin-bottom: 4px; font-weight: 600; color: var(--nb-navy); }
+
     footer {
       margin-top: 64px;
       padding-top: 32px;
@@ -384,21 +437,27 @@ flowchart TD
       </ol>
     </section>
 
-    <div class="callout">
-      <h3>O que preciso do suporte Agi Genies</h3>
-      <p>1. Confirmar conexão do número IA com Meta Cloud API ou provider (Twilio, 360dialog).<br>
-      2. Configurar gatilho inicial baseado na mensagem pré-preenchida do lead (identifica produto + origem).<br>
-      3. Registrar tag <code>source</code> no perfil do lead (ads vs site) pra cruzar com pixel depois.<br>
-      4. Injetar variáveis nos links de handoff (nome, horário escolhido) na mensagem pré-preenchida ao humano.<br>
-      5. Timeout de 24h — se lead não responde, sai do fluxo e vai pro CRM Reportana pra follow-up.<br>
-      6. Limite de tokens por conversa e custo mensal estimado pra 40-80 conversas/semana.</p>
-      <div class="contacts">
-        <div><strong>NOVA (IA)</strong>+55 19 98972-5983</div>
-        <div><strong>Recepção humana</strong>+55 19 99557-5156</div>
-        <div><strong>Pixel Meta</strong>1397968278475446</div>
-        <div><strong>CRM secundário</strong>Reportana</div>
+    <details class="tech-block">
+      <summary>
+        <span class="tech-eye">⚙</span>
+        <span>Informações técnicas para o suporte do Agi Genies</span>
+        <span class="tech-chev">›</span>
+      </summary>
+      <div class="tech-body">
+        <p>1. Confirmar conexão do número IA com Meta Cloud API ou provider (Twilio, 360dialog).<br>
+        2. Configurar gatilho inicial baseado na mensagem pré-preenchida do lead (identifica produto + origem).<br>
+        3. Registrar tag <code>source</code> no perfil do lead (ads vs site) pra cruzar com pixel depois.<br>
+        4. Injetar variáveis nos links de handoff (nome, horário escolhido) na mensagem pré-preenchida ao humano.<br>
+        5. Timeout de 24h — se lead não responde, sai do fluxo e vai pro CRM Reportana pra follow-up.<br>
+        6. Limite de tokens por conversa e custo mensal estimado pra 40-80 conversas/semana.</p>
+        <div class="contacts">
+          <div><strong>NOVA (IA)</strong>+55 19 98972-5983</div>
+          <div><strong>Recepção humana</strong>+55 19 99557-5156</div>
+          <div><strong>Pixel Meta</strong>1397968278475446</div>
+          <div><strong>CRM secundário</strong>Reportana</div>
+        </div>
       </div>
-    </div>
+    </details>
 
     <footer>
       Nova Beach Campinas · Documento vivo · Última atualização 2026-09-28 · Migração para links.novabeachcampinas.com.br em setembro-outubro/2026
