@@ -480,6 +480,55 @@
     .dns-record-label:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
     .dns-steps-alt li::before { background: var(--nb-navy-2); color: white; }
 
+    .dns-why {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(255, 181, 71, 0.14) 0%, rgba(255, 181, 71, 0.04) 100%);
+      border: 1px solid rgba(255, 181, 71, 0.4);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-top: 24px;
+    }
+    .dns-why-icon {
+      font-size: 32px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .dns-why-body h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--nb-navy);
+      margin-bottom: 8px;
+    }
+    .dns-why-body p {
+      font-size: 14px;
+      color: var(--nb-ink);
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    .dns-why-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+    .dns-why-body .old-mini {
+      background: rgba(200, 90, 90, 0.1);
+      color: #8a2b2b;
+      text-decoration: line-through;
+      text-decoration-color: rgba(138, 43, 43, 0.4);
+    }
+    .dns-why-body .new-mini {
+      background: rgba(46, 160, 67, 0.14);
+      color: #1b6a2a;
+      font-weight: 600;
+    }
+    @media (max-width: 640px) {
+      .dns-why { flex-direction: column; }
+      .dns-why-icon { font-size: 28px; }
+    }
+
     footer {
       margin-top: 64px;
       padding-top: 32px;
@@ -603,6 +652,15 @@ flowchart TD
           <p>Quando NOVA precisa passar pro humano sem intenção clara de fechar (dúvida, quadra, empresarial). Link WhatsApp direto, sem novo evento no pixel.</p>
         </div>
       </div>
+
+      <div class="dns-why">
+        <div class="dns-why-icon">💬</div>
+        <div class="dns-why-body">
+          <h3>Como esses links aparecem na prática</h3>
+          <p>Toda vez que a NOVA (IA) precisa encaminhar um lead, ela envia um desses links dentro do WhatsApp. Hoje eles aparecem como <code class="old-mini">nova-beach-links.vercel.app/handoff/bt-1x</code> — parece um serviço de terceiro. Depois do apontamento DNS (seção 05), passam a aparecer como <code class="new-mini">links.novabeachcampinas.com.br/handoff/bt-1x</code> — assinatura Nova Beach do começo ao fim.</p>
+          <p style="margin-top:12px">Isso reduz o medo do lead de clicar (menos abandono), evita bloqueio de spam do WhatsApp em domínios de terceiros, e passa credibilidade profissional em cada interação da IA.</p>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -664,16 +722,7 @@ flowchart TD
 
     <section>
       <h2><span class="num">05</span>Publicação em domínio próprio</h2>
-      <p class="h2-sub">A NOVA (IA) precisa enviar links no meio das conversas do WhatsApp — pra encaminhar cada lead ao atendimento correto (matrícula, aula experimental, empresarial, quadra, dúvida). Esses links precisam parecer da Nova Beach, e não de um serviço externo.</p>
-
-      <div class="dns-why">
-        <div class="dns-why-icon">💬</div>
-        <div class="dns-why-body">
-          <h3>Por que isso importa</h3>
-          <p>Toda vez que a NOVA qualifica um lead e manda ele pro humano, envia um link dentro do WhatsApp. Hoje esse link vai como <code class="old-mini">nova-beach-links.vercel.app/handoff/bt-1x</code> — parece um serviço de terceiro. Depois do apontamento DNS, ele vai como <code class="new-mini">links.novabeachcampinas.com.br/handoff/bt-1x</code> — assinatura Nova Beach do começo ao fim.</p>
-          <p style="margin-top:12px">Isso reduz o medo do lead de clicar (menos abandono), evita bloqueio de spam do WhatsApp em domínios de terceiros, e passa credibilidade profissional em cada interação da IA.</p>
-        </div>
-      </div>
+      <p class="h2-sub">Hoje os links estão sob <code>nova-beach-links.vercel.app</code>. Para publicar sob o domínio próprio (motivos explicados na seção 02), a empresa que hospeda o site da Nova Beach precisa fazer <strong>alguns apontamentos no DNS</strong>. Depois disso, todos os links da NOVA passam a rodar sob a marca Nova Beach.</p>
 
       <div class="dns-explainer">
         <div class="dns-explainer-row">
