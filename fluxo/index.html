@@ -747,7 +747,7 @@ flowchart TD
     E -->|"Day Use Empresarial<br/>(após qualificar grupo)"| GE1["/handoff/reservas<br/>pixel PURCHASE"]:::handoff-ev
     E -->|"Aulão / evento pontual"| GE2["Contato registrado<br/>tag: aguardando_evento"]:::soft
 
-    E -->|"Sem resposta<br/>lead sumiu ou hesitou"| CRM["🔄 CRM · Reportana<br/><b>+55 19 98972-5983</b><br/>dispara mensagem de<br/>reativação em 48h/7d/15d<br/>com link que volta pra IA"]:::crm
+    E -->|"Sem resposta<br/>lead sumiu ou hesitou"| CRM["🔄 CRM · Reportana<br/><b>+55 19 98972-5983</b><br/>dispara reativação em 48h/7d/15d<br/>com 3 botões:<br/>saber mais · falar BT · falar Eventos"]:::crm
 
     E -->|"B2B / spam"| J["Encerra<br/>tag: descartado"]:::soft
 
@@ -760,7 +760,9 @@ flowchart TD
     GE1 --> KE["🎉 HUMANO · Eventos<br/><b>+55 19 99917-8194</b><br/>fecha Day Use, aulão, reservas"]:::human-ev
     GE2 --> KE
 
-    CRM -.->|"lead clica no link<br/>de reativação"| C
+    CRM -.->|"lead clica<br/>'Quero saber mais'<br/>(/crm/saber-mais)"| C
+    CRM -.->|"lead clica<br/>'Falar com atendimento BT'<br/>(/crm/falar-humano-bt)"| K
+    CRM -.->|"lead clica<br/>'Falar com atendimento Eventos'<br/>(/crm/falar-humano-eventos)"| KE
 
     K --> M["Recepção recebe<br/>lead PRONTO<br/>confirma pagamento<br/>agenda 1ª aula"]:::success
     KE --> M2["Time de eventos<br/>envia proposta<br/>ou confirma reserva"]:::success
