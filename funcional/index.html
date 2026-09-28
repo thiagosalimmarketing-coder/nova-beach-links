@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Beach</title>
+  <title>Nova Beach — Treino Funcional na Areia</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -12,8 +12,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       position: relative;
+      padding: 20px;
     }
     .pattern {
       position: fixed;
@@ -28,26 +29,46 @@
       position: relative;
       z-index: 1;
       background: #1a3066;
-      border-radius: 16px;
-      padding: 40px 48px;
+      border-radius: 20px;
+      padding: 36px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      gap: 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      max-width: 380px;
+      width: 100%;
     }
-    .logo { height: 48px; width: auto; object-fit: contain; }
-    .msg { color: rgba(255,255,255,0.7); font-size: 14px; letter-spacing: 0.3px; }
-    .dots span {
-      display: inline-block;
-      animation: blink 1.2s infinite;
+    .logo { height: 44px; width: auto; object-fit: contain; }
+    .title { color: #fff; font-size: 20px; font-weight: 700; text-align: center; letter-spacing: -0.3px; }
+    .sub { color: rgba(255,255,255,0.65); font-size: 14px; text-align: center; line-height: 1.5; }
+    .buttons { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 6px; }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: none;
+      width: 100%;
     }
-    .dots span:nth-child(2) { animation-delay: 0.2s; }
-    .dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes blink {
-      0%, 80%, 100% { opacity: 0; }
-      40% { opacity: 1; }
+    .btn:active { transform: scale(0.98); }
+    .btn-ai {
+      background: linear-gradient(135deg, #ffb547 0%, #ff8c1a 100%);
+      color: #3a2500;
+      box-shadow: 0 4px 14px rgba(255, 140, 26, 0.35);
     }
+    .btn-human {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.2);
+    }
+    .btn small { display: block; font-size: 11px; font-weight: 500; opacity: 0.75; margin-top: 2px; }
+    .btn-content { display: flex; flex-direction: column; align-items: center; line-height: 1.3; }
+    .footer { color: rgba(255,255,255,0.4); font-size: 11px; text-align: center; margin-top: 4px; }
   </style>
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -59,25 +80,38 @@
     fbq('track', 'PageView');
     fbq('track', 'Lead', {
       content_name: 'funcional_areia',
-      content_category: 'instagram_dm',
+      content_category: 'instagram_bio',
       source: 'redes_sociais'
     });
-    setTimeout(function() {
-      window.location.href = 'https://wa.me/5519999178194?text=Ol%C3%A1+vim+das+redes+sociais+e+quero+saber+mais+sobre+treino+funcional';
-    }, 3000);
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
-    <meta http-equiv="refresh" content="0;url=https://wa.me/5519999178194?text=Ol%C3%A1+vim+das+redes+sociais+e+quero+saber+mais+sobre+treino+funcional">
   </noscript>
 </head>
 <body>
   <div class="pattern"></div>
   <div class="card">
     <img class="logo" src="../logo-novabeach.png" alt="Nova Beach">
-    <p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    <div>
+      <div class="title">Como você prefere falar com a gente?</div>
+    </div>
+    <p class="sub">A NOVA (nossa IA) responde na hora, 24h. Se preferir humano, é só escolher abaixo.</p>
+    <div class="buttons">
+      <a class="btn btn-ai" href="https://wa.me/5519994557698?text=Ol%C3%A1+vim+da+bio+do+Instagram+e+quero+saber+mais+sobre+treino+funcional">
+        <div class="btn-content">
+          🤖 Falar com a NOVA (IA)
+          <small>Resposta imediata · 24h</small>
+        </div>
+      </a>
+      <a class="btn btn-human" href="https://wa.me/5519999178194?text=Ol%C3%A1+vim+da+bio+do+Instagram+e+quero+saber+mais+sobre+treino+funcional">
+        <div class="btn-content">
+          👤 Falar com atendimento humano
+          <small>Time Nova Beach · horário comercial</small>
+        </div>
+      </a>
+    </div>
+    <div class="footer">Nova Beach Campinas · Funcional na Areia</div>
   </div>
 </body>
 </html>
-
