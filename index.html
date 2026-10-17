@@ -962,7 +962,7 @@ fbq('track','PageView');
     const nomeMsg = state.nome ? `Oi, aqui é ${state.nome}! ` : 'Oi! ';
     const customMsg = `${nomeMsg}${choice.msg.replace(/^Quero/,'quero')} Moro em ${state.bairro}.`;
     const adUtm = (function(){ try{return JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){return {}} })();
-    const q = new URLSearchParams({
+    const qParams = {
       utm_source: adUtm.utm_source || 'landing_hub',
       utm_medium: adUtm.utm_medium || 'quiz',
       utm_campaign: adUtm.utm_campaign || state.path,
@@ -973,12 +973,15 @@ fbq('track','PageView');
       nb_msg: customMsg,
       nb_bairro: state.bairro,
       nb_nome: state.nome
-    });
+    };
+    if(adUtm.fbclid) qParams.fbclid = adUtm.fbclid;
+    const q = new URLSearchParams(qParams);
     const targetUrl = `${choice.redirect}?${q.toString()}`;
 
     // Sem evento Lead aqui: a rota /wa/* dispara o Lead (evita contar a mesma pessoa 2-3x).
     // Nome e telefone NUNCA vao para o pixel (politica do Meta).
-    try{fbq('trackCustom','QuizWhatsApp',{path:state.path,choice:choice.key,bairro:state.bairro});}catch(e){}
+    const qwaEventId = 'QuizWhatsApp-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+    try{fbq('trackCustom','QuizWhatsApp',{path:state.path,choice:choice.key,bairro:state.bairro,eventId:qwaEventId},{eventID:qwaEventId});}catch(e){}
 
     converted = true;
     setTimeout(()=>{ window.location.href = targetUrl; }, 180);

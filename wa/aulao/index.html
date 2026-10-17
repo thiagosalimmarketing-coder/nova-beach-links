@@ -26,23 +26,44 @@ fbq('track','PageView');
   var p=new URLSearchParams(window.location.search);
   var qMsg=p.get('nb_msg');
   var qBairro=p.get('nb_bairro');
-  var qSource=p.get('utm_source')||'landing_hub';
-  var qCampaign=p.get('utm_campaign')||'';
-  var qContent=p.get('utm_content')||'';
+  // ===== UTM: priority = URL param > sessionStorage (quiz) > fallback =====
+  var persisted={};try{persisted=JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){}
+  function pick(k){return p.get(k)||persisted[k]||'';}
+  var utm={utm_source:pick('utm_source'),utm_medium:pick('utm_medium'),utm_campaign:pick('utm_campaign'),utm_content:pick('utm_content'),utm_term:pick('utm_term'),fbclid:pick('fbclid')};
+  try{if(utm.utm_source||utm.fbclid)sessionStorage.setItem('nb_utms',JSON.stringify(utm));}catch(e){}
+
+  // ===== Message body =====
   var defMsg='Quero fazer um aulão de Beach Tennis em grupo com café da manhã';
   var msg=qMsg?decodeURIComponent(qMsg):('Oi! '+defMsg+'.');
   if(qBairro)msg+=' (Moro em: '+decodeURIComponent(qBairro)+')';
+
+  // ===== Origem tag — visible for attendant to copy to CRM =====
+  function originTag(){
+    if(!utm.utm_source && !utm.fbclid) return ' ⟨origem: landing_hub⟩';
+    var parts=[];
+    if(utm.utm_source)parts.push(utm.utm_source);
+    if(utm.utm_campaign)parts.push(utm.utm_campaign);
+    if(utm.utm_content)parts.push(utm.utm_content);
+    if(utm.fbclid)parts.push('fbclid:'+utm.fbclid.slice(0,10));
+    return ' ⟨origem: '+parts.join(' · ')+'⟩';
+  }
+  msg += originTag();
   var waUrl='https://wa.me/5519999178194?text='+encodeURIComponent(msg);
-  var delay=qMsg?500:2500;
+
+  // ===== Event ID + fbp/fbc for CAPI dedup =====
+  var eventId='Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+  function cookie(n){return (document.cookie.split('; ').find(function(r){return r.indexOf(n+'=')===0;})||'').split('=')[1]||null;}
+
+  var customData={content_name:'aulao_grupo',content_category:utm.utm_campaign||'direct',source:utm.utm_source||'landing_hub',utm_source:utm.utm_source,utm_medium:utm.utm_medium,utm_campaign:utm.utm_campaign,utm_content:utm.utm_content,utm_term:utm.utm_term,fbclid:utm.fbclid,bairro:qBairro||''};
+
+  // CAPI relay (keepalive so it survives redirect)
+  try{
+    fetch('/api/capi',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({event_name:'Lead',event_id:eventId,event_time:Math.floor(Date.now()/1000),event_source_url:window.location.href,action_source:'website',user_data:{fbp:cookie('_fbp'),fbc:cookie('_fbc')},custom_data:customData}),keepalive:true}).catch(function(){});
+  }catch(e){}
+
+  var delay=qMsg?500:1200;
   setTimeout(function(){
-    fbq('track','Lead',{
-      content_name:'aulao_grupo',
-      content_category:qCampaign||'direct',
-      source:qSource,
-      utm_campaign:qCampaign,
-      utm_content:qContent,
-      bairro:qBairro||''
-    });
+    try{fbq('track','Lead',customData,{eventID:eventId});}catch(e){}
     window.location.href=waUrl;
   },delay);
 })();

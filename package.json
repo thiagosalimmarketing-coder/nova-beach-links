@@ -1,0 +1,9 @@
+{
+  "name": "nova-beach-links",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nova Beach Campinas · landing hub + Meta Ads routes",
+  "engines": {
+    "node": "20.x"
+  }
+}

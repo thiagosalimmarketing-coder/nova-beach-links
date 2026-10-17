@@ -103,7 +103,8 @@ HANDOFFS=(
 # URL-encode helper
 # ─────────────────────────────────────────────────────────────
 url_encode() {
-  python -c "import urllib.parse,sys;print(urllib.parse.quote_plus(sys.argv[1]))" "$1"
+  # Node is available on all our dev envs (Vercel + local)
+  node -e "process.stdout.write(encodeURIComponent(process.argv[1]))" "$1"
 }
 
 # ─────────────────────────────────────────────────────────────
@@ -160,14 +161,88 @@ write_page() {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '${PIXEL}');
     fbq('track', 'PageView');
-    setTimeout(function() {
-      fbq('track', '${event}', {
-        content_name: '${cname}',
-        content_category: '${source}',
-        source: '${source}'
-      });
-      window.location.href = '${wa_url}';
-    }, 3000);
+    (function(){
+      // ===== Capture UTM + fbclid from URL (fallback to sessionStorage from referring quiz) =====
+      var qs = new URLSearchParams(window.location.search);
+      var persisted = {};
+      try { persisted = JSON.parse(sessionStorage.getItem('nb_utms')||'{}'); } catch(e){}
+      function pick(k){ return qs.get(k) || persisted[k] || ''; }
+      var utm = {
+        utm_source:   pick('utm_source'),
+        utm_medium:   pick('utm_medium'),
+        utm_campaign: pick('utm_campaign'),
+        utm_content:  pick('utm_content'),
+        utm_term:     pick('utm_term'),
+        fbclid:       pick('fbclid')
+      };
+      // Persist for later pages in same session
+      try { if(utm.utm_source||utm.fbclid) sessionStorage.setItem('nb_utms', JSON.stringify(utm)); } catch(e){}
+
+      // ===== Build origem tag for WhatsApp message =====
+      // Hidden-ish tag at the end so attendant can copy to CRM. If no UTM, mark as source.
+      function originTag(){
+        if(!utm.utm_source && !utm.fbclid) return ' ⟨origem: ${source}⟩';
+        var parts = [];
+        if(utm.utm_source)   parts.push(utm.utm_source);
+        if(utm.utm_campaign) parts.push(utm.utm_campaign);
+        if(utm.utm_content)  parts.push(utm.utm_content);
+        if(utm.fbclid)       parts.push('fbclid:'+utm.fbclid.slice(0,10));
+        return ' ⟨origem: '+parts.join(' · ')+'⟩';
+      }
+      var baseWa = '${wa_url}';
+      // Append the origem tag to the text= param
+      var waUrl = baseWa.indexOf('text=') >= 0
+        ? baseWa + encodeURIComponent(originTag())
+        : baseWa + (baseWa.indexOf('?')<0?'?':'&') + 'text=' + encodeURIComponent(originTag());
+
+      // ===== Event ID for Pixel/CAPI dedup =====
+      var eventId = '${event}-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+
+      // ===== Read fbp / fbc cookies for CAPI user_data =====
+      function cookie(n){ return (document.cookie.split('; ').find(function(r){return r.indexOf(n+'=')===0;})||'').split('=')[1]||null; }
+
+      var customData = {
+        content_name:    '${cname}',
+        content_category:'${source}',
+        source:          '${source}',
+        utm_source:      utm.utm_source,
+        utm_medium:      utm.utm_medium,
+        utm_campaign:    utm.utm_campaign,
+        utm_content:     utm.utm_content,
+        utm_term:        utm.utm_term,
+        fbclid:          utm.fbclid
+      };
+
+      // ===== CAPI relay (keepalive so it survives the redirect) =====
+      try {
+        var capiPayload = {
+          event_name:       '${event}',
+          event_id:         eventId,
+          event_time:       Math.floor(Date.now()/1000),
+          event_source_url: window.location.href,
+          action_source:    'website',
+          user_data: {
+            fbp: cookie('_fbp'),
+            fbc: cookie('_fbc')
+          },
+          custom_data: customData
+        };
+        fetch('/api/capi', {
+          method: 'POST',
+          headers: {'content-type':'application/json'},
+          body: JSON.stringify(capiPayload),
+          keepalive: true
+        }).catch(function(){});
+      } catch(e){}
+
+      // Delay filters bots/crawlers from firing Pixel event
+      setTimeout(function(){
+        try {
+          fbq('track', '${event}', customData, {eventID: eventId});
+        } catch(e){}
+        window.location.href = waUrl;
+      }, 1200);
+    })();
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${PIXEL}&ev=${event}&noscript=1"/>
