@@ -34,20 +34,31 @@ HUMAN_PHONE="5519995575156"
 FUNCIONAL_PHONE="5519999178194"
 
 # ─────────────────────────────────────────────────────────────
+# CHAVE DA IA (2026-10-16): a NOVA (Agi Genies) ainda NAO esta no ar.
+# Enquanto isso, toda porta de entrada (/ads, /site, bio, CRM "saber mais")
+# vai direto para a recepcao humana. Quando a IA estiver ativa e testada,
+# troque para:  ENTRY_PHONE="${AI_PHONE}"  e rode ./_generate.sh de novo.
+# ─────────────────────────────────────────────────────────────
+ENTRY_PHONE="${HUMAN_PHONE}"
+
+BASE_URL="https://links.novabeachcampinas.com.br"
+
+# ─────────────────────────────────────────────────────────────
 # TABLE 1: Products (drives /ads/* and /site/*)
 # slot | ads_phone | site_phone | content_name | product_label
 # ─────────────────────────────────────────────────────────────
 PRODUCTS=(
-  "bt|${AI_PHONE}|${AI_PHONE}|beach_tennis|Beach Tennis"
-  "bt-1x|${AI_PHONE}|${AI_PHONE}|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
-  "bt-2x|${AI_PHONE}|${AI_PHONE}|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
-  "clubinho|${AI_PHONE}|${AI_PHONE}|clubinho|Clubinho (jogo livre de Beach Tennis)"
-  "experimental|${AI_PHONE}|${AI_PHONE}|aula_experimental|aula experimental de Beach Tennis"
-  "quadra|${AI_PHONE}|${AI_PHONE}|locacao_quadra|locação de quadra avulsa"
-  "reservas|${AI_PHONE}|${AI_PHONE}|day_use_empresarial|Day Use Empresarial"
-  "funcional|${FUNCIONAL_PHONE}|${FUNCIONAL_PHONE}|aulao_funcional|Aulão de Funcional na Areia"
-  "day-use-individual|${AI_PHONE}|${AI_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
-  "aniversario|${AI_PHONE}|${AI_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
+  "bt|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
+  "bt-1x|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
+  "bt-2x|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
+  "clubinho|${ENTRY_PHONE}|${ENTRY_PHONE}|clubinho|Clubinho (jogo livre de Beach Tennis)"
+  "experimental|${ENTRY_PHONE}|${ENTRY_PHONE}|aula_experimental|aula experimental de Beach Tennis"
+  "quadra|${ENTRY_PHONE}|${ENTRY_PHONE}|locacao_quadra|locação de quadra avulsa"
+  "reservas|${ENTRY_PHONE}|${ENTRY_PHONE}|day_use_empresarial|Day Use Empresarial"
+  # funcional: modalidade encerrada (out/2026). Rota mantida so para nao quebrar links antigos -> cai em Beach Tennis.
+  "funcional|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
+  "day-use-individual|${ENTRY_PHONE}|${ENTRY_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
+  "aniversario|${ENTRY_PHONE}|${ENTRY_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
 )
 
 # ─────────────────────────────────────────────────────────────
@@ -59,7 +70,7 @@ PRODUCTS=(
 # Formato: slot|phone|pixel_event|content_name|prefilled_message
 # ─────────────────────────────────────────────────────────────
 CRM_PATHS=(
-  "saber-mais|${AI_PHONE}|Lead|reativacao_saber_mais|Oi! Recebi a mensagem de vocês. Quero saber mais sobre a Nova Beach."
+  "saber-mais|${ENTRY_PHONE}|Lead|reativacao_saber_mais|Oi! Recebi a mensagem de vocês. Quero saber mais sobre a Nova Beach."
   "falar-humano-bt|${HUMAN_PHONE}|Purchase|reativacao_humano_bt|Oi! Recebi a mensagem de vocês. Quero falar direto com o atendimento sobre Beach Tennis."
   "falar-humano-eventos|${FUNCIONAL_PHONE}|Purchase|reativacao_humano_eventos|Oi! Recebi a mensagem de vocês. Quero falar direto sobre eventos / Day Use."
 )
@@ -106,9 +117,9 @@ write_page() {
   local source="$4"
   local wa_url="$5"
   local og_title="${6:-Nova Beach Campinas}"
-  local og_desc="${7:-Beach Tennis, Funcional na Areia e eventos. Fale com a gente pelo WhatsApp.}"
+  local og_desc="${7:-Beach Tennis e eventos em Campinas. Fale com a gente pelo WhatsApp.}"
   local up="../.."
-  local canonical="https://nova-beach-links.vercel.app/${dir}/"
+  local canonical="${BASE_URL}/${dir}/"
 
   mkdir -p "$dir"
   cat > "$dir/index.html" <<HTML
@@ -126,13 +137,13 @@ write_page() {
   <meta property="og:title" content="${og_title}">
   <meta property="og:description" content="${og_desc}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="https://nova-beach-links.vercel.app/logo-novabeach.png">
+  <meta property="og:image" content="${BASE_URL}/logo-novabeach.png">
   <meta property="og:image:alt" content="Nova Beach Campinas">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${og_title}">
   <meta name="twitter:description" content="${og_desc}">
-  <meta name="twitter:image" content="https://nova-beach-links.vercel.app/logo-novabeach.png">
+  <meta name="twitter:image" content="${BASE_URL}/logo-novabeach.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { min-height: 100vh; background: #f3f5fa; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; position: relative; }
@@ -182,7 +193,7 @@ for prod in "${PRODUCTS[@]}"; do
   IFS='|' read -r slot ads_phone site_phone content_name label <<< "$prod"
 
   og_title="Nova Beach Campinas — ${label}"
-  og_desc="Fale com a Nova Beach pelo WhatsApp sobre ${label}. Beach Tennis e Funcional na Areia em Campinas."
+  og_desc="Fale com a Nova Beach pelo WhatsApp sobre ${label}. Beach Tennis em Campinas."
 
   # /ads/<slot>
   ads_msg="Olá! Vim pelo anúncio e gostaria de saber mais sobre ${label}."
