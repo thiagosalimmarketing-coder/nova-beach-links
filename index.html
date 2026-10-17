@@ -409,11 +409,6 @@ fbq('track','PageView');
 
   <!-- QUIZ -->
   <div class="quiz">
-    <a class="tour-banner" id="tour-banner" href="https://letzplay.me/novabeach" target="_blank" rel="noopener">
-      <span class="tour-tag">Inscrições abertas</span>
-      <span class="tour-body"><strong>Nova Beach Open</strong><span>26 a 29 de novembro · garanta sua vaga</span></span>
-      <span class="tour-arrow">→</span>
-    </a>
     <div class="trust-row">
       <div class="trust-item"><strong>5</strong> quadras</div>
       <div class="trust-sep"></div>
@@ -967,10 +962,6 @@ fbq('track','PageView');
     converted = true;
     setTimeout(()=>{ window.location.href = targetUrl; }, 180);
   });
-
-  // Banner do torneio
-  const tour = document.getElementById('tour-banner');
-  if(tour){ tour.addEventListener('click', ()=>{ try{fbq('trackCustom','TorneioClick',{torneio:'nova_beach_open_2026'});}catch(e){} }); }
 
   // Back buttons
   document.querySelectorAll('.btn-back').forEach(btn=>{
