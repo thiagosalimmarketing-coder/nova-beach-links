@@ -73,6 +73,14 @@ CRM_PATHS=(
   "saber-mais|${ENTRY_PHONE}|Lead|reativacao_saber_mais|Oi! Recebi a mensagem de vocês. Quero saber mais sobre a Nova Beach."
   "falar-humano-bt|${HUMAN_PHONE}|Purchase|reativacao_humano_bt|Oi! Recebi a mensagem de vocês. Quero falar direto com o atendimento sobre Beach Tennis."
   "falar-humano-eventos|${FUNCIONAL_PHONE}|Purchase|reativacao_humano_eventos|Oi! Recebi a mensagem de vocês. Quero falar direto sobre eventos / Day Use."
+  # Expansão 2026-10-17: cobrir mais segmentos de disparo Reportana
+  "boas-vindas|${ENTRY_PHONE}|Lead|crm_boas_vindas|Oi! Acabei de me cadastrar na Nova Beach e quero saber como começar."
+  "renovacao|${HUMAN_PHONE}|Purchase|crm_renovacao|Oi! Meu plano tá chegando ao fim e quero renovar."
+  "aniversariante|${HUMAN_PHONE}|Lead|crm_aniversariante_aluno|Oi! Recebi a mensagem de aniversário — quero saber do presente que vocês mencionaram."
+  "indicacao|${ENTRY_PHONE}|Lead|crm_indicacao|Oi! Fui indicado pela Nova Beach e quero conhecer o espaço."
+  "reativacao-bt|${ENTRY_PHONE}|Lead|crm_reativacao_bt|Oi! Quero voltar a jogar Beach Tennis na Nova Beach."
+  "reativacao-clubinho|${ENTRY_PHONE}|Lead|crm_reativacao_clubinho|Oi! Quero voltar pro Clubinho da Nova Beach."
+  "oferta-mes|${ENTRY_PHONE}|Lead|crm_oferta_mes|Oi! Vi a oferta do mês e quero saber mais."
 )
 
 # ─────────────────────────────────────────────────────────────
