@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Beach Tennis · Nova Beach Campinas · Nova Campinas</title>
+<meta name="description" content="Arena de Beach Tennis em Nova Campinas. 5 quadras, aulas para todos os níveis, Bowa Bar no local. Experimente ou escolha seu plano.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://links.novabeachcampinas.com.br/bt/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nova Beach Campinas">
+<meta property="og:title" content="Beach Tennis · Nova Beach Campinas">
+<meta property="og:description" content="Arena de Beach Tennis em Nova Campinas. 5 quadras, aulas para todos os níveis.">
+<meta property="og:url" content="https://links.novabeachcampinas.com.br/bt/">
+<meta property="og:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,800&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,800&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0a0a0a;--bg-2:#141414;--bg-3:#1c1c1c;
+  --accent:#d7fd3f;--accent-dim:#aed631;
+  --text:#fafafa;--mute:#8a8a8a;--line:rgba(255,255,255,0.08);
+  --radius:14px;--radius-sm:10px;
+  --font:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);font-family:var(--font);
+  font-size:15px;line-height:1.5;min-height:100vh;min-height:100svh;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+img{display:block;max-width:100%;height:auto}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+.container{max-width:520px;margin:0 auto;padding:28px 20px 48px;position:relative}
+
+/* ===== HERO ===== */
+.hero{text-align:left;margin-bottom:32px}
+.hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{width:38px;height:38px;background:var(--accent);border-radius:50%;display:grid;place-items:center;font-weight:800;color:#000;font-size:16px;letter-spacing:-0.03em;flex-shrink:0}
+.brand-name{font-size:14px;font-weight:800;letter-spacing:-0.01em;line-height:1}
+.brand-sub{font-size:11px;font-weight:500;color:var(--mute);letter-spacing:0.04em;text-transform:uppercase;margin-top:3px}
+.loc-pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:var(--mute);background:var(--bg-2);border:1px solid var(--line);padding:7px 11px;border-radius:999px}
+.loc-pill::before{content:'';width:5px;height:5px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent)}
+
+.h1{
+  font-size:clamp(42px,10vw,56px);font-weight:800;line-height:0.95;letter-spacing:-0.035em;
+  margin-bottom:16px;
+}
+.h1-highlight{color:var(--accent);display:inline-block}
+.hero-sub{color:var(--mute);font-size:15px;font-weight:500;max-width:420px;line-height:1.5}
+
+.stats{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+.stat{display:flex;align-items:baseline;gap:6px;font-size:12px;color:var(--mute)}
+.stat strong{color:var(--text);font-weight:800;font-size:14px}
+
+.badges{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:500;background:var(--bg-2);border:1px solid var(--line);padding:7px 11px;border-radius:8px;color:var(--text)}
+.badge-wh{color:var(--accent);border-color:rgba(215,253,63,0.3)}
+
+/* ===== VIDEO SLOT ===== */
+.video-slot{
+  margin:0 -20px 32px;position:relative;aspect-ratio:4/5;max-height:420px;overflow:hidden;
+  background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);
+  display:grid;place-items:center;
+}
+.video-slot video,.video-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video-slot-placeholder{text-align:center;padding:40px 20px;color:var(--mute);font-size:12px;letter-spacing:0.04em;text-transform:uppercase}
+.video-slot-placeholder::before{content:'▶';display:block;font-size:28px;color:var(--accent);margin-bottom:10px}
+.video-slot-overlay{
+  position:absolute;left:0;right:0;bottom:0;padding:20px;
+  background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,0.85) 70%);
+  color:var(--text);font-size:12px;line-height:1.4;letter-spacing:0.04em;text-transform:uppercase;font-weight:500;
+}
+
+/* ===== SECTION ===== */
+.section{margin-bottom:32px}
+.sec-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sec-title{font-size:22px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:4px}
+.sec-sub{font-size:13px;color:var(--mute);margin-bottom:18px}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s;
+  cursor:pointer;display:block;width:100%;text-align:left;
+}
+.card:hover,.card:focus-visible{border-color:rgba(215,253,63,0.3);transform:translateY(-1px);outline:none}
+.card:active{transform:translateY(0)}
+.card+.card{margin-top:12px}
+
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;gap:10px}
+.card-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute)}
+.card-badge{font-size:9.5px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#000;background:var(--accent);padding:4px 8px;border-radius:999px}
+.card-title{font-size:22px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px}
+.card-sub{color:var(--mute);font-size:13px;margin-bottom:16px;line-height:1.4}
+
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.price-row:last-of-type{border-bottom:none;padding-bottom:0}
+.price-row.highlight{color:var(--accent)}
+.price-row-label{color:var(--mute);font-weight:500}
+.price-row.highlight .price-row-label{color:var(--accent);font-weight:800}
+.price-row-value{font-weight:800;font-family:var(--font);letter-spacing:-0.01em}
+.price-row-value sub{font-size:10px;font-weight:500;color:var(--mute);margin-left:2px}
+.price-row.highlight .price-row-value sub{color:var(--accent-dim)}
+
+.economy{
+  margin-top:14px;padding:10px 12px;background:rgba(215,253,63,0.08);border:1px solid rgba(215,253,63,0.2);
+  border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:var(--accent);text-align:center;
+}
+.economy strong{font-weight:800}
+
+.cta-row{display:flex;align-items:center;gap:8px;margin-top:16px;color:var(--accent);font-weight:800;font-size:14px;letter-spacing:-0.01em}
+.cta-row::after{content:'→';transition:transform .15s}
+.card:hover .cta-row::after{transform:translateX(3px)}
+
+/* Experimental card variant */
+.card-exp{background:linear-gradient(135deg,#1c1c1c 0%,#141414 100%);border-color:var(--line)}
+.card-exp .card-title{color:var(--accent)}
+.exp-row{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.exp-price{font-size:40px;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1}
+.exp-unit{font-size:13px;color:var(--mute);font-weight:500}
+
+/* Clubinho card variant */
+.card-clu{background:var(--bg-2)}
+
+/* ===== INFO BOX ===== */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.info-item{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px}
+.info-label{font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.info-value{font-size:13px;font-weight:500;line-height:1.3}
+.info-value a{color:var(--accent);font-weight:800}
+
+/* ===== FALLBACK CTA ===== */
+.fallback{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;text-align:center;
+}
+.fallback-title{font-size:14px;font-weight:800;margin-bottom:4px}
+.fallback-sub{font-size:12px;color:var(--mute);margin-bottom:12px}
+.fallback-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:transparent;
+  border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:500;color:var(--text);
+}
+.fallback-btn::before{content:'';width:7px;height:7px;background:#25D366;border-radius:50%;box-shadow:0 0 8px #25D366}
+
+/* ===== FOOTER ===== */
+footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:11px;letter-spacing:0.04em}
+footer a{color:var(--mute)}
+
+/* ===== MODAL ===== */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(6px);
+  display:none;align-items:flex-end;justify-content:center;z-index:50;
+  animation:fadeIn .18s ease-out;
+}
+.modal-backdrop.active{display:flex}
+.modal{
+  background:var(--bg-2);width:100%;max-width:520px;max-height:92vh;overflow-y:auto;
+  border-radius:20px 20px 0 0;padding:22px 20px calc(20px + env(safe-area-inset-bottom));
+  animation:slideUp .22s cubic-bezier(.2,.9,.3,1);position:relative;
+  border-top:1px solid var(--line);
+}
+@media(min-width:640px){
+  .modal-backdrop{align-items:center;padding:20px}
+  .modal{border-radius:20px;max-height:85vh}
+}
+.modal-handle{width:36px;height:4px;background:var(--line);border-radius:999px;margin:0 auto 18px}
+.modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--bg-3);color:var(--mute);font-size:18px;line-height:1}
+.modal-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.modal-title{font-size:20px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:4px}
+.modal-sub{font-size:13px;color:var(--mute);margin-bottom:18px}
+
+.q-block{margin-bottom:18px}
+.q-label{font-size:12px;font-weight:800;color:var(--text);margin-bottom:10px;display:block}
+.chip-group{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  flex:0 0 auto;padding:9px 14px;border-radius:999px;background:var(--bg-3);border:1px solid var(--line);
+  font-size:13px;font-weight:500;color:var(--text);transition:all .12s;line-height:1;
+}
+.chip:hover{border-color:rgba(215,253,63,0.3)}
+.chip.selected{background:var(--accent);color:#000;border-color:var(--accent);font-weight:800}
+
+.modal-cta{
+  width:100%;padding:15px;background:var(--accent);color:#000;border-radius:12px;
+  font-size:15px;font-weight:800;margin-top:8px;letter-spacing:-0.01em;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .12s;
+}
+.modal-cta:disabled{background:var(--bg-3);color:var(--mute);cursor:not-allowed}
+.modal-cta:not(:disabled):hover{background:var(--accent-dim)}
+.modal-cta::after{content:'→'}
+
+.modal-researcher{
+  margin-top:14px;padding:14px;background:var(--bg-3);border-radius:var(--radius-sm);
+  display:none;font-size:13px;color:var(--text);line-height:1.5;
+}
+.modal-researcher.active{display:block}
+.modal-researcher strong{color:var(--accent)}
+.modal-researcher-link{display:inline-block;margin-top:10px;color:var(--accent);font-weight:800;font-size:13px}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+/* loading state */
+body.booting .container{opacity:0}
+.container{opacity:1;transition:opacity .2s}
+</style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1397968278475446');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=PageView&noscript=1"/></noscript>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-top">
+      <div class="brand">
+        <div class="brand-logo">nb</div>
+        <div>
+          <div class="brand-name">Nova Beach</div>
+          <div class="brand-sub">Campinas</div>
+        </div>
+      </div>
+      <span class="loc-pill">Nova Campinas</span>
+    </div>
+
+    <h1 class="h1">Beach Tennis<br><span class="h1-highlight">como deve ser.</span></h1>
+    <p class="hero-sub">Arena coberta com 5 quadras, professores especializados e Bowa Bar no local. Em Nova Campinas, pertinho de você.</p>
+
+    <div class="stats">
+      <div class="stat"><strong>5</strong>quadras</div>
+      <div class="stat"><strong>Pro</strong>fessores especializados</div>
+      <div class="stat"><strong>Bowa Bar</strong> no local</div>
+    </div>
+
+    <div class="badges">
+      <span class="badge badge-wh">⚡ Aceitamos Wellhub Gold+</span>
+      <span class="badge">🏖️ Funcional areia aos sábados</span>
+    </div>
+  </header>
+
+  <!-- VIDEO SLOT (placeholder — substituir pelo arquivo .mp4 quando tiver) -->
+  <div class="video-slot" id="video-slot">
+    <div class="video-slot-placeholder">
+      Vídeo de apresentação<br>
+      <small style="opacity:0.6;text-transform:none;letter-spacing:0;font-size:11px">substituir aqui pelo .mp4 do Reel</small>
+    </div>
+    <div class="video-slot-overlay">
+      Esporte · Convívio · Gastronomia
+    </div>
+  </div>
+
+  <!-- EXPERIMENTAL -->
+  <section class="section">
+    <div class="sec-eyebrow">Primeira vez</div>
+    <h2 class="sec-title">Nunca jogou? Começa aqui.</h2>
+    <p class="sec-sub">Uma aula completa pra conhecer o esporte, a arena e os professores — sem compromisso.</p>
+
+    <button class="card card-exp" data-product="experimental" data-label="Aula Experimental R$ 60" data-value="60" data-phone="19994557698" data-msg="Oi! Quero marcar uma aula experimental de Beach Tennis.">
+      <div class="card-top">
+        <span class="card-eyebrow">Aula experimental</span>
+      </div>
+      <div class="card-title">1 aula completa</div>
+      <div class="exp-row">
+        <div class="exp-price">R$ 60</div>
+        <div class="exp-unit">valor único · 1 pessoa</div>
+      </div>
+      <div class="card-sub">Com professor + raquete + bolas inclusos. Dura 1h.</div>
+      <div class="cta-row">Agendar minha experimental</div>
+    </button>
+  </section>
+
+  <!-- PLANOS BT -->
+  <section class="section">
+    <div class="sec-eyebrow">Planos de aula</div>
+    <h2 class="sec-title">Escolha sua frequência.</h2>
+    <p class="sec-sub">Turmas organizadas por nível. Semestral tem o melhor custo-benefício.</p>
+
+    <!-- BT 1x -->
+    <button class="card" data-product="bt_1x" data-label="BT 1× por semana" data-value="420" data-phone="19994557698" data-msg="Oi! Quero o plano de Beach Tennis 1x por semana.">
+      <div class="card-top">
+        <span class="card-eyebrow">1× por semana</span>
+      </div>
+      <div class="card-title">Começo tranquilo</div>
+      <div class="card-sub">Uma aula fixa semanal. Ideal pra quem tá entrando.</div>
+
+      <div class="price-row">
+        <span class="price-row-label">Mensal</span>
+        <span class="price-row-value">R$ 420</span>
+      </div>
+      <div class="price-row">
+        <span class="price-row-label">Trimestral</span>
+        <span class="price-row-value">R$ 375<sub>/mês</sub></span>
+      </div>
+      <div class="price-row highlight">
+        <span class="price-row-label">Semestral</span>
+        <span class="price-row-value">R$ 350<sub>/mês</sub></span>
+      </div>
+
+      <div class="economy">Semestral economiza <strong>R$ 420</strong> em 6 meses</div>
+      <div class="cta-row">Quero esse plano</div>
+    </button>
+
+    <!-- BT 2x -->
+    <button class="card" data-product="bt_2x" data-label="BT 2× por semana" data-value="800" data-phone="19994557698" data-msg="Oi! Quero o plano de Beach Tennis 2x por semana.">
+      <div class="card-top">
+        <span class="card-eyebrow">2× por semana</span>
+        <span class="card-badge">★ Mais escolhido</span>
+      </div>
+      <div class="card-title">Evolução mais rápida</div>
+      <div class="card-sub">Duas aulas por semana. Progresso visível em semanas.</div>
+
+      <div class="price-row">
+        <span class="price-row-label">Mensal</span>
+        <span class="price-row-value">R$ 800</span>
+      </div>
+      <div class="price-row">
+        <span class="price-row-label">Trimestral</span>
+        <span class="price-row-value">R$ 715<sub>/mês</sub></span>
+      </div>
+      <div class="price-row highlight">
+        <span class="price-row-label">Semestral</span>
+        <span class="price-row-value">R$ 640<sub>/mês</sub></span>
+      </div>
+
+      <div class="economy">Semestral economiza <strong>R$ 960</strong> em 6 meses</div>
+      <div class="cta-row">Quero esse plano</div>
+    </button>
+  </section>
+
+  <!-- CLUBINHO -->
+  <section class="section">
+    <div class="sec-eyebrow">Já joga?</div>
+    <h2 class="sec-title">Entra pro Clubinho.</h2>
+    <p class="sec-sub">Pra quem já tem base — acesso livre às quadras e jogos todos os dias.</p>
+
+    <button class="card card-clu" data-product="clubinho" data-label="Clubinho" data-value="240" data-phone="19994557698" data-msg="Oi! Quero entrar no Clubinho Nova Beach.">
+      <div class="card-top">
+        <span class="card-eyebrow">Clubinho</span>
+      </div>
+      <div class="card-title">Acesso livre + jogos</div>
+      <div class="card-sub">Reserva quadra, participa dos jogos em grupo e treina quando quiser.</div>
+
+      <div class="price-row">
+        <span class="price-row-label">Mensal</span>
+        <span class="price-row-value">R$ 240</span>
+      </div>
+      <div class="price-row">
+        <span class="price-row-label">Trimestral</span>
+        <span class="price-row-value">R$ 200<sub>/mês</sub></span>
+      </div>
+      <div class="price-row highlight">
+        <span class="price-row-label">Semestral</span>
+        <span class="price-row-value">R$ 170<sub>/mês</sub></span>
+      </div>
+
+      <div class="economy">Semestral economiza <strong>R$ 420</strong> em 6 meses</div>
+      <div class="cta-row">Quero entrar no Clubinho</div>
+    </button>
+  </section>
+
+  <!-- INFO -->
+  <section class="section" id="info">
+    <div class="sec-eyebrow">A arena</div>
+    <h2 class="sec-title">Onde e quando.</h2>
+    <div class="info-grid" style="margin-top:14px">
+      <div class="info-item">
+        <div class="info-label">Endereço</div>
+        <div class="info-value">Av. Dr. Jesuíno Marcondes Machado, 869<br>Nova Campinas · Campinas/SP</div>
+        <div style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=Nova+Beach+Campinas+Av+Jesuino+Marcondes+Machado+869" target="_blank" rel="noopener">Abrir no Maps →</a></div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Horário</div>
+        <div class="info-value">Segunda a sexta<br>6h às 22h</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Final de semana</div>
+        <div class="info-value">Sábado e domingo<br>+ Funcional na areia</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Instagram</div>
+        <div class="info-value"><a href="https://instagram.com/novabeach.cps" target="_blank" rel="noopener">@novabeach.cps</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FALLBACK -->
+  <div class="fallback">
+    <div class="fallback-title">Ainda com dúvida?</div>
+    <div class="fallback-sub">Chama o atendimento no WhatsApp — a gente te orienta sem compromisso.</div>
+    <button class="fallback-btn" data-product="duvida" data-label="Dúvida genérica" data-value="0" data-phone="19994557698" data-msg="Oi! Vi o site e tenho umas dúvidas sobre Beach Tennis.">
+      Falar com atendimento
+    </button>
+  </div>
+
+  <footer>
+    Nova Beach Campinas · Arena de Beach Tennis em Nova Campinas · 2026
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-handle" aria-hidden="true"></div>
+    <button class="modal-close" id="modal-close" aria-label="Fechar">×</button>
+
+    <div class="modal-eyebrow" id="modal-eyebrow">Rápido pra te direcionar</div>
+    <h3 class="modal-title" id="modal-title">Mais 2 informações</h3>
+    <p class="modal-sub" id="modal-sub">Pra conectar você direto com quem pode te ajudar melhor.</p>
+
+    <div class="q-block">
+      <label class="q-label">Você mora em qual região?</label>
+      <div class="chip-group" data-group="bairro">
+        <button class="chip" data-value="Nova Campinas">Nova Campinas</button>
+        <button class="chip" data-value="Cambuí">Cambuí</button>
+        <button class="chip" data-value="Taquaral">Taquaral</button>
+        <button class="chip" data-value="Nova Suíça">Nova Suíça</button>
+        <button class="chip" data-value="Jardim das Paineiras">Jardim das Paineiras</button>
+        <button class="chip" data-value="Barão Geraldo">Barão Geraldo</button>
+        <button class="chip" data-value="Outro bairro">Outro bairro</button>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">Quando quer começar?</label>
+      <div class="chip-group" data-group="quando">
+        <button class="chip" data-value="Essa semana">Essa semana</button>
+        <button class="chip" data-value="Esse mês">Esse mês</button>
+        <button class="chip" data-value="Só pesquisando">Só pesquisando</button>
+      </div>
+    </div>
+
+    <button class="modal-cta" id="modal-cta" disabled>Continuar pro WhatsApp</button>
+
+    <div class="modal-researcher" id="modal-researcher">
+      Legal! Então deixa a gente te mandar as informações sem pressão.<br><br>
+      Em <strong>Nova Campinas</strong>, Av. Dr. Jesuíno Marcondes Machado, 869. Aberto <strong>seg-sex 6h-22h</strong>, sábado e domingo também. Preços dos planos estão acima.<br><br>
+      <strong>Dica:</strong> quando estiver pronto, vale uma aula experimental por R$ 60 — tira dúvida de verdade.
+      <a href="#info" class="modal-researcher-link" id="researcher-close">Ver localização →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const PHONE = '19994557698';
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalSub = document.getElementById('modal-sub');
+  const modalEyebrow = document.getElementById('modal-eyebrow');
+  const modalCta = document.getElementById('modal-cta');
+  const modalClose = document.getElementById('modal-close');
+  const researcherBox = document.getElementById('modal-researcher');
+  const researcherClose = document.getElementById('researcher-close');
+
+  let currentProduct = null;
+  let selected = {bairro:null,quando:null};
+
+  function openModal(cardEl){
+    currentProduct = {
+      key: cardEl.dataset.product,
+      label: cardEl.dataset.label,
+      value: parseFloat(cardEl.dataset.value||0),
+      msg: cardEl.dataset.msg
+    };
+    modalEyebrow.textContent = currentProduct.label;
+    modalTitle.textContent = 'Mais 2 informações';
+    modalSub.textContent = 'Pra conectar você direto com quem pode te ajudar melhor.';
+    selected = {bairro:null,quando:null};
+    document.querySelectorAll('.chip.selected').forEach(c=>c.classList.remove('selected'));
+    researcherBox.classList.remove('active');
+    modalCta.disabled = true;
+    modalCta.textContent = 'Continuar pro WhatsApp';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    try { fbq('trackCustom','FilterOpened',{content_name:currentProduct.key}); } catch(e){}
+  }
+
+  function closeModal(){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateCta(){
+    if(!selected.bairro || !selected.quando){
+      modalCta.disabled = true;
+      return;
+    }
+    // Lead "só pesquisando" → autoexclusão silenciosa
+    if(selected.quando === 'Só pesquisando'){
+      modalCta.disabled = true;
+      modalCta.textContent = '👇 Veja tudo com calma abaixo';
+      researcherBox.classList.add('active');
+      try { fbq('trackCustom','LeadSelfExcluded',{content_name:currentProduct.key,reason:'researcher'}); } catch(e){}
+      return;
+    }
+    // "Outro bairro" + "Só pesquisando" seria combo frio — já tratado acima
+    // Lead qualificado
+    modalCta.disabled = false;
+    modalCta.textContent = selected.bairro === 'Outro bairro' ? 'Continuar pro WhatsApp' : 'Falar agora com atendimento';
+    researcherBox.classList.remove('active');
+  }
+
+  function fireLeadAndRedirect(){
+    const extraMsg = ` (Moro em: ${selected.bairro} · Quero começar: ${selected.quando})`;
+    const fullMsg = currentProduct.msg + extraMsg;
+    const url = `https://wa.me/55${PHONE}?text=${encodeURIComponent(fullMsg)}`;
+
+    try {
+      fbq('track','Lead',{
+        content_name: currentProduct.key,
+        content_category: 'catalogo_bt',
+        value: currentProduct.value,
+        currency: 'BRL',
+        bairro: selected.bairro,
+        quando: selected.quando,
+        source: 'bio_instagram'
+      });
+    } catch(e){}
+
+    // small delay to let pixel fire
+    setTimeout(()=>{ window.location.href = url; }, 180);
+  }
+
+  // Card click handlers
+  document.querySelectorAll('[data-product]').forEach(card=>{
+    card.addEventListener('click', ()=> openModal(card));
+  });
+
+  // Chip selection
+  document.querySelectorAll('.chip-group').forEach(group=>{
+    const type = group.dataset.group;
+    group.querySelectorAll('.chip').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        group.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+        chip.classList.add('selected');
+        selected[type] = chip.dataset.value;
+        updateCta();
+      });
+    });
+  });
+
+  // Modal controls
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+  researcherClose.addEventListener('click', (e)=>{ closeModal(); });
+  modalCta.addEventListener('click', fireLeadAndRedirect);
+
+  // ESC to close
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='Escape' && modal.classList.contains('active')) closeModal();
+  });
+
+  // UTM capture (store for pixel enrichment if needed later)
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const utms = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(k=>{
+      const v = params.get(k);
+      if(v) utms[k] = v;
+    });
+    if(Object.keys(utms).length){
+      sessionStorage.setItem('nb_utms', JSON.stringify(utms));
+      fbq('trackCustom','UTMCaptured', utms);
+    }
+  } catch(e){}
+})();
+</script>
+</body>
+</html>

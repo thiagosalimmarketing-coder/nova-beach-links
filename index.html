@@ -1,15 +1,1011 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Beach Campinas</title>
-  <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="refresh" content="0;url=https://novabeachcampinas.com.br/">
-  <link rel="canonical" href="https://novabeachcampinas.com.br/">
-  <script>window.location.replace('https://novabeachcampinas.com.br/');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nova Beach Campinas · Beach Tennis em Nova Campinas</title>
+<meta name="description" content="Arena de Beach Tennis em Nova Campinas. 5 quadras, aulas, Clubinho, eventos e Bowa Bar.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1a3066">
+<link rel="icon" type="image/png" href="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/favicon-1-300x300.png">
+<link rel="apple-touch-icon" href="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/favicon-1-300x300.png">
+<link rel="canonical" href="https://links.novabeachcampinas.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nova Beach Campinas">
+<meta property="og:title" content="Nova Beach Campinas · Beach Tennis em Nova Campinas">
+<meta property="og:description" content="Arena de Beach Tennis em Nova Campinas. 5 quadras, aulas para todos os níveis.">
+<meta property="og:url" content="https://links.novabeachcampinas.com.br/">
+<meta property="og:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --nb-navy:#0e1e42;--nb-navy-2:#1a3066;--nb-accent:#d7fd3f;--nb-accent-2:#aed631;
+  --nb-sand:#f3f5fa;--nb-ink:#0a1428;--nb-mute:#64708f;
+  --nb-border:rgba(14,30,66,0.08);--nb-border-strong:rgba(14,30,66,0.14);
+  --nb-shadow:0 4px 24px rgba(14,30,66,0.06);--nb-shadow-lg:0 8px 32px rgba(14,30,66,0.1);
+  --radius:16px;--radius-sm:12px;
+  --font:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--nb-sand);color:var(--nb-ink);font-family:var(--font);
+  font-size:15px;line-height:1.5;min-height:100vh;min-height:100svh;
+  -webkit-font-smoothing:antialiased;position:relative;
+  background-image:
+    radial-gradient(circle at 15% 20%,rgba(255,181,71,0.08) 0,transparent 40%),
+    radial-gradient(circle at 85% 80%,rgba(26,48,102,0.06) 0,transparent 40%);
+}
+.pattern{position:fixed;inset:0;pointer-events:none;background-image:url('nb-ball.png');background-repeat:repeat;background-size:160px;opacity:0.035;z-index:0}
+img{display:block;max-width:100%;height:auto}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+.layout{position:relative;z-index:1;min-height:100vh;min-height:100svh}
+
+/* =========== MOBILE (default) — vídeo stories/shorts format =========== */
+.media-outer{padding:20px 16px 8px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.media-header{width:100%;max-width:280px;display:flex;align-items:center;justify-content:space-between}
+.media-logo{height:48px;object-fit:contain}
+.media-loc{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--nb-navy);background:#fff;border:1px solid var(--nb-border);padding:6px 11px;border-radius:999px;font-family:var(--mono);letter-spacing:0.02em}
+.media-loc::before{content:'';width:5px;height:5px;background:var(--nb-accent);border-radius:50%;box-shadow:0 0 10px var(--nb-accent)}
+
+.media-wrap{
+  position:relative;width:100%;max-width:280px;aspect-ratio:9/16;overflow:hidden;
+  background:var(--nb-navy);border-radius:22px;box-shadow:var(--nb-shadow-lg);
+  border:1px solid var(--nb-border);
+}
+.media-video{width:100%;height:100%;object-fit:cover;display:block}
+.media-overlay{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,transparent 55%,rgba(14,30,66,0.85) 100%);
+}
+.media-caption{position:absolute;left:14px;right:14px;bottom:14px;color:#fff;z-index:2;text-align:left}
+.media-caption-title{font-size:19px;font-weight:800;letter-spacing:-0.025em;line-height:1.05;margin-bottom:4px;text-shadow:0 2px 12px rgba(0,0,0,0.5)}
+.media-caption-title em{color:var(--nb-accent);font-style:normal}
+.media-caption-sub{font-size:10px;color:rgba(255,255,255,0.9);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--mono)}
+
+.sound-btn{
+  position:absolute;top:12px;right:12px;z-index:3;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 11px;background:rgba(0,0,0,0.55);backdrop-filter:blur(10px);
+  color:#fff;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.04em;
+  text-transform:uppercase;cursor:pointer;transition:background .15s;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.sound-btn:hover{background:rgba(0,0,0,0.75)}
+.sound-btn svg{display:block}
+.sound-btn.active{background:var(--nb-accent);color:var(--nb-navy);border-color:var(--nb-accent)}
+.sound-btn.active .sound-off{display:none}
+.sound-btn.active .sound-on{display:block !important}
+
+.quiz{padding:24px 20px 40px;max-width:560px;margin:0 auto}
+
+.quiz-progress{display:flex;gap:4px;margin-bottom:20px}
+.quiz-progress-step{flex:1;height:3px;background:var(--nb-border);border-radius:2px;overflow:hidden;position:relative}
+.quiz-progress-step.active{background:var(--nb-accent)}
+.quiz-progress-step.done{background:var(--nb-navy)}
+
+.step{display:none;animation:fadeInUp .35s cubic-bezier(.2,.9,.3,1)}
+.step.active{display:block}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.step-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--nb-navy-2);background:rgba(26,48,102,0.08);padding:6px 12px;border-radius:999px;margin-bottom:12px}
+.step-eyebrow::before{content:'';width:5px;height:5px;background:var(--nb-accent);border-radius:50%}
+.step-title{font-size:26px;font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin-bottom:6px;color:var(--nb-navy)}
+.step-title em{color:var(--nb-accent-2);font-style:normal}
+.step-sub{font-size:14px;color:var(--nb-mute);margin-bottom:18px;line-height:1.5}
+
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  background:#fff;border:1.5px solid var(--nb-border);border-radius:var(--radius);
+  padding:16px 18px;text-align:left;width:100%;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transition:all .15s;box-shadow:var(--nb-shadow);
+}
+.opt:hover{border-color:var(--nb-navy-2);transform:translateY(-1px);box-shadow:var(--nb-shadow-lg)}
+.opt.selected{border-color:var(--nb-navy);background:var(--nb-navy);color:#fff}
+.opt-body{flex:1;min-width:0}
+.opt-title{font-size:15px;font-weight:800;letter-spacing:-0.01em;color:var(--nb-navy);line-height:1.2;margin-bottom:3px}
+.opt.selected .opt-title{color:#fff}
+.opt-sub{font-size:12px;color:var(--nb-mute);line-height:1.4}
+.opt.selected .opt-sub{color:rgba(255,255,255,0.7)}
+.opt-arrow{
+  flex-shrink:0;width:32px;height:32px;background:var(--nb-sand);color:var(--nb-navy);
+  border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:800;
+  transition:all .15s;
+}
+.opt.selected .opt-arrow{background:var(--nb-accent);color:var(--nb-navy)}
+.opt:hover .opt-arrow{background:var(--nb-accent);color:var(--nb-navy)}
+
+.step-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px;gap:12px}
+.btn-back{
+  display:inline-flex;align-items:center;gap:6px;padding:10px 14px;
+  color:var(--nb-mute);font-size:13px;font-weight:600;background:transparent;
+  border-radius:8px;transition:color .12s;
+}
+.btn-back:hover{color:var(--nb-navy)}
+.btn-back::before{content:'←'}
+
+.cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 22px;background:var(--nb-navy);color:#fff;border-radius:999px;
+  font-size:14px;font-weight:800;letter-spacing:-0.01em;transition:all .15s;
+  box-shadow:0 6px 20px rgba(14,30,66,0.2);
+}
+.cta:hover{background:var(--nb-navy-2);transform:translateY(-1px)}
+.cta::after{content:'→'}
+.cta.wa{background:#25D366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,0.3)}
+.cta.wa:hover{background:#1fb558}
+
+/* Trust row */
+.trust-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;padding:12px 14px;background:#fff;border:1px solid var(--nb-border);border-radius:var(--radius-sm);box-shadow:var(--nb-shadow)}
+.trust-item{font-size:12px;color:var(--nb-mute);letter-spacing:0.02em;font-weight:500}
+.trust-item strong{color:var(--nb-navy);font-weight:800}
+.trust-sep{width:1px;height:14px;background:var(--nb-border-strong)}
+
+/* Preview message */
+.msg-preview{
+  margin-top:14px;padding:14px 16px;background:#f8faff;border:1px dashed var(--nb-border-strong);
+  border-radius:var(--radius-sm);font-size:13px;color:var(--nb-ink);line-height:1.5;font-family:var(--mono);
+}
+.msg-preview-label{font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--nb-mute);margin-bottom:6px;display:block;font-family:var(--font)}
+.hours-note{margin-top:12px;font-size:11px;color:var(--nb-mute);text-align:center}
+.hours-note strong{color:var(--nb-navy);font-weight:800}
+
+/* Form */
+.form-row{margin-bottom:14px}
+.form-label{display:block;font-size:12px;font-weight:800;color:var(--nb-navy);margin-bottom:6px;letter-spacing:0.02em}
+.form-input{
+  width:100%;padding:14px 16px;background:#fff;border:1.5px solid var(--nb-border);
+  border-radius:var(--radius-sm);font-size:15px;font-weight:600;color:var(--nb-ink);
+  font-family:var(--font);transition:border-color .12s;outline:none;
+}
+.form-input:focus{border-color:var(--nb-navy-2)}
+.form-input::placeholder{color:var(--nb-mute);font-weight:500}
+.lgpd-row{display:flex;align-items:flex-start;gap:8px;margin:14px 0 4px;font-size:12px;color:var(--nb-mute);line-height:1.4;cursor:pointer;user-select:none}
+.lgpd-row input[type="checkbox"]{margin-top:2px;flex-shrink:0;accent-color:var(--nb-navy)}
+
+/* Chips */
+.chip-group{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  flex:0 0 auto;padding:10px 14px;border-radius:999px;background:#fff;border:1.5px solid var(--nb-border);
+  font-size:13px;font-weight:600;color:var(--nb-ink);transition:all .12s;line-height:1;cursor:pointer;
+}
+.chip:hover{border-color:var(--nb-navy-2)}
+.chip.selected{background:var(--nb-navy);color:#fff;border-color:var(--nb-navy);font-weight:800}
+
+/* Price reveal */
+.price-reveal{
+  background:#fff;border:1px solid var(--nb-border);border-radius:var(--radius);
+  padding:18px;margin-top:14px;box-shadow:var(--nb-shadow);
+}
+.price-reveal-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nb-mute);margin-bottom:6px}
+.price-reveal-value{font-family:var(--mono);font-size:22px;font-weight:800;color:var(--nb-navy);letter-spacing:-0.02em;line-height:1}
+.price-reveal-value small{font-size:12px;color:var(--nb-mute);font-weight:500;margin-left:4px}
+.price-reveal-tag{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;color:#a56a00;background:linear-gradient(135deg,#fff8ec 0%,#fff2d6 100%);border:1px solid rgba(255,154,26,0.25);padding:4px 10px;border-radius:999px}
+
+.summary{
+  background:#fff;border:1px solid var(--nb-border);border-radius:var(--radius);
+  padding:18px;margin-bottom:16px;box-shadow:var(--nb-shadow);
+}
+.summary-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--nb-accent-2);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.summary-eyebrow::before{content:'✓';display:grid;place-items:center;width:16px;height:16px;background:var(--nb-accent);color:var(--nb-navy);border-radius:50%;font-size:10px;font-weight:800}
+.summary-item{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--nb-border-strong);font-size:13px}
+.summary-item:last-child{border-bottom:none}
+.summary-item-label{color:var(--nb-mute);font-weight:600}
+.summary-item-value{color:var(--nb-navy);font-weight:800;text-align:right}
+
+.researcher-box{
+  margin-top:14px;padding:18px;background:#fff;border:1px solid var(--nb-border);border-radius:var(--radius);
+  font-size:13px;color:var(--nb-ink);line-height:1.55;box-shadow:var(--nb-shadow);
+}
+.researcher-box strong{color:var(--nb-navy);font-weight:800}
+.researcher-box .maps{display:inline-block;margin-top:10px;color:var(--nb-navy-2);font-weight:800;font-size:13px}
+
+footer{padding:28px 20px;text-align:center;color:var(--nb-mute);font-size:11px;letter-spacing:0.04em;font-family:var(--mono)}
+
+/* =========== SPLIT LAYOUT — vídeo + quiz lado a lado em tudo =========== */
+.layout{
+  display:grid;grid-template-columns:48% 1fr;gap:0;
+  align-items:start;max-width:980px;margin:0 auto;
+}
+.media-outer{position:sticky;top:0;padding:12px 6px 12px 10px;gap:8px;display:flex;flex-direction:column;align-self:start}
+.media-header{max-width:none;flex-direction:row;align-items:center;justify-content:space-between;gap:6px;width:100%;flex-shrink:0}
+.media-logo{height:30px}
+.media-loc{font-size:9.5px;padding:4px 9px}
+.media-wrap{max-width:none;border-radius:14px;aspect-ratio:9/16}
+.media-caption{padding:10px 10px}
+.media-caption-title{font-size:13px;line-height:1.05}
+.media-caption-sub{font-size:8px;letter-spacing:0.06em}
+.sound-btn{top:6px;right:6px;padding:4px 7px;font-size:9px;gap:4px}
+.sound-btn svg{width:11px;height:11px}
+
+.quiz{padding:16px 14px 32px 8px;min-width:0}
+.quiz>*{min-width:0}
+.step-title{font-size:17px;line-height:1.1}
+.step-sub{font-size:12px;margin-bottom:12px;line-height:1.4}
+.sec-eyebrow,.step-eyebrow{font-size:9px;padding:4px 9px;margin-bottom:8px}
+
+.quiz-progress{margin-bottom:14px}
+.quiz-progress-step{height:2px}
+
+.opts{gap:5px}
+.opt{padding:9px 10px;border-radius:10px}
+.opt-body{display:flex;flex-direction:column}
+.opt-title{font-size:12px;line-height:1.15;margin-bottom:1px}
+.opt-sub{font-size:9.5px;line-height:1.25;opacity:0.85}
+.opt-arrow{width:20px;height:20px;font-size:11px;flex-shrink:0}
+.opt+.opt{margin-top:0}
+
+.chip-group{gap:5px}
+.chip{padding:7px 10px;font-size:11.5px;border-radius:999px}
+
+.form-row{margin-bottom:10px}
+.form-label{font-size:10.5px;margin-bottom:4px}
+.form-input{padding:10px 12px;font-size:14px;border-radius:9px}
+.lgpd-row{font-size:10.5px;margin:10px 0 2px}
+
+.cta{padding:11px 16px;font-size:13px}
+.btn-back{padding:8px 10px;font-size:11.5px}
+.step-nav{margin-top:14px}
+
+.summary{padding:14px;margin-bottom:12px}
+.summary-eyebrow{font-size:9.5px;margin-bottom:8px}
+.summary-item{font-size:11.5px;padding:5px 0}
+
+.msg-preview{padding:10px 12px;font-size:11.5px;line-height:1.4;margin-top:10px}
+.msg-preview-label{font-size:9px;margin-bottom:4px}
+.hours-note{font-size:10px;margin-top:10px}
+
+.trust-row{padding:7px 9px;gap:4px;flex-wrap:nowrap;justify-content:space-around;margin-bottom:14px;overflow:hidden}
+.trust-item{font-size:9.5px;white-space:nowrap}
+.trust-item strong{font-size:11px}
+.trust-sep{display:none}
+footer{padding:12px 10px;font-size:10px}
+
+.researcher-box{padding:12px;font-size:11.5px;line-height:1.5}
+
+/* Desktop: mais ar e tamanhos maiores */
+@media(min-width:720px){
+  .layout{grid-template-columns:36% 1fr;max-width:1080px}
+  .media-outer{padding:28px 16px 20px 24px;gap:12px}
+  .media-header{align-items:center;gap:8px}
+  .media-logo{height:38px}
+  .media-loc{font-size:11px;padding:7px 11px}
+  .media-wrap{border-radius:18px;min-height:480px}
+  .media-caption{padding:14px 14px}
+  .media-caption-title{font-size:20px}
+  .media-caption-sub{font-size:10px}
+  .sound-btn{top:10px;right:10px;padding:6px 10px;font-size:10.5px;gap:5px}
+  .sound-btn svg{width:13px;height:13px}
+  .quiz{padding:28px 28px 40px 18px}
+  .step-title{font-size:26px}
+  .step-sub{font-size:14px;margin-bottom:18px}
+  .sec-eyebrow,.step-eyebrow{font-size:11px;padding:6px 12px;margin-bottom:12px}
+  .quiz-progress-step{height:3px}
+  .opts{gap:10px}
+  .opt{padding:16px 18px;border-radius:14px}
+  .opt-title{font-size:15px}
+  .opt-sub{font-size:12px}
+  .opt-arrow{width:32px;height:32px;font-size:15px}
+  .chip-group{gap:7px}
+  .chip{padding:9px 14px;font-size:13px}
+  .form-row{margin-bottom:14px}
+  .form-label{font-size:12px;margin-bottom:6px}
+  .form-input{padding:14px 16px;font-size:15px;border-radius:12px}
+  .lgpd-row{font-size:12px}
+  .cta{padding:14px 22px;font-size:14px}
+  .btn-back{padding:10px 14px;font-size:13px}
+  .step-nav{margin-top:20px}
+  .summary{padding:18px;margin-bottom:16px}
+  .summary-eyebrow{font-size:11px;margin-bottom:10px}
+  .summary-item{font-size:13px;padding:7px 0}
+  .msg-preview{padding:14px 16px;font-size:13px;line-height:1.5;margin-top:14px}
+  .msg-preview-label{font-size:10px;margin-bottom:6px}
+  .hours-note{font-size:11px;margin-top:12px}
+  .trust-row{padding:12px 14px;gap:10px;justify-content:center;margin-bottom:18px}
+  .trust-item{font-size:12px}
+  .trust-item strong{font-size:14px}
+  .trust-sep{display:block}
+  .researcher-box{padding:16px;font-size:13px}
+}
+
+
+/* Banner torneio */
+.tour-banner{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:10px 12px;background:var(--nb-navy);color:#fff;border-radius:var(--radius-sm);box-shadow:var(--nb-shadow-lg);transition:transform .15s}
+.tour-banner:hover{transform:translateY(-1px)}
+.tour-tag{flex-shrink:0;font-size:9px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:var(--nb-accent);color:var(--nb-navy);padding:4px 8px;border-radius:999px}
+.tour-body{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.tour-body strong{font-size:13px;font-weight:800}
+.tour-body span{font-size:11px;opacity:0.8}
+.tour-arrow{flex-shrink:0;font-weight:800;color:var(--nb-accent)}
+@media(min-width:720px){.tour-banner{padding:12px 16px;margin-bottom:16px}.tour-tag{font-size:10px}.tour-body strong{font-size:15px}.tour-body span{font-size:12px}}
+
+/* Rodape */
+.foot-info{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font-family:var(--font);font-size:12px;letter-spacing:0;color:var(--nb-mute);line-height:1.4}
+.foot-info strong{color:var(--nb-navy)}
+.foot-info a{color:var(--nb-navy-2);font-weight:700}
+
+/* =========== MOBILE: empilhado (video em cima, quiz embaixo, letras legiveis) =========== */
+@media(max-width:719px){
+  .layout{display:block}
+  .media-outer{position:relative;padding:16px 16px 4px;align-items:center;gap:10px}
+  .media-header{max-width:420px}
+  .media-logo{height:34px}
+  .media-loc{font-size:10.5px;padding:5px 10px}
+  .media-wrap{width:auto;height:min(34svh,300px);aspect-ratio:9/16;border-radius:18px}
+  .media-caption-title{font-size:16px}
+  .media-caption-sub{font-size:8.5px}
+  .sound-btn{top:8px;right:8px;padding:5px 9px;font-size:10px}
+  .quiz{padding:14px 16px 28px;max-width:560px;margin:0 auto}
+  .trust-row{gap:6px;padding:9px 10px}
+  .trust-item{font-size:11px}
+  .trust-item strong{font-size:12px}
+  .step-eyebrow{font-size:10px;padding:5px 10px}
+  .step-title{font-size:23px}
+  .step-sub{font-size:13.5px;margin-bottom:14px}
+  .opts{gap:8px}
+  .opt{padding:13px 14px;border-radius:12px}
+  .opt-title{font-size:15px;margin-bottom:2px}
+  .opt-sub{font-size:12px}
+  .opt-arrow{width:28px;height:28px;font-size:14px}
+  .chip{padding:10px 13px;font-size:13px}
+  .form-label{font-size:12px}
+  .form-input{font-size:16px;padding:13px 14px}
+  .lgpd-row{font-size:12px}
+  .cta{padding:13px 20px;font-size:14px}
+  .btn-back{font-size:13px}
+  .summary-item{font-size:13px}
+  .msg-preview{font-size:12.5px}
+  .hours-note{font-size:11px}
+  .researcher-box{font-size:13px}
+  footer{padding:20px 16px}
+}
+</style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1397968278475446');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=PageView&noscript=1"/></noscript>
 </head>
-<body style="font-family:Arial,sans-serif;background:#f3f5fa;display:flex;align-items:center;justify-content:center;min-height:100vh">
-  <a href="https://novabeachcampinas.com.br/" style="color:#1a3066">Ir para o site da Nova Beach</a>
+
+<body>
+<div class="pattern"></div>
+
+<div class="layout">
+
+  <!-- MEDIA (vídeo stories format) -->
+  <div class="media-outer">
+    <div class="media-header">
+      <img class="media-logo" src="logo-novabeach.png" alt="Nova Beach">
+      <span class="media-loc">Nova Campinas</span>
+    </div>
+    <div class="media-wrap">
+      <video id="hero-video" class="media-video" autoplay muted loop playsinline preload="auto" poster="logo-novabeach.png">
+        <source src="hero-video.mp4" type="video/mp4">
+      </video>
+      <div class="media-overlay"></div>
+      <button class="sound-btn" id="sound-btn" aria-label="Ativar som">
+        <svg class="sound-off" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M22 9l-6 6M16 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="sound-on" width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="sound-label">som</span>
+      </button>
+      <div class="media-caption">
+        <div class="media-caption-title">Beach Tennis<br>como <em>deve ser.</em></div>
+        <div class="media-caption-sub">5 quadras · Professores certificados · Bowa Bar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <a class="tour-banner" id="tour-banner" href="https://letzplay.me/novabeach" target="_blank" rel="noopener">
+      <span class="tour-tag">Inscrições abertas</span>
+      <span class="tour-body"><strong>Nova Beach Open</strong><span>26 a 29 de novembro · garanta sua vaga</span></span>
+      <span class="tour-arrow">→</span>
+    </a>
+    <div class="trust-row">
+      <div class="trust-item"><strong>5</strong> quadras</div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><strong>Professores</strong> certificados</div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><strong>Bowa Bar</strong> no local</div>
+    </div>
+
+    <div class="quiz-progress" id="progress">
+      <div class="quiz-progress-step active" data-step="1"></div>
+      <div class="quiz-progress-step" data-step="2"></div>
+      <div class="quiz-progress-step" data-step="3"></div>
+      <div class="quiz-progress-step" data-step="4"></div>
+      <div class="quiz-progress-step" data-step="5"></div>
+    </div>
+
+    <!-- STEP 1 — Entrada -->
+    <div class="step active" data-step="1">
+      <div class="step-eyebrow">Começar</div>
+      <h2 class="step-title">O que te <em>trouxe aqui?</em></h2>
+      <p class="step-sub">Rápido pra te conectar com quem pode te ajudar melhor.</p>
+
+      <div class="opts">
+        <button class="opt" data-choice="jogar">
+          <div class="opt-body">
+            <div class="opt-title">Quero jogar Beach Tennis</div>
+            <div class="opt-sub">Aulas regulares ou experimental</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+        <button class="opt" data-choice="clubinho">
+          <div class="opt-body">
+            <div class="opt-title">Já jogo, quero jogar aqui</div>
+            <div class="opt-sub">Clubinho — acesso livre + jogos</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+        <button class="opt" data-choice="reservar">
+          <div class="opt-body">
+            <div class="opt-title">Reservar quadra ou espaço</div>
+            <div class="opt-sub">Avulsa, empresarial, day use</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+        <button class="opt" data-choice="evento">
+          <div class="opt-body">
+            <div class="opt-title">Fazer um evento aqui</div>
+            <div class="opt-sub">Aniversário, confraternização, aulão</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+        <button class="opt" data-choice="ct360">
+          <div class="opt-body">
+            <div class="opt-title">CT NB360 — alta performance 🏆</div>
+            <div class="opt-sub">Atletas e profissionais de Beach Tennis</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+        <button class="opt" data-choice="patrocinio">
+          <div class="opt-body">
+            <div class="opt-title">Quero ser patrocinador 🤝</div>
+            <div class="opt-sub">Naming, fachada, cotas, torneios, mídia</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — Aprofunda (adaptativo) -->
+    <div class="step" data-step="2">
+      <div class="step-eyebrow" id="step2-eyebrow">—</div>
+      <h2 class="step-title" id="step2-title">—</h2>
+      <p class="step-sub" id="step2-sub">—</p>
+
+      <div class="opts" id="step2-opts"><!-- preenchido via JS --></div>
+
+      <div class="step-nav">
+        <button class="btn-back" data-back="1">voltar</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Bairro -->
+    <div class="step" data-step="3">
+      <div class="step-eyebrow">Última pergunta</div>
+      <h2 class="step-title">Onde você <em>mora?</em></h2>
+      <p class="step-sub">Pra confirmar que estamos pertinho e priorizar seu atendimento.</p>
+
+      <div class="chip-group" data-group="bairro">
+        <button class="chip" data-value="Nova Campinas">Nova Campinas</button>
+        <button class="chip" data-value="Cambuí">Cambuí</button>
+        <button class="chip" data-value="Taquaral">Taquaral</button>
+        <button class="chip" data-value="Swiss Park">Swiss Park</button>
+        <button class="chip" data-value="Jardim das Paineiras">Jd. Paineiras</button>
+        <button class="chip" data-value="Barão Geraldo">Barão Geraldo</button>
+        <button class="chip" data-value="Outro bairro Campinas">Outro em Campinas</button>
+        <button class="chip" data-value="Fora de Campinas">Fora de Campinas</button>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" data-back="2">voltar</button>
+        <button class="cta" id="to-step4" disabled style="opacity:0.4;pointer-events:none">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — Nome + Telefone -->
+    <div class="step" data-step="4">
+      <div class="step-eyebrow">Quase lá</div>
+      <h2 class="step-title">Como podemos <em>te chamar?</em></h2>
+      <p class="step-sub">Pra iniciar a conversa já te conhecendo. Nada de disparo em massa.</p>
+
+      <div class="form-row">
+        <label class="form-label" for="input-nome">Seu nome</label>
+        <input type="text" id="input-nome" class="form-input" placeholder="Como você gosta de ser chamado" autocomplete="given-name" maxlength="40">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="input-tel">WhatsApp</label>
+        <input type="tel" id="input-tel" class="form-input" placeholder="(19) 9 9999-9999" autocomplete="tel" inputmode="tel" maxlength="16">
+      </div>
+
+      <label class="lgpd-row">
+        <input type="checkbox" id="lgpd-ok" checked>
+        <span>Autorizo contato da Nova Beach pelo WhatsApp.</span>
+      </label>
+
+      <div class="step-nav">
+        <button class="btn-back" data-back="3">voltar</button>
+        <button class="cta" id="to-step5" disabled style="opacity:0.4;pointer-events:none">Ver resumo</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 — Resumo + CTA -->
+    <div class="step" data-step="5">
+      <div class="step-eyebrow">Tudo pronto</div>
+      <h2 class="step-title" id="step5-title">Vamos <em>conversar.</em></h2>
+      <p class="step-sub" id="step5-sub">Você vai falar com o time que cuida exatamente desse assunto. Resposta rápida.</p>
+
+      <div class="summary" id="summary"><!-- preenchido via JS --></div>
+
+      <div class="msg-preview" id="msg-preview">
+        <span class="msg-preview-label">Mensagem que será enviada</span>
+        <span id="msg-preview-text">—</span>
+      </div>
+
+      <div id="step5-cta-wrap">
+        <button class="cta wa" id="to-wa">Chamar no WhatsApp</button>
+      </div>
+
+      <div class="hours-note">Atendemos <strong>seg a qui 7h–22h · sex 7h–21h · sáb 8h–16h · dom 9h–15h</strong>. Fora disso, respondemos assim que abrir.</div>
+
+      <!-- Researcher mode (só pesquisando) -->
+      <div class="researcher-box" id="researcher-box" style="display:none">
+        Sem pressa. Enquanto você pensa, as informações estão aqui 👇<br><br>
+        <strong>📍 Onde:</strong> Av. Dr. Jesuíno Marcondes Machado, 869 · Nova Campinas, Campinas/SP<br>
+        <strong>⏰ Quando:</strong> seg a qui 7h–22h · sex 7h–21h · sáb 8h–16h · dom 9h–15h<br>
+        <strong>📱 Instagram:</strong> @novabeach.cps<br><br>
+        Quando estiver pronto, chama a gente — ou volta aqui e refaz a resposta ✨
+        <a href="https://www.google.com/maps/search/?api=1&query=Nova+Beach+Campinas+Av+Jesuino+Marcondes+Machado+869" target="_blank" rel="noopener" class="maps">Abrir no Google Maps →</a>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" data-back="4">voltar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-info">
+    <span>📍 Av. Dr. Jesuíno Marcondes Machado, 869 · Nova Campinas</span>
+    <span>⏰ seg–qui 7h–22h · sex 7h–21h · sáb 8h–16h · dom 9h–15h</span>
+    <span>✅ Aceitamos <strong>Wellhub</strong></span>
+    <span><a href="https://www.instagram.com/novabeach.cps/" target="_blank" rel="noopener">📱 @novabeach.cps</a> · <a href="https://www.google.com/maps/search/?api=1&query=Nova+Beach+Campinas+Av+Jesuino+Marcondes+Machado+869" target="_blank" rel="noopener">Como chegar</a></span>
+  </div>
+  <div>Nova Beach Campinas · 2026</div>
+</footer>
+
+<script>
+(function(){
+  // ===== DATA =====
+  const PATHS = {
+    jogar: {
+      vertical: 'Jogar BT',
+      phone: '19995575156', // Recepcao (humano)
+      target: 'ia',
+      step2: {
+        eyebrow:'Beach Tennis',
+        title:'Qual seu <em>nível?</em>',
+        sub:'Pra indicar a melhor turma pra você.',
+        opts:[
+          {key:'nunca',redirect:'/wa/experimental/',title:'Nunca joguei',sub:'Começa com aula experimental R$ 60',priceLabel:'Aula experimental',priceValue:'R$ 60',priceTag:'Valor único · com professor e raquete',msg:'Quero marcar uma aula experimental de Beach Tennis.'},
+          {key:'1x',redirect:'/wa/bt-1x/',title:'Quero 1× por semana',sub:'Começo tranquilo',priceLabel:'Plano 1× / semana',priceValue:'R$ 350 /mês',priceTag:'Semestral · economiza R$ 420',msg:'Quero o plano de Beach Tennis 1x por semana.'},
+          {key:'2x',redirect:'/wa/bt-2x/',title:'Quero 2× por semana',sub:'Evolução mais rápida · ⭐ mais escolhido',priceLabel:'Plano 2× / semana',priceValue:'R$ 640 /mês',priceTag:'Semestral · economiza R$ 960',msg:'Quero o plano de Beach Tennis 2x por semana.'}
+        ]
+      }
+    },
+    clubinho: {
+      vertical: 'Clubinho',
+      phone: '19995575156',
+      target: 'ia',
+      step2: {
+        eyebrow:'Clubinho',
+        title:'Qual <em>plano?</em>',
+        sub:'Acesso livre às quadras + jogos todos os dias.',
+        opts:[
+          {key:'mensal',redirect:'/wa/clubinho/',title:'Mensal',sub:'Sem compromisso de prazo',priceLabel:'Clubinho mensal',priceValue:'R$ 240 /mês',priceTag:'Pague mês a mês',msg:'Quero entrar no Clubinho — plano mensal.'},
+          {key:'trimestral',redirect:'/wa/clubinho/',title:'Trimestral',sub:'3 meses contínuos',priceLabel:'Clubinho trimestral',priceValue:'R$ 200 /mês',priceTag:'Economiza R$ 120 em 3 meses',msg:'Quero entrar no Clubinho — plano trimestral.'},
+          {key:'semestral',redirect:'/wa/clubinho/',title:'Semestral · melhor custo',sub:'6 meses contínuos',priceLabel:'Clubinho semestral',priceValue:'R$ 170 /mês',priceTag:'Economiza R$ 420 em 6 meses',msg:'Quero entrar no Clubinho — plano semestral.'}
+        ]
+      }
+    },
+    reservar: {
+      vertical: 'Reservar espaço',
+      phone: '19999178194', // Humano Eventos
+      target: 'eventos',
+      step2: {
+        eyebrow:'Reservar',
+        title:'O que você <em>precisa?</em>',
+        sub:'Vou te conectar com o time de eventos.',
+        opts:[
+          {key:'quadra',redirect:'/wa/quadra/',title:'Reservar quadra avulsa',sub:'Pra jogar com meus amigos',priceLabel:'Quadra avulsa',priceValue:'Sob consulta',priceTag:'Depende do dia/horário',msg:'Quero reservar uma quadra avulsa pra jogar com meus amigos.'},
+          {key:'empresarial',redirect:'/wa/empresarial/',title:'Day Use Empresarial',sub:'Levar meu time pra confraternizar',priceLabel:'Day Use Empresarial',priceValue:'Sob consulta',priceTag:'Monte um pacote completo',msg:'Quero fazer um Day Use Empresarial com meu time.'},
+          {key:'individual',redirect:'/wa/day-use-individual/',title:'Day Use Individual',sub:'Passar o dia na arena',priceLabel:'Day Use Individual',priceValue:'R$ 45 /pessoa',priceTag:'Com direito à estrutura completa',msg:'Quero fazer um Day Use Individual.'}
+        ]
+      }
+    },
+    patrocinio: {
+      vertical: 'Patrocínio',
+      phone: '19974022492', // Alex — responsável patrocínio
+      target: 'patrocinio',
+      step2: {
+        eyebrow:'Patrocínio & Parcerias',
+        title:'Qual tipo de <em>cota</em> te interessa?',
+        sub:'Pra Alex já te mandar o material certo e falar sobre valor.',
+        opts:[
+          {key:'naming',redirect:'/wa/patrocinio/',title:'Naming Rights da Arena',sub:'Sua marca no nome da arena · máxima exposição',priceLabel:'Naming Rights',priceValue:'Sob consulta',priceTag:'Cota premium · negociação direta',msg:'Oi Alex! Tenho interesse na cota Naming Rights da arena Nova Beach. Quero saber valores e condições.'},
+          {key:'fachada',redirect:'/wa/patrocinio/',title:'Fachada e painéis internos',sub:'Logo fachada, placas, painéis das quadras',priceLabel:'Visibilidade física',priceValue:'Sob consulta',priceTag:'Cotas variam por área · pacote mensal ou anual',msg:'Oi Alex! Quero ver as cotas de fachada e painéis internos da Nova Beach — valores e disponibilidade.'},
+          {key:'camisa_rede',redirect:'/wa/patrocinio/',title:'Camisa de atletas / rede',sub:'Logo em uniformes e rede das quadras',priceLabel:'Camisa / Rede',priceValue:'Sob consulta',priceTag:'Associação direta ao esporte · ótimo custo-benefício',msg:'Oi Alex! Quero conhecer as cotas de camisa de atletas e rede das quadras.'},
+          {key:'torneio',redirect:'/wa/patrocinio/',title:'Torneio ou ativação pontual',sub:'Patrocínio de evento específico · ativação de marca',priceLabel:'Torneio/Ativação',priceValue:'Sob consulta',priceTag:'Pacotes personalizados por evento',msg:'Oi Alex! Quero patrocinar um torneio ou fazer ativação de marca em evento da Nova Beach.'},
+          {key:'digital',redirect:'/wa/patrocinio/',title:'Mídia digital (redes + WhatsApp)',sub:'Posts, stories, grupo WhatsApp dos membros',priceLabel:'Mídia digital',priceValue:'Sob consulta',priceTag:'Alcance qualificado · público alto padrão',msg:'Oi Alex! Quero conhecer as cotas de mídia digital — redes sociais e WhatsApp dos membros.'},
+          {key:'kit',redirect:'/wa/patrocinio/',title:'Me manda o Mídia Kit completo',sub:'Quero ver todas as cotas antes de decidir',priceLabel:'Mídia Kit 2026',priceValue:'Sob consulta',priceTag:'Material completo · todas as cotas e valores',msg:'Oi Alex! Me manda o Mídia Kit 2026 completo da Nova Beach — quero conhecer todas as cotas de patrocínio.'}
+        ]
+      }
+    },
+    ct360: {
+      vertical: 'CT NB360 Alta Performance',
+      phone: '19997086943', // Responsável CT NB360
+      target: 'ct_nb360',
+      step2: {
+        eyebrow:'CT NB360',
+        title:'Qual seu <em>objetivo?</em>',
+        sub:'O CT NB360 é treino de alta performance pra quem quer evoluir sério.',
+        opts:[
+          {key:'virar_pro',redirect:'/wa/ct360/',title:'Quero me profissionalizar',sub:'Treino intenso + preparação pra torneios',priceLabel:'CT NB360',priceValue:'Sob consulta',priceTag:'Avaliação individual · plano personalizado',msg:'Quero entrar no CT NB360 — meu objetivo é me profissionalizar no Beach Tennis.'},
+          {key:'competir',redirect:'/wa/ct360/',title:'Quero competir em torneios',sub:'Preparação técnica e tática',priceLabel:'CT NB360',priceValue:'Sob consulta',priceTag:'Avaliação + plano de treino',msg:'Quero entrar no CT NB360 — meu objetivo é competir em torneios de Beach Tennis.'},
+          {key:'pro',redirect:'/wa/ct360/',title:'Já sou profissional',sub:'Quero treinar em alto nível aqui',priceLabel:'CT NB360',priceValue:'Sob consulta',priceTag:'Treino de alta performance',msg:'Sou profissional de Beach Tennis e quero treinar no CT NB360 Nova Beach.'}
+        ]
+      }
+    },
+    evento: {
+      vertical: 'Fazer evento',
+      phone: '19999178194', // Humano Eventos
+      target: 'eventos',
+      step2: {
+        eyebrow:'Evento',
+        title:'Qual tipo de <em>evento?</em>',
+        sub:'A gente monta tudo com você.',
+        opts:[
+          {key:'aniversario',redirect:'/wa/aniversario/',title:'Aniversário',sub:'Festa com quadras + Bowa Bar',priceLabel:'Aniversário Nova Beach',priceValue:'Sob consulta',priceTag:'Pacote personalizado',msg:'Quero fazer um aniversário na Nova Beach.'},
+          {key:'confrater',redirect:'/wa/confrater/',title:'Confraternização de empresa',sub:'Final de ano, equipe, time',priceLabel:'Confraternização',priceValue:'Sob consulta',priceTag:'Churrasco + quadras + Bowa Bar',msg:'Quero fazer uma confraternização de empresa.'},
+          {key:'aulao',redirect:'/wa/aulao/',title:'Aulão de Beach Tennis + café',sub:'Aula em grupo pra turma ou empresa',priceLabel:'Aulão em grupo',priceValue:'Sob consulta',priceTag:'Professor + café da manhã',msg:'Quero fazer um aulão de Beach Tennis em grupo com café da manhã.'}
+        ]
+      }
+    }
+  };
+
+  // ===== STATE =====
+  let state = {step:1, path:null, choice:null, bairro:null, nome:'', tel:'', lgpd:true};
+
+  // ===== DOM =====
+  const steps = document.querySelectorAll('.step');
+  const progressSteps = document.querySelectorAll('.quiz-progress-step');
+  const step2 = {
+    eyebrow: document.getElementById('step2-eyebrow'),
+    title: document.getElementById('step2-title'),
+    sub: document.getElementById('step2-sub'),
+    opts: document.getElementById('step2-opts')
+  };
+  const summary = document.getElementById('summary');
+  const toStep4Btn = document.getElementById('to-step4');
+  const toStep5Btn = document.getElementById('to-step5');
+  const toWaBtn = document.getElementById('to-wa');
+  const researcherBox = document.getElementById('researcher-box');
+  const step5Title = document.getElementById('step5-title');
+  const step5Sub = document.getElementById('step5-sub');
+  const inputNome = document.getElementById('input-nome');
+  const inputTel = document.getElementById('input-tel');
+  const lgpdOk = document.getElementById('lgpd-ok');
+
+  // ===== HELPERS =====
+  function goStep(n){
+    state.step = n;
+    steps.forEach(s=>s.classList.toggle('active', +s.dataset.step===n));
+    progressSteps.forEach(p=>{
+      const sn = +p.dataset.step;
+      p.classList.toggle('done', sn < n);
+      p.classList.toggle('active', sn === n);
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+    try{fbq('trackCustom','QuizStep',{step:n,path:state.path||'',choice:state.choice?state.choice.key:''});}catch(e){}
+  }
+
+  // Google Sheets webhook — Thiago configura e cola a URL
+  const SHEETS_URL = ''; // ex: 'https://script.google.com/macros/s/XXXX/exec'
+  function sendToSheets(payload){
+    if(!SHEETS_URL) return;
+    try {
+      fetch(SHEETS_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify(payload)
+      });
+    } catch(e){}
+  }
+
+  // Tracking de abandono (beforeunload)
+  let converted = false;
+  window.addEventListener('beforeunload', ()=>{
+    if(!converted && state.step > 1){
+      try{fbq('trackCustom','QuizAbandoned',{step:state.step,path:state.path||'',has_contact:!!state.tel});}catch(e){}
+    }
+  });
+
+  function renderStep2(){
+    const data = PATHS[state.path];
+    if(!data) return;
+    step2.eyebrow.textContent = data.step2.eyebrow;
+    step2.title.innerHTML = data.step2.title;
+    step2.sub.textContent = data.step2.sub;
+    step2.opts.innerHTML = '';
+    data.step2.opts.forEach(opt=>{
+      const btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.dataset.sub = opt.key;
+      btn.innerHTML = `
+        <div class="opt-body">
+          <div class="opt-title">${opt.title}</div>
+          <div class="opt-sub">${opt.sub}</div>
+        </div>
+        <div class="opt-arrow">→</div>
+      `;
+      btn.addEventListener('click', ()=>{
+        state.choice = opt;
+        try{fbq('trackCustom','QuizChoice2',{path:state.path,choice:opt.key});}catch(e){}
+        goStep(3);
+      });
+      step2.opts.appendChild(btn);
+    });
+  }
+
+  function renderSummary(){
+    const choice = state.choice;
+    const bairro = state.bairro;
+    const path = PATHS[state.path];
+    summary.innerHTML = `
+      <div class="summary-eyebrow">Resumo</div>
+      <div class="summary-item">
+        <span class="summary-item-label">Interesse</span>
+        <span class="summary-item-value">${choice.title}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Vertical</span>
+        <span class="summary-item-value">${path.vertical}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Investimento</span>
+        <span class="summary-item-value">${choice.priceValue}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Mora em</span>
+        <span class="summary-item-value">${bairro}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Atendimento</span>
+        <span class="summary-item-value">${
+          path.target==='eventos' ? 'Time de Eventos' :
+          path.target==='patrocinio' ? 'Alex · Patrocínio' :
+          path.target==='ct_nb360' ? 'CT NB360 · Alta Performance' :
+          'Beach Tennis Nova Beach'
+        }</span>
+      </div>
+    `;
+
+    // "Fora de Campinas" = ainda captura, mas sinaliza
+    if(bairro === 'Fora de Campinas'){
+      step5Title.innerHTML = 'Pertinho de <em>Campinas?</em>';
+      step5Sub.textContent = 'Estamos em Nova Campinas. Chama no WhatsApp pra confirmar se compensa pra você.';
+      researcherBox.style.display = 'block';
+      try{fbq('trackCustom','LeadFarAway',{path:state.path});}catch(e){}
+    } else {
+      step5Title.innerHTML = 'Vamos <em>conversar.</em>';
+      step5Sub.textContent = 'Você vai falar com o time que cuida exatamente desse assunto. Resposta rápida.';
+      researcherBox.style.display = 'none';
+    }
+
+    // Preview da mensagem
+    try {
+      const nomeMsg = state.nome ? `Oi, aqui é ${state.nome}! ` : 'Oi! ';
+      const msgText = `${nomeMsg}${choice.msg.replace(/^Quero/,'quero')} Moro em ${bairro}.`;
+      document.getElementById('msg-preview-text').textContent = msgText;
+    } catch(e){}
+  }
+
+  function validateContact(){
+    const nameOk = (inputNome.value || '').trim().length >= 2;
+    const telDigits = (inputTel.value || '').replace(/\D/g,'');
+    const telOk = telDigits.length >= 10;
+    const lgpd = lgpdOk.checked;
+    const ok = nameOk && telOk && lgpd;
+    toStep5Btn.disabled = !ok;
+    toStep5Btn.style.opacity = ok ? '1' : '0.4';
+    toStep5Btn.style.pointerEvents = ok ? 'auto' : 'none';
+    return ok;
+  }
+
+  function formatPhone(v){
+    v = v.replace(/\D/g,'').slice(0,11);
+    if(v.length <= 2) return v;
+    if(v.length <= 7) return '('+v.slice(0,2)+') '+v.slice(2);
+    if(v.length <= 10) return '('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
+    return '('+v.slice(0,2)+') '+v.slice(2,3)+' '+v.slice(3,7)+'-'+v.slice(7);
+  }
+
+  // ===== EVENTS =====
+
+  // STEP 1 options
+  document.querySelectorAll('.step[data-step="1"] .opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      // Limpa estado quando muda de caminho
+      state.path = opt.dataset.choice;
+      state.choice = null;
+      state.bairro = null;
+      // Reset UI dependente
+      document.querySelectorAll('.chip.selected').forEach(c=>c.classList.remove('selected'));
+      const t4 = document.getElementById('to-step4');
+      if(t4){t4.disabled=true;t4.style.opacity='0.4';t4.style.pointerEvents='none';}
+      try{fbq('trackCustom','QuizChoice1',{path:state.path});}catch(e){}
+      renderStep2();
+      goStep(2);
+    });
+  });
+
+  // STEP 3 chips (bairro)
+  document.querySelectorAll('.step[data-step="3"] .chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      document.querySelectorAll('.step[data-step="3"] .chip').forEach(c=>c.classList.remove('selected'));
+      chip.classList.add('selected');
+      state.bairro = chip.dataset.value;
+      toStep4Btn.disabled = false;
+      toStep4Btn.style.opacity = '1';
+      toStep4Btn.style.pointerEvents = 'auto';
+      try{fbq('trackCustom','QuizChoice3',{bairro:state.bairro});}catch(e){}
+    });
+  });
+
+  toStep4Btn.addEventListener('click', ()=>{
+    // Guard: só avança se tem path+choice+bairro consistente
+    if(!state.path || !state.choice || !state.bairro){
+      alert('Faltou alguma escolha. Volta e escolhe de novo.');
+      goStep(1);
+      return;
+    }
+    // Guard: choice tem que pertencer ao path atual
+    const validKeys = (PATHS[state.path].step2.opts||[]).map(o=>o.key);
+    if(validKeys.indexOf(state.choice.key) === -1){
+      state.choice = null;
+      goStep(2);
+      return;
+    }
+    goStep(4);
+  });
+
+  // STEP 4 — contato (nome + tel + LGPD)
+  inputNome.addEventListener('input', validateContact);
+  inputTel.addEventListener('input', (e)=>{
+    e.target.value = formatPhone(e.target.value);
+    validateContact();
+  });
+  lgpdOk.addEventListener('change', validateContact);
+
+  toStep5Btn.addEventListener('click', ()=>{
+    state.nome = (inputNome.value||'').trim();
+    state.tel = (inputTel.value||'').replace(/\D/g,'');
+    state.lgpd = lgpdOk.checked;
+    const path = PATHS[state.path];
+    const utmParams = (function(){
+      try{return JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){return {}}
+    })();
+    try{
+      // Contato preenchido (evento custom). O Lead oficial dispara 1x na rota /wa/* ao abrir o WhatsApp.
+      fbq('trackCustom','QuizContato',{
+        content_name: `${state.path}_${state.choice.key}_captured`,
+        content_category: path.vertical,
+        path: state.path,
+        choice: state.choice.key,
+        bairro: state.bairro,
+        has_contact: true,
+        source: 'landing_hub_quiz'
+      });
+    }catch(e){}
+    // Enviar pra Sheets (webhook configurado via SHEETS_URL)
+    sendToSheets({
+      path: state.path,
+      choice: state.choice.key,
+      bairro: state.bairro,
+      nome: state.nome,
+      tel: state.tel,
+      utm_source: utmParams.utm_source || '',
+      utm_campaign: utmParams.utm_campaign || '',
+      utm_content: utmParams.utm_content || '',
+      msg: `${state.nome ? 'Oi, aqui é '+state.nome+'! ' : 'Oi! '}${state.choice.msg} Moro em ${state.bairro}.`,
+      ua: navigator.userAgent
+    });
+    renderSummary();
+    goStep(5);
+  });
+
+  // STEP 5 CTA — redireciona pela rota /wa/* (pixel + wa.me handoff personalizado)
+  toWaBtn.addEventListener('click', ()=>{
+    const path = PATHS[state.path];
+    const choice = state.choice;
+    const nomeMsg = state.nome ? `Oi, aqui é ${state.nome}! ` : 'Oi! ';
+    const customMsg = `${nomeMsg}${choice.msg.replace(/^Quero/,'quero')} Moro em ${state.bairro}.`;
+    const q = new URLSearchParams({
+      utm_source: 'landing_hub',
+      utm_medium: 'quiz',
+      utm_campaign: state.path,
+      utm_content: choice.key,
+      utm_term: state.bairro,
+      nb_msg: customMsg,
+      nb_bairro: state.bairro,
+      nb_nome: state.nome
+    });
+    const targetUrl = `${choice.redirect}?${q.toString()}`;
+
+    // Sem evento Lead aqui: a rota /wa/* dispara o Lead (evita contar a mesma pessoa 2-3x).
+    // Nome e telefone NUNCA vao para o pixel (politica do Meta).
+    try{fbq('trackCustom','QuizWhatsApp',{path:state.path,choice:choice.key,bairro:state.bairro});}catch(e){}
+
+    converted = true;
+    setTimeout(()=>{ window.location.href = targetUrl; }, 180);
+  });
+
+  // Banner do torneio
+  const tour = document.getElementById('tour-banner');
+  if(tour){ tour.addEventListener('click', ()=>{ try{fbq('trackCustom','TorneioClick',{torneio:'nova_beach_open_2026'});}catch(e){} }); }
+
+  // Back buttons
+  document.querySelectorAll('.btn-back').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ goStep(+btn.dataset.back); });
+  });
+
+  // Sound toggle on hero video
+  const video = document.getElementById('hero-video');
+  const soundBtn = document.getElementById('sound-btn');
+  if(video && soundBtn){
+    soundBtn.addEventListener('click', ()=>{
+      video.muted = !video.muted;
+      soundBtn.classList.toggle('active', !video.muted);
+      soundBtn.querySelector('.sound-label').textContent = video.muted ? 'som' : 'ouvindo';
+      if(!video.muted){
+        video.play().catch(()=>{});
+        try{fbq('trackCustom','VideoUnmuted');}catch(e){}
+      }
+    });
+  }
+
+  // Capture UTM
+  try{
+    const params = new URLSearchParams(window.location.search);
+    const utms = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(k=>{
+      const v = params.get(k);
+      if(v) utms[k] = v;
+    });
+    if(Object.keys(utms).length){
+      sessionStorage.setItem('nb_utms', JSON.stringify(utms));
+      fbq('trackCustom','UTMCaptured', utms);
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
