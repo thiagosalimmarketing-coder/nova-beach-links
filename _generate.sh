@@ -1,10 +1,10 @@
 #!/bin/bash
-# Generator: creates /ads/<slot>, /site/<slot>, and /handoff/<slot> pages.
+# Generator: creates /ads/<slot>, /social/<slot>, and /handoff/<slot> pages.
 #
 # Architecture:
 #   /ads/*     — Meta Ads landings. Lead pixel event. Some route to AI (5983),
 #                others to human (5575156). AI qualifies then hands off.
-#   /site/*    — Organic/site landings. Same pixel, source=site. Always human.
+#   /social/*    — Organic/site landings. Same pixel, source=site. Always human.
 #   /handoff/* — Bot sends this link after qualifying. Purchase/Schedule event.
 #                Always human. Clean, natural pre-filled message.
 #
@@ -44,7 +44,7 @@ ENTRY_PHONE="${HUMAN_PHONE}"
 BASE_URL="https://links.novabeachcampinas.com.br"
 
 # ─────────────────────────────────────────────────────────────
-# TABLE 1: Products (drives /ads/* and /site/*)
+# TABLE 1: Products (drives /ads/* and /social/*)
 # slot | ads_phone | site_phone | content_name | product_label
 # ─────────────────────────────────────────────────────────────
 PRODUCTS=(
@@ -88,7 +88,7 @@ CRM_PATHS=(
 # slot | pixel_event | content_name | prefilled_message
 #
 # Modelo de 2 eventos:
-#   Lead     -> chegou na pagina /ads/* ou /site/* (topo de funil)
+#   Lead     -> chegou na pagina /ads/* ou /social/* (topo de funil)
 #   Purchase -> lead foi encaminhado ao humano via /handoff/* (fundo de funil)
 #
 # Purchase aqui significa: lead qualificado pela IA que chegou ao humano.
@@ -269,9 +269,9 @@ HTML
 }
 
 # ─────────────────────────────────────────────────────────────
-# Build /ads/* and /site/*
+# Build /ads/* and /social/*
 # ─────────────────────────────────────────────────────────────
-echo "Building /ads/* and /site/*..."
+echo "Building /ads/* and /social/*..."
 for prod in "${PRODUCTS[@]}"; do
   IFS='|' read -r slot ads_phone site_phone content_name label <<< "$prod"
 
@@ -284,11 +284,11 @@ for prod in "${PRODUCTS[@]}"; do
   write_page "ads/${slot}" "Lead" "$content_name" "meta_ads" "$ads_url" "$og_title" "$og_desc"
   echo "  ✓ /ads/${slot}/  → ${ads_phone}"
 
-  # /site/<slot>
-  site_msg="Olá! Vim pelo site e gostaria de saber mais sobre ${label}."
-  site_url="https://wa.me/${site_phone}?text=$(url_encode "$site_msg")"
-  write_page "site/${slot}" "Lead" "$content_name" "site" "$site_url" "$og_title" "$og_desc"
-  echo "  ✓ /site/${slot}/  → ${site_phone}"
+  # /social/<slot>
+  social_msg="Olá! Vim pelo Instagram e gostaria de saber mais sobre ${label}."
+  social_url="https://wa.me/${site_phone}?text=$(url_encode "$social_msg")"
+  write_page "social/${slot}" "Lead" "$content_name" "social" "$social_url" "$og_title" "$og_desc"
+  echo "  ✓ /social/${slot}/  → ${site_phone}"
 done
 
 # ─────────────────────────────────────────────────────────────
@@ -318,4 +318,4 @@ done
 
 echo ""
 echo "Done. Structure:"
-find ads site handoff crm -name index.html 2>/dev/null | sort
+find ads social handoff crm -name index.html 2>/dev/null | sort
