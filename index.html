@@ -335,15 +335,25 @@ footer{padding:12px 10px;font-size:10px}
 
 /* =========== MOBILE: empilhado (video em cima, quiz embaixo, letras legiveis) =========== */
 @media(max-width:719px){
-  .layout{display:block}
+  .layout{display:block;z-index:auto}
   .media-outer{position:relative;padding:16px 16px 4px;align-items:center;gap:10px}
   .media-header{max-width:420px}
   .media-logo{height:34px}
   .media-loc{font-size:10.5px;padding:5px 10px}
-  .media-wrap{width:auto;height:min(34svh,300px);aspect-ratio:9/16;border-radius:18px}
+  /* video: bolha flutuante (fechado) / popup (aberto) */
+  .media-wrap{position:fixed;right:14px;bottom:16px;width:76px;height:auto;aspect-ratio:9/16;z-index:60;border:2px solid var(--nb-accent);border-radius:14px;cursor:pointer;box-shadow:0 8px 28px rgba(14,30,66,0.35);transition:width .25s ease}
+  .media-wrap .media-caption,.media-wrap .sound-btn,.media-wrap .vid-close{display:none}
+  .vid-bubble-tag{display:block}
+  .media-wrap.open{right:50%;bottom:50%;transform:translate(50%,50%);width:min(90vw,calc(86svh * 9 / 16));border-radius:18px;z-index:100;cursor:default;border-color:transparent}
+  .media-wrap.open .media-caption,.media-wrap.open .sound-btn,.media-wrap.open .vid-close{display:flex}
+  .media-wrap.open .media-caption{display:block}
+  .media-wrap.open .vid-bubble-tag{display:none}
+  .vid-backdrop.show{display:block}
+  .sound-btn{left:10px;right:auto}
+  body{padding-bottom:40px}
   .media-caption-title{font-size:16px}
   .media-caption-sub{font-size:8.5px}
-  .sound-btn{top:8px;right:8px;padding:5px 9px;font-size:10px}
+  .sound-btn{top:10px;left:10px;right:auto;padding:6px 10px;font-size:10px}
   .quiz{padding:14px 16px 28px;max-width:560px;margin:0 auto}
   .trust-row{gap:6px;padding:9px 10px}
   .trust-item{font-size:11px}
@@ -368,6 +378,11 @@ footer{padding:12px 10px;font-size:10px}
   .researcher-box{font-size:13px}
   footer{padding:20px 16px}
 }
+
+/* elementos do popup (escondidos no desktop) */
+.vid-close{display:none;position:absolute;top:8px;right:8px;z-index:4;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,0.6);color:#fff;font-size:15px;font-weight:800;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.2)}
+.vid-bubble-tag{display:none;position:absolute;left:0;right:0;bottom:6px;z-index:3;text-align:center;font-size:9px;font-weight:800;color:#fff;letter-spacing:0.04em;text-shadow:0 1px 6px rgba(0,0,0,0.8);pointer-events:none}
+.vid-backdrop{display:none;position:fixed;inset:0;z-index:90;background:rgba(10,20,40,0.78);backdrop-filter:blur(4px)}
 </style>
 
 <!-- Meta Pixel -->
@@ -381,6 +396,7 @@ fbq('track','PageView');
 
 <body>
 <div class="pattern"></div>
+<div class="vid-backdrop" id="vid-backdrop"></div>
 
 <div class="layout">
 
@@ -400,6 +416,8 @@ fbq('track','PageView');
         <svg class="sound-on" width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="sound-label">som</span>
       </button>
+      <button class="vid-close" id="vid-close" aria-label="Fechar vídeo">✕</button>
+      <span class="vid-bubble-tag">▶ Conheça</span>
       <div class="media-caption">
         <div class="media-caption-title">Beach Tennis<br>como <em>deve ser.</em></div>
         <div class="media-caption-sub">5 quadras · Professores certificados · Bowa Bar</div>
@@ -962,6 +980,43 @@ fbq('track','PageView');
     converted = true;
     setTimeout(()=>{ window.location.href = targetUrl; }, 180);
   });
+
+  // ===== Video popup (so no celular) =====
+  (function(){
+    const mq = window.matchMedia('(max-width:719px)');
+    const wrap = document.querySelector('.media-wrap');
+    const vid = document.getElementById('hero-video');
+    const backdrop = document.getElementById('vid-backdrop');
+    const closeBtn = document.getElementById('vid-close');
+    if(!wrap || !vid) return;
+    function openPopup(byUser){
+      wrap.classList.add('open'); backdrop.classList.add('show');
+      document.body.style.overflow='hidden';
+      if(byUser){ vid.muted=false; const sb=document.getElementById('sound-btn'); if(sb){sb.classList.add('active'); sb.querySelector('.sound-label').textContent='ouvindo';} }
+      vid.play().catch(()=>{});
+      try{fbq('trackCustom','VideoPopupOpen',{auto:!byUser});}catch(e){}
+    }
+    function closePopup(){
+      wrap.classList.remove('open'); backdrop.classList.remove('show');
+      document.body.style.overflow='';
+      vid.muted=true; const sb=document.getElementById('sound-btn'); if(sb){sb.classList.remove('active'); sb.querySelector('.sound-label').textContent='som';}
+      vid.play().catch(()=>{});
+    }
+    wrap.addEventListener('click', (e)=>{
+      if(!mq.matches || wrap.classList.contains('open')) return;
+      openPopup(true);
+    });
+    closeBtn.addEventListener('click', (e)=>{ e.stopPropagation(); closePopup(); });
+    backdrop.addEventListener('click', closePopup);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && wrap.classList.contains('open')) closePopup(); });
+    mq.addEventListener && mq.addEventListener('change', ()=>{ if(!mq.matches) closePopup(); });
+    // Abre sozinho 1x por sessao, ao entrar no celular (mudo — o navegador bloqueia som automatico)
+    let seen=false; try{seen=sessionStorage.getItem('nb_vid_popup')==='1';}catch(e){}
+    if(mq.matches && !seen){
+      setTimeout(()=>{ if(state.step===1) openPopup(false); }, 800);
+      try{sessionStorage.setItem('nb_vid_popup','1');}catch(e){}
+    }
+  })();
 
   // Back buttons
   document.querySelectorAll('.btn-back').forEach(btn=>{
