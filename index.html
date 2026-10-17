@@ -1015,7 +1015,10 @@ fbq('track','PageView');
     mq.addEventListener && mq.addEventListener('change', ()=>{ if(!mq.matches) closePopup(); });
     // Abre sozinho 1x por sessao, ao entrar no celular (mudo — o navegador bloqueia som automatico)
     let seen=false; try{seen=sessionStorage.getItem('nb_vid_popup')==='1';}catch(e){}
-    if(mq.matches && !seen){
+    // Quem chega de anuncio (utm/fbclid) vai direto pro quiz: sem popup automatico
+    const qs = new URLSearchParams(window.location.search);
+    const fromAd = qs.has('utm_source') || qs.has('fbclid') || qs.has('gclid') || qs.has('p');
+    if(mq.matches && !seen && !fromAd){
       setTimeout(()=>{ if(state.step===1) openPopup(false); }, 800);
       try{sessionStorage.setItem('nb_vid_popup','1');}catch(e){}
     }
