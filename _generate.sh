@@ -284,11 +284,17 @@ for prod in "${PRODUCTS[@]}"; do
   write_page "ads/${slot}" "Lead" "$content_name" "meta_ads" "$ads_url" "$og_title" "$og_desc"
   echo "  ✓ /ads/${slot}/  → ${ads_phone}"
 
-  # /social/<slot>
+  # /social/<slot>  — Instagram/Facebook organico
   social_msg="Olá! Vim pelo Instagram e gostaria de saber mais sobre ${label}."
   social_url="https://wa.me/${site_phone}?text=$(url_encode "$social_msg")"
   write_page "social/${slot}" "Lead" "$content_name" "social" "$social_url" "$og_title" "$og_desc"
   echo "  ✓ /social/${slot}/  → ${site_phone}"
+
+  # /site/<slot>  — site institucional WordPress (novabeachcampinas.com.br)
+  site_msg="Olá! Vim pelo site da Nova Beach e gostaria de saber mais sobre ${label}."
+  site_url="https://wa.me/${site_phone}?text=$(url_encode "$site_msg")"
+  write_page "site/${slot}" "Lead" "$content_name" "site_institucional" "$site_url" "$og_title" "$og_desc"
+  echo "  ✓ /site/${slot}/  → ${site_phone}"
 done
 
 # ─────────────────────────────────────────────────────────────
@@ -318,4 +324,4 @@ done
 
 echo ""
 echo "Done. Structure:"
-find ads social handoff crm -name index.html 2>/dev/null | sort
+find ads social site handoff crm -name index.html 2>/dev/null | sort

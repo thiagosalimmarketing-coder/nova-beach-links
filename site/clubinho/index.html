@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Beach Campinas — Clubinho (jogo livre de Beach Tennis)</title>
+  <meta name="description" content="Fale com a Nova Beach pelo WhatsApp sobre Clubinho (jogo livre de Beach Tennis). Beach Tennis em Campinas.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://links.novabeachcampinas.com.br/site/clubinho/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nova Beach Campinas">
+  <meta property="og:title" content="Nova Beach Campinas — Clubinho (jogo livre de Beach Tennis)">
+  <meta property="og:description" content="Fale com a Nova Beach pelo WhatsApp sobre Clubinho (jogo livre de Beach Tennis). Beach Tennis em Campinas.">
+  <meta property="og:url" content="https://links.novabeachcampinas.com.br/site/clubinho/">
+  <meta property="og:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+  <meta property="og:image:alt" content="Nova Beach Campinas">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nova Beach Campinas — Clubinho (jogo livre de Beach Tennis)">
+  <meta name="twitter:description" content="Fale com a Nova Beach pelo WhatsApp sobre Clubinho (jogo livre de Beach Tennis). Beach Tennis em Campinas.">
+  <meta name="twitter:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { min-height: 100vh; background: #f3f5fa; display: flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; position: relative; }
+    .pattern { position: fixed; inset: 0; pointer-events: none; background-image: url('../../nb-ball.png'); background-repeat: repeat; background-size: 140px 140px; opacity: 0.035; }
+    .card { position: relative; z-index: 1; background: #1a3066; border-radius: 16px; padding: 40px 48px; display: flex; flex-direction: column; align-items: center; gap: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+    .logo { height: 48px; width: auto; object-fit: contain; }
+    .msg { color: rgba(255,255,255,0.7); font-size: 14px; letter-spacing: 0.3px; }
+    .dots span { display: inline-block; animation: blink 1.2s infinite; }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink { 0%, 80%, 100% { opacity: 0; } 40% { opacity: 1; } }
+  </style>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1397968278475446');
+    fbq('track', 'PageView');
+    (function(){
+      // ===== Capture UTM + fbclid from URL (fallback to sessionStorage from referring quiz) =====
+      var qs = new URLSearchParams(window.location.search);
+      var persisted = {};
+      try { persisted = JSON.parse(sessionStorage.getItem('nb_utms')||'{}'); } catch(e){}
+      function pick(k){ return qs.get(k) || persisted[k] || ''; }
+      var utm = {
+        utm_source:   pick('utm_source'),
+        utm_medium:   pick('utm_medium'),
+        utm_campaign: pick('utm_campaign'),
+        utm_content:  pick('utm_content'),
+        utm_term:     pick('utm_term'),
+        fbclid:       pick('fbclid')
+      };
+      // Persist for later pages in same session
+      try { if(utm.utm_source||utm.fbclid) sessionStorage.setItem('nb_utms', JSON.stringify(utm)); } catch(e){}
+
+      // ===== Build origem tag for WhatsApp message =====
+      // Hidden-ish tag at the end so attendant can copy to CRM. If no UTM, mark as source.
+      function originTag(){
+        if(!utm.utm_source && !utm.fbclid) return ' ⟨origem: site_institucional⟩';
+        var parts = [];
+        if(utm.utm_source)   parts.push(utm.utm_source);
+        if(utm.utm_campaign) parts.push(utm.utm_campaign);
+        if(utm.utm_content)  parts.push(utm.utm_content);
+        if(utm.fbclid)       parts.push('fbclid:'+utm.fbclid.slice(0,10));
+        return ' ⟨origem: '+parts.join(' · ')+'⟩';
+      }
+      var baseWa = 'https://wa.me/5519995575156?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Nova%20Beach%20e%20gostaria%20de%20saber%20mais%20sobre%20Clubinho%20(jogo%20livre%20de%20Beach%20Tennis).';
+      // Append the origem tag to the text= param
+      var waUrl = baseWa.indexOf('text=') >= 0
+        ? baseWa + encodeURIComponent(originTag())
+        : baseWa + (baseWa.indexOf('?')<0?'?':'&') + 'text=' + encodeURIComponent(originTag());
+
+      // ===== Event ID for Pixel/CAPI dedup =====
+      var eventId = 'Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+
+      // ===== Read fbp / fbc cookies for CAPI user_data =====
+      function cookie(n){ return (document.cookie.split('; ').find(function(r){return r.indexOf(n+'=')===0;})||'').split('=')[1]||null; }
+
+      var customData = {
+        content_name:    'clubinho',
+        content_category:'site_institucional',
+        source:          'site_institucional',
+        utm_source:      utm.utm_source,
+        utm_medium:      utm.utm_medium,
+        utm_campaign:    utm.utm_campaign,
+        utm_content:     utm.utm_content,
+        utm_term:        utm.utm_term,
+        fbclid:          utm.fbclid
+      };
+
+      // ===== CAPI relay (keepalive so it survives the redirect) =====
+      try {
+        var capiPayload = {
+          event_name:       'Lead',
+          event_id:         eventId,
+          event_time:       Math.floor(Date.now()/1000),
+          event_source_url: window.location.href,
+          action_source:    'website',
+          user_data: {
+            fbp: cookie('_fbp'),
+            fbc: cookie('_fbc')
+          },
+          custom_data: customData
+        };
+        fetch('/api/capi', {
+          method: 'POST',
+          headers: {'content-type':'application/json'},
+          body: JSON.stringify(capiPayload),
+          keepalive: true
+        }).catch(function(){});
+      } catch(e){}
+
+      // Delay filters bots/crawlers from firing Pixel event
+      setTimeout(function(){
+        try {
+          fbq('track', 'Lead', customData, {eventID: eventId});
+        } catch(e){}
+        window.location.href = waUrl;
+      }, 1200);
+    })();
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
+    <meta http-equiv="refresh" content="0;url=https://wa.me/5519995575156?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Nova%20Beach%20e%20gostaria%20de%20saber%20mais%20sobre%20Clubinho%20(jogo%20livre%20de%20Beach%20Tennis).">
+  </noscript>
+</head>
+<body>
+  <div class="pattern"></div>
+  <div class="card">
+    <img class="logo" src="../../logo-novabeach.png" alt="Nova Beach">
+    <p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+  </div>
+</body>
+</html>
