@@ -33,7 +33,12 @@ Supabase (projeto `pkdtxatnvemynlybprtg`) → SQL Editor → cola `_leads-schema
 
 > **Nunca** colocar a service_role key no front. Ela so vive no serverless.
 
-### c) Query mensal pra cobranca
+### c) Dashboard
+Em `https://links.novabeachcampinas.com.br/dashboard/` — leitura ao vivo do CSV publicado da aba.
+Filtros por periodo + vertical, KPIs (total/hoje/semana/media/dia), barras por vertical/origem/bairro/interesse, tabela dos 20 ultimos.
+Zero autenticacao, atualiza a cada 60s.
+
+### d) Query mensal pra cobranca
 ```sql
 select date_trunc('month', created_at) as mes,
        vertical,
