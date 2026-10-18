@@ -478,20 +478,6 @@ fbq('track','PageView');
           </div>
           <div class="opt-arrow">→</div>
         </button>
-        <button class="opt" data-choice="ct360">
-          <div class="opt-body">
-            <div class="opt-title">CT NB360 — alta performance 🏆</div>
-            <div class="opt-sub">Atletas e profissionais de Beach Tennis</div>
-          </div>
-          <div class="opt-arrow">→</div>
-        </button>
-        <button class="opt" data-choice="patrocinio">
-          <div class="opt-body">
-            <div class="opt-title">Quero ser patrocinador 🤝</div>
-            <div class="opt-sub">Naming, fachada, cotas, torneios, mídia</div>
-          </div>
-          <div class="opt-arrow">→</div>
-        </button>
       </div>
     </div>
 
@@ -653,39 +639,9 @@ fbq('track','PageView');
         ]
       }
     },
-    patrocinio: {
-      vertical: 'Patrocínio',
-      phone: '19974022492', // Alex — responsável patrocínio
-      target: 'patrocinio',
-      step2: {
-        eyebrow:'Patrocínio & Parcerias',
-        title:'Qual tipo de <em>cota</em> te interessa?',
-        sub:'Pra Alex já te mandar o material certo e falar sobre valor.',
-        opts:[
-          {key:'naming',redirect:'/wa/patrocinio/',title:'Naming Rights da Arena',sub:'Sua marca no nome da arena · máxima exposição',priceLabel:'Naming Rights',priceValue:'Sob consulta',priceTag:'Cota premium · negociação direta',msg:'Oi Alex! Tenho interesse na cota Naming Rights da arena Nova Beach. Quero saber valores e condições.'},
-          {key:'fachada',redirect:'/wa/patrocinio/',title:'Fachada e painéis internos',sub:'Logo fachada, placas, painéis das quadras',priceLabel:'Visibilidade física',priceValue:'Sob consulta',priceTag:'Cotas variam por área · pacote mensal ou anual',msg:'Oi Alex! Quero ver as cotas de fachada e painéis internos da Nova Beach — valores e disponibilidade.'},
-          {key:'camisa_rede',redirect:'/wa/patrocinio/',title:'Camisa de atletas / rede',sub:'Logo em uniformes e rede das quadras',priceLabel:'Camisa / Rede',priceValue:'Sob consulta',priceTag:'Associação direta ao esporte · ótimo custo-benefício',msg:'Oi Alex! Quero conhecer as cotas de camisa de atletas e rede das quadras.'},
-          {key:'torneio',redirect:'/wa/patrocinio/',title:'Torneio ou ativação pontual',sub:'Patrocínio de evento específico · ativação de marca',priceLabel:'Torneio/Ativação',priceValue:'Sob consulta',priceTag:'Pacotes personalizados por evento',msg:'Oi Alex! Quero patrocinar um torneio ou fazer ativação de marca em evento da Nova Beach.'},
-          {key:'digital',redirect:'/wa/patrocinio/',title:'Mídia digital (redes + WhatsApp)',sub:'Posts, stories, grupo WhatsApp dos membros',priceLabel:'Mídia digital',priceValue:'Sob consulta',priceTag:'Alcance qualificado · público alto padrão',msg:'Oi Alex! Quero conhecer as cotas de mídia digital — redes sociais e WhatsApp dos membros.'},
-          {key:'kit',redirect:'/wa/patrocinio/',title:'Me manda o Mídia Kit completo',sub:'Quero ver todas as cotas antes de decidir',priceLabel:'Mídia Kit 2026',priceValue:'Sob consulta',priceTag:'Material completo · todas as cotas e valores',msg:'Oi Alex! Me manda o Mídia Kit 2026 completo da Nova Beach — quero conhecer todas as cotas de patrocínio.'}
-        ]
-      }
-    },
-    ct360: {
-      vertical: 'CT NB360 Alta Performance',
-      phone: '19997086943', // Responsável CT NB360
-      target: 'ct_nb360',
-      step2: {
-        eyebrow:'CT NB360',
-        title:'Qual seu <em>objetivo?</em>',
-        sub:'O CT NB360 é treino de alta performance pra quem quer evoluir sério.',
-        opts:[
-          {key:'virar_pro',redirect:'/wa/ct360/',title:'Quero me profissionalizar',sub:'Treino intenso + preparação pra torneios',priceLabel:'CT NB360',priceValue:'Sob consulta',priceTag:'Avaliação individual · plano personalizado',msg:'Quero entrar no CT NB360 — meu objetivo é me profissionalizar no Beach Tennis.'},
-          {key:'competir',redirect:'/wa/ct360/',title:'Quero competir em torneios',sub:'Preparação técnica e tática',priceLabel:'CT NB360',priceValue:'Sob consulta',priceTag:'Avaliação + plano de treino',msg:'Quero entrar no CT NB360 — meu objetivo é competir em torneios de Beach Tennis.'},
-          {key:'pro',redirect:'/wa/ct360/',title:'Já sou profissional',sub:'Quero treinar em alto nível aqui',priceLabel:'CT NB360',priceValue:'Sob consulta',priceTag:'Treino de alta performance',msg:'Sou profissional de Beach Tennis e quero treinar no CT NB360 Nova Beach.'}
-        ]
-      }
-    },
+    // Patrocinio (B2B) e CT NB360 (consultivo) removidos do quiz em 2026-10-17:
+    // - Patrocinio precisa de LP B2B dedicada (/parcerias) — nao faz sentido no funil B2C
+    // - CT NB360 precisa de produto cadastrado no Agi Genies com estrutura avaliacao + plano
     evento: {
       vertical: 'Fazer evento',
       phone: '19999178194', // Humano Eventos
