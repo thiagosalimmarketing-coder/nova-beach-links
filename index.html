@@ -698,19 +698,35 @@ fbq('track','PageView');
     try{fbq('trackCustom','QuizStep',{step:n,path:state.path||'',choice:state.choice?state.choice.key:''});}catch(e){}
   }
 
-  // Google Sheets webhook — Thiago configura e cola a URL
-  const SHEETS_URL = ''; // ex: 'https://script.google.com/macros/s/XXXX/exec'
-  function sendToSheets(payload){
-    if(!SHEETS_URL) return;
+  // ===== Captacao de lead (dupla gravacao: Supabase + Google Sheets) =====
+  // 1) Supabase: /api/lead (sempre on — env SUPABASE_URL + SUPABASE_SERVICE_KEY no Vercel)
+  // 2) Sheets:   SHEETS_URL abaixo (Apps Script Web App — ver api/_leads-apps-script.gs)
+  const SHEETS_URL = ''; // COLAR AQUI a URL /exec do Apps Script apos deploy
+  function sendLead(payload){
+    // Supabase (fonte da verdade — JSON direto, mesma origem, sem no-cors)
     try {
-      fetch(SHEETS_URL, {
+      fetch('/api/lead', {
         method:'POST',
-        mode:'no-cors',
-        headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body: JSON.stringify(payload)
-      });
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(()=>{});
     } catch(e){}
+    // Sheets (espelho pra visualizacao e cobranca)
+    if(SHEETS_URL){
+      try {
+        fetch(SHEETS_URL, {
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'text/plain;charset=utf-8'},
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(()=>{});
+      } catch(e){}
+    }
   }
+  // Alias retrocompat
+  const sendToSheets = sendLead;
 
   // Tracking de abandono (beforeunload)
   let converted = false;
@@ -897,8 +913,8 @@ fbq('track','PageView');
         source: 'landing_hub_quiz'
       });
     }catch(e){}
-    // Enviar pra Sheets (webhook configurado via SHEETS_URL)
-    sendToSheets({
+    // Enviar pra Supabase (/api/lead) + Sheets (SHEETS_URL) simultaneamente
+    sendLead({
       path: state.path,
       choice: state.choice.key,
       bairro: state.bairro,
@@ -907,6 +923,8 @@ fbq('track','PageView');
       utm_source: utmParams.utm_source || '',
       utm_campaign: utmParams.utm_campaign || '',
       utm_content: utmParams.utm_content || '',
+      utm_term: utmParams.utm_term || state.bairro || '',
+      fbclid: utmParams.fbclid || '',
       msg: `${state.nome ? 'Oi, aqui é '+state.nome+'! ' : 'Oi! '}${state.choice.msg} Moro em ${state.bairro}.`,
       ua: navigator.userAgent
     });
