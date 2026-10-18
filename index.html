@@ -701,7 +701,7 @@ fbq('track','PageView');
   // ===== Captacao de lead (dupla gravacao: Supabase + Google Sheets) =====
   // 1) Supabase: /api/lead (sempre on — env SUPABASE_URL + SUPABASE_SERVICE_KEY no Vercel)
   // 2) Sheets:   SHEETS_URL abaixo (Apps Script Web App — ver api/_leads-apps-script.gs)
-  const SHEETS_URL = ''; // COLAR AQUI a URL /exec do Apps Script apos deploy
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxHj2ZmFdWwFJ9Yhc5lodg1Kn_BtHK9qOjiOM-GlzGYJ3eZEHFMMJrQRq4wcLFub9UIzQ/exec';
   function sendLead(payload){
     // Supabase (fonte da verdade — JSON direto, mesma origem, sem no-cors)
     try {
