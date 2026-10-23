@@ -12,7 +12,7 @@
   <meta property="og:title" content="Nova Beach Campinas — Beach Tennis">
   <meta property="og:description" content="Fale com a Nova Beach pelo WhatsApp sobre Beach Tennis.">
   <meta property="og:url" content="https://links.novabeachcampinas.com.br/bt/">
-  <meta property="og:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+  <meta property="og:image" content="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png">
   <meta property="og:locale" content="pt_BR">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,13 +30,41 @@
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1397968278475446');
     fbq('track', 'PageView');
+
+    var qp = new URLSearchParams(window.location.search);
+    var utm = {
+      utm_source: qp.get('utm_source') || '',
+      utm_medium: qp.get('utm_medium') || '',
+      utm_campaign: qp.get('utm_campaign') || '',
+      utm_content: qp.get('utm_content') || '',
+      utm_term: qp.get('utm_term') || '',
+      fbclid: qp.get('fbclid') || ''
+    };
+    var hasUtm = Object.values(utm).some(function(v){return !!v});
+    try { sessionStorage.setItem('nb_utms', JSON.stringify(utm)); } catch(e) {}
+
+    function originTag(u){
+      var parts = [u.utm_source || 'instagram_bio', u.utm_campaign, u.utm_content].filter(Boolean);
+      var tag = parts.join(' · ');
+      if (u.fbclid) tag += ' · fbclid:' + u.fbclid.slice(0, 10);
+      return '⟨origem: ' + tag + '⟩';
+    }
+
+    var baseMsg = hasUtm
+      ? 'Olá! Vim de um anúncio e quero saber mais sobre beach tennis.'
+      : 'Olá, vim da bio do Instagram e quero saber mais sobre beach tennis.';
+    var waUrl = 'https://wa.me/5519995575156?text=' + encodeURIComponent(baseMsg + ' ' + originTag(utm));
+
     setTimeout(function() {
       fbq('track', 'Lead', {
         content_name: 'beach_tennis',
-        content_category: 'instagram_bio',
-        source: 'redes_sociais'
+        content_category: utm.utm_source || 'instagram_bio',
+        source: hasUtm ? 'paid' : 'redes_sociais',
+        utm_source: utm.utm_source,
+        utm_campaign: utm.utm_campaign,
+        utm_content: utm.utm_content
       });
-      window.location.href = 'https://wa.me/5519995575156?text=Ol%C3%A1+vim+da+bio+do+Instagram+e+quero+saber+mais+sobre+beach+tennis';
+      window.location.href = waUrl;
     }, 3000);
   </script>
   <noscript>
@@ -47,7 +75,7 @@
 <body>
   <div class="pattern"></div>
   <div class="card">
-    <img class="logo" src="../logo-novabeach.png" alt="Nova Beach">
+    <img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">
     <p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
   </div>
 </body>

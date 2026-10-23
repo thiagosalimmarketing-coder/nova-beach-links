@@ -551,6 +551,11 @@ fbq('track','PageView');
         <input type="tel" id="input-tel" class="form-input" placeholder="(19) 9 9999-9999" autocomplete="tel" inputmode="tel" maxlength="16">
       </div>
 
+      <div class="form-row">
+        <label class="form-label" for="input-email">E-mail <span style="font-weight:400;color:var(--nb-mute);font-size:12px">(opcional)</span></label>
+        <input type="email" id="input-email" class="form-input" placeholder="voce@email.com" autocomplete="email" inputmode="email" maxlength="80">
+      </div>
+
       <label class="lgpd-row">
         <input type="checkbox" id="lgpd-ok" checked>
         <span>Autorizo contato da Nova Beach pelo WhatsApp.</span>
@@ -678,7 +683,7 @@ fbq('track','PageView');
   };
 
   // ===== STATE =====
-  let state = {step:1, path:null, choice:null, bairro:null, nome:'', tel:'', lgpd:true};
+  let state = {step:1, path:null, choice:null, bairro:null, nome:'', tel:'', email:'', lgpd:true};
 
   // ===== DOM =====
   const steps = document.querySelectorAll('.step');
@@ -698,6 +703,7 @@ fbq('track','PageView');
   const step5Sub = document.getElementById('step5-sub');
   const inputNome = document.getElementById('input-nome');
   const inputTel = document.getElementById('input-tel');
+  const inputEmail = document.getElementById('input-email');
   const lgpdOk = document.getElementById('lgpd-ok');
 
   // ===== HELPERS =====
@@ -911,6 +917,7 @@ fbq('track','PageView');
   toStep5Btn.addEventListener('click', ()=>{
     state.nome = (inputNome.value||'').trim();
     state.tel = (inputTel.value||'').replace(/\D/g,'');
+    state.email = (inputEmail && inputEmail.value || '').trim().toLowerCase();
     state.lgpd = lgpdOk.checked;
     const path = PATHS[state.path];
     const utmParams = (function(){
@@ -935,6 +942,7 @@ fbq('track','PageView');
       bairro: state.bairro,
       nome: state.nome,
       tel: state.tel,
+      email: state.email,
       utm_source: utmParams.utm_source || '',
       utm_campaign: utmParams.utm_campaign || '',
       utm_content: utmParams.utm_content || '',
@@ -966,6 +974,8 @@ fbq('track','PageView');
       nb_bairro: state.bairro,
       nb_nome: state.nome
     };
+    if(state.email) qParams.nb_email = state.email;
+    if(state.tel) qParams.nb_tel = state.tel;
     if(adUtm.fbclid) qParams.fbclid = adUtm.fbclid;
     const q = new URLSearchParams(qParams);
     const targetUrl = `${choice.redirect}?${q.toString()}`;

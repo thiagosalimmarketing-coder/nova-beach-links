@@ -62,6 +62,17 @@ module.exports = async (req, res) => {
   const u = body.user_data || {};
   const phoneNormalized = normalizePhone(u.phone);
 
+  // _fbc dedup: Meta espera formato "fb.1.{click_ts_ms}.{fbclid}" em user_data.fbc.
+  // Se o front mandou fbc direto, usa. Caso contrário, reconstrói a partir do fbclid
+  // (lido do _fbc cookie OU do param ?fbclid= na URL do ad), usando o event_time em ms.
+  const cd = body.custom_data || {};
+  const fbclid = u.fbclid || cd.fbclid;
+  let fbc = u.fbc;
+  if (!fbc && fbclid) {
+    const clickTsMs = (body.event_time ? body.event_time * 1000 : Date.now());
+    fbc = `fb.1.${clickTsMs}.${fbclid}`;
+  }
+
   const payload = {
     data: [{
       event_name: body.event_name,
@@ -74,7 +85,7 @@ module.exports = async (req, res) => {
         ph: phoneNormalized ? [sha256(phoneNormalized)] : undefined,
         fn: u.name ? [sha256(u.name)] : undefined,
         fbp: u.fbp || undefined,
-        fbc: u.fbc || undefined,
+        fbc: fbc || undefined,
         client_ip_address: ip,
         client_user_agent: ua
       },

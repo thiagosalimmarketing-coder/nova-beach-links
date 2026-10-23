@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
 
   const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
 
-  // ----- Rate limit -----
+  // ----- Rate limit (in-memory, best-effort) -----
   const now = Date.now();
   const timestamps = (rateBuckets.get(ip) || []).filter(t => now - t < RATE_WINDOW_MS);
   if (timestamps.length >= RATE_MAX) {
@@ -42,6 +42,30 @@ module.exports = async (req, res) => {
   }
   timestamps.push(now);
   rateBuckets.set(ip, timestamps);
+
+  // ----- Rate limit (persistente via Supabase, protege contra cold-start bypass) -----
+  if (ip !== 'unknown') {
+    try {
+      const sinceIso = new Date(now - RATE_WINDOW_MS).toISOString();
+      const countUrl = `${SUPABASE_URL}/rest/v1/leads_captacao?ip=eq.${encodeURIComponent(ip)}&created_at=gte.${encodeURIComponent(sinceIso)}&select=id`;
+      const countRes = await fetch(countUrl, {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+          Prefer: 'count=exact',
+          Range: '0-0'
+        }
+      });
+      const contentRange = countRes.headers.get('content-range') || '';
+      const total = parseInt(contentRange.split('/')[1] || '0', 10);
+      if (total >= RATE_MAX) {
+        console.warn(`[lead] persistent rate-limit ip=${ip} count=${total}`);
+        return res.status(429).json({ ok: false, error: 'rate_limited' });
+      }
+    } catch (e) {
+      console.warn(`[lead] rate-limit check failed, falling back to in-memory only: ${String(e).slice(0, 120)}`);
+    }
+  }
 
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
@@ -73,6 +97,9 @@ module.exports = async (req, res) => {
       }
     }
 
+    const emailRaw = String(body.email || '').trim().toLowerCase();
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailRaw) ? emailRaw.slice(0, 120) : '';
+
     const row = {
       nome: nome.slice(0, 80),
       telefone: formatPhone(telDigits),
@@ -88,6 +115,9 @@ module.exports = async (req, res) => {
       user_agent: String(body.ua || '').slice(0, 300),
       ip
     };
+    // Email é opcional e só vai se a coluna existir no schema (ver _leads-schema.sql).
+    // Pra ativar: ALTER TABLE leads_captacao ADD COLUMN IF NOT EXISTS email text;
+    if (email) row.email = email;
 
     const r = await fetch(`${SUPABASE_URL}/rest/v1/leads_captacao`, {
       method: 'POST',
