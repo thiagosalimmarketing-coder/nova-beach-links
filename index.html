@@ -7,9 +7,10 @@
 <meta name="description" content="Arena de Beach Tennis em Nova Campinas. 5 quadras, aulas, Clubinho, eventos e Bowa Bar.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#1a3066">
-<link rel="icon" type="image/png" href="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/favicon-1-300x300.png">
-<link rel="apple-touch-icon" href="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/favicon-1-300x300.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="canonical" href="https://links.novabeachcampinas.com.br/">
+<link rel="preload" as="image" href="logo-novabeach.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nova Beach Campinas">
 <meta property="og:title" content="Nova Beach Campinas · Beach Tennis em Nova Campinas">
@@ -47,49 +48,51 @@ img{display:block;max-width:100%;height:auto}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a{color:inherit;text-decoration:none}
 
-.layout{position:relative;z-index:1;min-height:100vh;min-height:100svh}
-
-/* =========== MOBILE (default) — vídeo stories/shorts format =========== */
-.media-outer{padding:20px 16px 8px;display:flex;flex-direction:column;align-items:center;gap:12px}
-.media-header{width:100%;max-width:280px;display:flex;align-items:center;justify-content:space-between}
-.media-logo{height:48px;object-fit:contain}
-.media-loc{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--nb-navy);background:#fff;border:1px solid var(--nb-border);padding:6px 11px;border-radius:999px;font-family:var(--mono);letter-spacing:0.02em}
-.media-loc::before{content:'';width:5px;height:5px;background:var(--nb-accent);border-radius:50%;box-shadow:0 0 10px var(--nb-accent)}
-
-.media-wrap{
-  position:relative;width:100%;max-width:280px;aspect-ratio:9/16;overflow:hidden;
-  background:var(--nb-navy);border-radius:22px;box-shadow:var(--nb-shadow-lg);
-  border:1px solid var(--nb-border);
+/* Split layout: info-col à esquerda (sticky), quiz à direita — em todas as larguras */
+.layout{
+  position:relative;z-index:1;min-height:100vh;min-height:100svh;
+  display:grid;grid-template-columns:44% 1fr;gap:0;
+  max-width:1080px;margin:0 auto;align-items:start;padding:10px 0;
 }
-.media-video{width:100%;height:100%;object-fit:cover;display:block}
-.media-overlay{
-  position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 0%,transparent 55%,rgba(14,30,66,0.85) 100%);
-}
-.media-caption{position:absolute;left:14px;right:14px;bottom:14px;color:#fff;z-index:2;text-align:left}
-.media-caption-title{font-size:19px;font-weight:800;letter-spacing:-0.025em;line-height:1.05;margin-bottom:4px;text-shadow:0 2px 12px rgba(0,0,0,0.5)}
-.media-caption-title em{color:var(--nb-accent);font-style:normal}
-.media-caption-sub{font-size:10px;color:rgba(255,255,255,0.9);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--mono)}
+.info-col{position:sticky;top:10px;align-self:start;padding:0 6px 0 10px;min-width:0}
 
-.sound-btn{
-  position:absolute;top:12px;right:12px;z-index:3;
-  display:inline-flex;align-items:center;gap:6px;
-  padding:7px 11px;background:rgba(0,0,0,0.55);backdrop-filter:blur(10px);
-  color:#fff;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.04em;
-  text-transform:uppercase;cursor:pointer;transition:background .15s;
-  border:1px solid rgba(255,255,255,0.15);
-}
-.sound-btn:hover{background:rgba(0,0,0,0.75)}
-.sound-btn svg{display:block}
-.sound-btn.active{background:var(--nb-accent);color:var(--nb-navy);border-color:var(--nb-accent)}
-.sound-btn.active .sound-off{display:none}
-.sound-btn.active .sound-on{display:block !important}
+/* Header (logo + localização) */
+.hub-header{display:flex;align-items:center;justify-content:space-between;padding:4px 8px 10px;gap:6px}
+.hub-logo{height:32px;min-width:52px;object-fit:contain;flex-shrink:0}
+.hub-loc{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:600;color:var(--nb-navy);background:#fff;border:1px solid var(--nb-border);padding:4px 8px;border-radius:999px;font-family:var(--mono);letter-spacing:0.02em;white-space:nowrap}
+.hub-loc::before{content:'';width:5px;height:5px;background:var(--nb-accent);border-radius:50%;box-shadow:0 0 10px var(--nb-accent);flex-shrink:0}
 
-.quiz{padding:24px 20px 40px;max-width:560px;margin:0 auto}
+/* Card de info em destaque */
+.info-card{
+  padding:10px 10px 6px;
+  background:linear-gradient(135deg,#fff 0%,#f8faff 100%);
+  border:1px solid var(--nb-border-strong);border-radius:14px;
+  box-shadow:var(--nb-shadow);
+}
+.info-card-head{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.info-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--nb-navy);line-height:1.2}
+.info-row{display:flex;align-items:center;gap:7px;padding:7px 6px;border-radius:10px;transition:background .15s;text-decoration:none;color:inherit;margin:0 -4px}
+a.info-row:hover{background:rgba(26,48,102,0.04)}
+.info-row-static{cursor:default}
+.info-ico{flex-shrink:0;font-size:12px;width:24px;height:24px;display:grid;place-items:center;background:#fff;border:1px solid var(--nb-border);border-radius:7px}
+.info-ico-wellhub{background:var(--nb-accent);border-color:var(--nb-accent-2);color:var(--nb-navy)}
+.info-body{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.info-body strong{font-size:10.5px;font-weight:800;color:var(--nb-navy);letter-spacing:-0.01em;word-break:break-word}
+.info-body span{font-size:9px;color:var(--nb-mute);font-weight:500;margin-top:1px;line-height:1.25}
+.info-arrow{flex-shrink:0;font-size:12px;font-weight:800;color:var(--nb-navy-2);opacity:0.5;transition:opacity .15s,transform .15s}
+a.info-row:hover .info-arrow{opacity:1;transform:translateX(2px)}
+
+/* Bento visual (desktop) — compacta métricas de prova */
+.info-bento{display:none}
+
+/* Mobile top (só mobile) */
+.mobile-top{display:none}
+
+.quiz{padding:4px 12px 32px 4px;margin:0;min-width:0}
 
 .quiz-progress{display:flex;gap:4px;margin-bottom:20px}
-.quiz-progress-step{flex:1;height:3px;background:var(--nb-border);border-radius:2px;overflow:hidden;position:relative}
-.quiz-progress-step.active{background:var(--nb-accent)}
+.quiz-progress-step{flex:1;height:5px;background:rgba(14,30,66,0.12);border-radius:3px;overflow:hidden;position:relative}
+.quiz-progress-step.active{background:var(--nb-accent);box-shadow:0 0 0 1px var(--nb-accent-2) inset}
 .quiz-progress-step.done{background:var(--nb-navy)}
 
 .step{display:none;animation:fadeInUp .35s cubic-bezier(.2,.9,.3,1)}
@@ -148,7 +151,8 @@ a{color:inherit;text-decoration:none}
 .trust-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;padding:12px 14px;background:#fff;border:1px solid var(--nb-border);border-radius:var(--radius-sm);box-shadow:var(--nb-shadow)}
 .trust-item{font-size:12px;color:var(--nb-mute);letter-spacing:0.02em;font-weight:500}
 .trust-item strong{color:var(--nb-navy);font-weight:800}
-.trust-sep{width:1px;height:14px;background:var(--nb-border-strong)}
+.trust-sep{color:var(--nb-mute);font-weight:800;opacity:0.5}
+.trust-sep::before{content:'·'}
 
 /* Preview message */
 .msg-preview{
@@ -211,23 +215,7 @@ a{color:inherit;text-decoration:none}
 
 footer{padding:28px 20px;text-align:center;color:var(--nb-mute);font-size:11px;letter-spacing:0.04em;font-family:var(--mono)}
 
-/* =========== SPLIT LAYOUT — vídeo + quiz lado a lado em tudo =========== */
-.layout{
-  display:grid;grid-template-columns:48% 1fr;gap:0;
-  align-items:start;max-width:980px;margin:0 auto;
-}
-.media-outer{position:sticky;top:0;padding:12px 6px 12px 10px;gap:8px;display:flex;flex-direction:column;align-self:start}
-.media-header{max-width:none;flex-direction:row;align-items:center;justify-content:space-between;gap:6px;width:100%;flex-shrink:0}
-.media-logo{height:30px}
-.media-loc{font-size:9.5px;padding:4px 9px}
-.media-wrap{max-width:none;border-radius:14px;aspect-ratio:9/16}
-.media-caption{padding:10px 10px}
-.media-caption-title{font-size:13px;line-height:1.05}
-.media-caption-sub{font-size:8px;letter-spacing:0.06em}
-.sound-btn{top:6px;right:6px;padding:4px 7px;font-size:9px;gap:4px}
-.sound-btn svg{width:11px;height:11px}
-
-.quiz{padding:16px 14px 32px 8px;min-width:0}
+/* Quiz: mesmo padding em desktop e mobile */
 .quiz>*{min-width:0}
 .step-title{font-size:17px;line-height:1.1}
 .step-sub{font-size:12px;margin-bottom:12px;line-height:1.4}
@@ -272,21 +260,32 @@ footer{padding:12px 10px;font-size:10px}
 
 .researcher-box{padding:12px;font-size:11.5px;line-height:1.5}
 
-/* Desktop: mais ar e tamanhos maiores */
+/* Desktop: mais ar no card, tamanhos maiores + bento visual */
 @media(min-width:720px){
-  .layout{grid-template-columns:36% 1fr;max-width:1080px}
-  .media-outer{padding:28px 16px 20px 24px;gap:12px}
-  .media-header{align-items:center;gap:8px}
-  .media-logo{height:38px}
-  .media-loc{font-size:11px;padding:7px 11px}
-  .media-wrap{border-radius:18px;min-height:480px}
-  .media-caption{padding:14px 14px}
-  .media-caption-title{font-size:20px}
-  .media-caption-sub{font-size:10px}
-  .sound-btn{top:10px;right:10px;padding:6px 10px;font-size:10.5px;gap:5px}
-  .sound-btn svg{width:13px;height:13px}
-  .quiz{padding:28px 28px 40px 18px}
+  .layout{grid-template-columns:38% 1fr;padding:20px 0}
+  .info-col{top:20px;padding:0 12px 0 20px}
+  .hub-header{padding:8px 12px 12px}
+  .hub-logo{height:40px;min-width:70px}
+  .hub-loc{font-size:11px;padding:6px 11px;gap:6px}
+  .info-card{padding:18px 18px 10px;border-radius:16px}
+  .info-card-head{margin-bottom:12px}
+  .info-eyebrow{font-size:11px}
+  .info-row{padding:12px 10px;gap:12px}
+  .info-ico{width:36px;height:36px;font-size:17px;border-radius:10px}
+  .info-body strong{font-size:14px}
+  .info-body span{font-size:12px}
+  .info-arrow{font-size:16px}
+  .info-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 4px 0}
+  .bento-item{background:#fff;border:1px solid var(--nb-border);border-radius:12px;padding:12px 8px;text-align:center;box-shadow:var(--nb-shadow)}
+  .bento-item strong{display:block;font-size:20px;font-weight:800;color:var(--nb-navy);letter-spacing:-0.02em;line-height:1;margin-bottom:4px}
+  .bento-item span{display:block;font-size:10.5px;color:var(--nb-mute);font-weight:600;line-height:1.2}
+  .quiz{padding:12px 24px 40px 12px}
   .step-title{font-size:26px}
+  /* Banners compactos: 1 linha */
+  .tour-banner{padding:10px 14px}
+  .tour-body strong{font-size:13px;line-height:1.1}
+  .tour-body span{font-size:11px}
+  .tour-tag{font-size:9px}
   .step-sub{font-size:14px;margin-bottom:18px}
   .sec-eyebrow,.step-eyebrow{font-size:11px;padding:6px 12px;margin-bottom:12px}
   .quiz-progress-step{height:3px}
@@ -333,56 +332,100 @@ footer{padding:12px 10px;font-size:10px}
 .foot-info strong{color:var(--nb-navy)}
 .foot-info a{color:var(--nb-navy-2);font-weight:700}
 
-/* =========== MOBILE: empilhado (video em cima, quiz embaixo, letras legiveis) =========== */
+/* =========== MOBILE (empilhado: quiz em cima, info-card centralizado embaixo) =========== */
 @media(max-width:719px){
-  .layout{display:block;z-index:auto}
-  .media-outer{position:relative;padding:16px 16px 4px;align-items:center;gap:10px}
-  .media-header{max-width:420px}
-  .media-logo{height:34px}
-  .media-loc{font-size:10.5px;padding:5px 10px}
-  /* video: bolha flutuante (fechado) / popup (aberto) */
-  .media-wrap{position:fixed;right:14px;bottom:16px;width:76px;height:auto;aspect-ratio:9/16;z-index:60;border:2px solid var(--nb-accent);border-radius:14px;cursor:pointer;box-shadow:0 8px 28px rgba(14,30,66,0.35);transition:width .25s ease}
-  .media-wrap .media-caption,.media-wrap .sound-btn,.media-wrap .vid-close{display:none}
-  .vid-bubble-tag{display:block}
-  .media-wrap.open{right:50%;bottom:50%;transform:translate(50%,50%);width:min(90vw,calc(86svh * 9 / 16));border-radius:18px;z-index:100;cursor:default;border-color:transparent}
-  .media-wrap.open .media-caption,.media-wrap.open .sound-btn,.media-wrap.open .vid-close{display:flex}
-  .media-wrap.open .media-caption{display:block}
-  .media-wrap.open .vid-bubble-tag{display:none}
-  .vid-backdrop.show{display:block}
-  .sound-btn{left:10px;right:auto}
-  body{padding-bottom:40px}
-  .media-caption-title{font-size:16px}
-  .media-caption-sub{font-size:8.5px}
-  .sound-btn{top:10px;left:10px;right:auto;padding:6px 10px;font-size:10px}
-  .quiz{padding:14px 16px 28px;max-width:560px;margin:0 auto}
-  .trust-row{gap:6px;padding:9px 10px}
-  .trust-item{font-size:11px}
-  .trust-item strong{font-size:12px}
-  .step-eyebrow{font-size:10px;padding:5px 10px}
-  .step-title{font-size:23px}
-  .step-sub{font-size:13.5px;margin-bottom:14px}
+  .layout{z-index:auto;display:flex;flex-direction:column;max-width:520px;padding:0}
+  .info-col{position:static;padding:20px 20px 24px;display:flex;flex-direction:column;align-items:center;order:2}
+  .hub-header{display:none}
+  .quiz{padding:14px 16px 8px;max-width:none;margin:0;order:1}
+
+  /* Card centralizado */
+  .info-card{width:100%;max-width:420px;padding:16px 16px 10px;border-radius:16px}
+  .info-card-head{justify-content:center;margin-bottom:10px}
+  .info-eyebrow{font-size:11px}
+  .info-row{padding:10px 10px;gap:12px}
+  .info-ico{width:34px;height:34px;font-size:17px;border-radius:10px}
+  .info-body strong{font-size:13.5px}
+  .info-body span{font-size:11.5px}
+  .info-arrow{font-size:16px}
+  .info-bento{display:none}
+
+  /* Mini header mobile (logo + badge) acima do quiz */
+  .mobile-top{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 4px;gap:12px}
+  .mobile-top .hub-logo{height:40px}
+
+  /* Quiz tamanhos legíveis */
+  .trust-row{gap:6px;padding:10px 12px;flex-wrap:nowrap;margin-bottom:16px}
+  .trust-item{font-size:11.5px}
+  .trust-item strong{font-size:13px}
+  .trust-sep{display:inline;font-size:13px;margin:0 2px}
+  .step-eyebrow,.sec-eyebrow{font-size:10px;padding:5px 10px;margin-bottom:10px}
+  .step-title{font-size:22px;line-height:1.1}
+  .step-sub{font-size:13px;margin-bottom:14px;line-height:1.45}
   .opts{gap:8px}
   .opt{padding:13px 14px;border-radius:12px}
-  .opt-title{font-size:15px;margin-bottom:2px}
-  .opt-sub{font-size:12px}
+  .opt-title{font-size:14.5px;margin-bottom:2px;line-height:1.15}
+  .opt-sub{font-size:11.5px;line-height:1.35}
   .opt-arrow{width:28px;height:28px;font-size:14px}
-  .chip{padding:10px 13px;font-size:13px}
-  .form-label{font-size:12px}
-  .form-input{font-size:16px;padding:13px 14px}
-  .lgpd-row{font-size:12px}
-  .cta{padding:13px 20px;font-size:14px}
-  .btn-back{font-size:13px}
-  .summary-item{font-size:13px}
-  .msg-preview{font-size:12.5px}
-  .hours-note{font-size:11px}
-  .researcher-box{font-size:13px}
-  footer{padding:20px 16px}
+  .chip-group{gap:6px}
+  .chip{padding:9px 13px;font-size:12.5px}
+  .form-row{margin-bottom:12px}
+  .form-label{font-size:11.5px;margin-bottom:5px}
+  .form-input{font-size:16px;padding:12px 14px;border-radius:10px}
+  .lgpd-row{font-size:11.5px;margin:10px 0 2px}
+  .cta{padding:12px 18px;font-size:13.5px}
+  .btn-back{font-size:12px;padding:8px 10px}
+  .step-nav{margin-top:14px}
+  .summary{padding:14px;margin-bottom:12px}
+  .summary-eyebrow{font-size:10px;margin-bottom:8px}
+  .summary-item{font-size:12.5px;padding:5px 0}
+  .msg-preview{font-size:12px;padding:11px 13px;line-height:1.4;margin-top:10px}
+  .msg-preview-label{font-size:9.5px;margin-bottom:4px}
+  .hours-note{font-size:11px;margin-top:10px}
+  .researcher-box{font-size:12px;padding:13px}
+  .tour-banner{padding:10px 12px;margin-bottom:10px;gap:9px}
+  .tour-tag{font-size:9px;padding:3px 7px}
+  .tour-body strong{font-size:12.5px;line-height:1.15}
+  .tour-body span{font-size:11px}
+  footer{padding:18px 10px;font-size:10.5px}
+  .step-eyebrow,.sec-eyebrow{font-size:9px;padding:4px 8px;margin-bottom:6px}
+  .step-title{font-size:16px;line-height:1.1}
+  .step-sub{font-size:11.5px;margin-bottom:10px;line-height:1.35}
+  .opts{gap:5px}
+  .opt{padding:9px 10px;border-radius:10px}
+  .opt-title{font-size:12px;margin-bottom:1px;line-height:1.15}
+  .opt-sub{font-size:9.5px;line-height:1.25}
+  .opt-arrow{width:20px;height:20px;font-size:11px}
+  .chip-group{gap:4px}
+  .chip{padding:6px 9px;font-size:10.5px}
+  .form-row{margin-bottom:8px}
+  .form-label{font-size:10px;margin-bottom:3px}
+  .form-input{font-size:14px;padding:9px 11px;border-radius:8px}
+  .lgpd-row{font-size:10px;margin:8px 0 2px}
+  .cta{padding:10px 14px;font-size:12px}
+  .btn-back{font-size:11px;padding:7px 9px}
+  .step-nav{margin-top:12px}
+  .summary{padding:12px;margin-bottom:10px}
+  .summary-eyebrow{font-size:9px;margin-bottom:6px}
+  .summary-item{font-size:10.5px;padding:4px 0}
+  .msg-preview{font-size:10.5px;padding:9px 10px;line-height:1.35;margin-top:8px}
+  .msg-preview-label{font-size:8.5px;margin-bottom:3px}
+  .hours-note{font-size:9.5px;margin-top:9px}
+  .researcher-box{font-size:10.5px;padding:10px}
+  .tour-banner{padding:8px 10px;margin-bottom:9px;gap:7px}
+  .tour-tag{font-size:8px;padding:3px 6px}
+  .tour-body strong{font-size:11px;line-height:1.15}
+  .tour-body span{font-size:9.5px}
+  footer{padding:14px 10px;font-size:9.5px}
 }
 
-/* elementos do popup (escondidos no desktop) */
-.vid-close{display:none;position:absolute;top:8px;right:8px;z-index:4;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,0.6);color:#fff;font-size:15px;font-weight:800;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.2)}
-.vid-bubble-tag{display:none;position:absolute;left:0;right:0;bottom:6px;z-index:3;text-align:center;font-size:9px;font-weight:800;color:#fff;letter-spacing:0.04em;text-shadow:0 1px 6px rgba(0,0,0,0.8);pointer-events:none}
-.vid-backdrop{display:none;position:fixed;inset:0;z-index:90;background:rgba(10,20,40,0.78);backdrop-filter:blur(4px)}
+/* Trust row em celulares ultra-pequenos (iPhone SE etc) */
+@media(max-width:379px){
+  .trust-row{flex-wrap:wrap;justify-content:center;gap:4px 8px;padding:8px 10px}
+  .trust-sep{display:none}
+  .trust-item{font-size:10.5px;white-space:normal}
+}
+
 </style>
 
 <!-- Meta Pixel -->
@@ -396,37 +439,77 @@ fbq('track','PageView');
 
 <body>
 <div class="pattern"></div>
-<div class="vid-backdrop" id="vid-backdrop"></div>
 
 <div class="layout">
 
-  <!-- MEDIA (vídeo stories format) -->
-  <div class="media-outer">
-    <div class="media-header">
-      <img class="media-logo" src="logo-novabeach.png" alt="Nova Beach">
-      <span class="media-loc">Nova Campinas</span>
+  <aside class="info-col" aria-label="Informações da Nova Beach">
+  <!-- HEADER (logo + localização) -->
+  <div class="hub-header">
+    <img class="hub-logo" src="logo-novabeach.png" alt="Nova Beach">
+    <span class="hub-loc">Nova Campinas</span>
+  </div>
+
+  <!-- CARD DE INFO EM DESTAQUE -->
+  <div class="info-card">
+    <div class="info-card-head">
+      <span class="info-eyebrow">Visite a Nova Beach</span>
     </div>
-    <div class="media-wrap">
-      <video id="hero-video" class="media-video" autoplay muted loop playsinline preload="auto" poster="logo-novabeach.png">
-        <source src="hero-video.mp4" type="video/mp4">
-      </video>
-      <div class="media-overlay"></div>
-      <button class="sound-btn" id="sound-btn" aria-label="Ativar som">
-        <svg class="sound-off" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M22 9l-6 6M16 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <svg class="sound-on" width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="sound-label">som</span>
-      </button>
-      <button class="vid-close" id="vid-close" aria-label="Fechar vídeo">✕</button>
-      <span class="vid-bubble-tag">▶ Conheça</span>
-      <div class="media-caption">
-        <div class="media-caption-title">Beach Tennis<br>como <em>deve ser.</em></div>
-        <div class="media-caption-sub">5 quadras · Professores certificados · Bowa Bar</div>
+    <a href="https://www.google.com/maps/search/?api=1&query=Nova+Beach+Campinas+Av+Jesuino+Marcondes+Machado+869" target="_blank" rel="noopener" class="info-row" onclick="try{fbq('trackCustom','InfoClick',{type:'address'});}catch(e){}">
+      <span class="info-ico">📍</span>
+      <div class="info-body">
+        <strong>Av. Jesuíno M. Machado, 869</strong>
+        <span>Nova Campinas · Campinas/SP</span>
+      </div>
+      <span class="info-arrow">→</span>
+    </a>
+    <div class="info-row info-row-static">
+      <span class="info-ico">⏰</span>
+      <div class="info-body">
+        <strong>Horário</strong>
+        <span>seg–qui 7h–22h · sex 7h–21h · sáb 8h–16h · dom 9h–15h</span>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/novabeach.cps/" target="_blank" rel="noopener" class="info-row" onclick="try{fbq('trackCustom','InfoClick',{type:'instagram'});}catch(e){}">
+      <span class="info-ico">📱</span>
+      <div class="info-body">
+        <strong>@novabeach.cps</strong>
+        <span>Siga no Instagram</span>
+      </div>
+      <span class="info-arrow">→</span>
+    </a>
+    <div class="info-row info-row-static">
+      <span class="info-ico info-ico-wellhub">✅</span>
+      <div class="info-body">
+        <strong>Aceitamos Wellhub</strong>
+        <span>Acesso liberado pelo app</span>
       </div>
     </div>
   </div>
 
+  <!-- Bento visual (ocupa espaço vazio no desktop) -->
+  <div class="info-bento" aria-hidden="true">
+    <div class="bento-item"><strong>5</strong><span>quadras oficiais</span></div>
+    <div class="bento-item"><strong>7</strong><span>dias por semana</span></div>
+    <div class="bento-item"><strong>Bowa Bar</strong><span>no local</span></div>
+  </div>
+  </aside>
+
   <!-- QUIZ -->
   <div class="quiz">
+    <!-- Mini header só mobile (logo + badge) -->
+    <div class="mobile-top">
+      <img class="hub-logo" src="logo-novabeach.png" alt="Nova Beach">
+      <span class="hub-loc">Nova Campinas</span>
+    </div>
+    <a href="/wa/pilates/?utm_source=hub&utm_medium=banner&utm_campaign=mat-pilates-areia&utm_content=harmony-08nov" class="tour-banner" style="background:linear-gradient(135deg,#c9b3ff 0%,#8a6dff 100%);color:#1a1033" onclick="try{fbq('trackCustom','PilatesBannerClick',{source:'hub_home'});}catch(e){}">
+      <span class="tour-tag" style="background:#1a1033;color:#c9b3ff">🧘‍♀️ 08/11</span>
+      <div class="tour-body">
+        <strong>Mat Pilates na Areia · Harmony Experience</strong>
+        <span style="color:#1a1033;opacity:0.78">Domingo de manhã · garanta sua vaga</span>
+      </div>
+      <span class="tour-arrow" style="color:#1a1033">→</span>
+    </a>
+
     <a href="/aniversario-nova-beach/" class="tour-banner" style="background:linear-gradient(135deg,#d7fd3f 0%,#aed631 100%);color:var(--nb-navy)" onclick="try{fbq('trackCustom','AniversarioBannerClick',{source:'hub_home'});}catch(e){}">
       <span class="tour-tag" style="background:var(--nb-navy);color:var(--nb-accent)">🎉 Aniversário</span>
       <div class="tour-body">
@@ -477,8 +560,8 @@ fbq('track','PageView');
         </button>
         <button class="opt" data-choice="clubinho">
           <div class="opt-body">
-            <div class="opt-title">Já jogo, quero jogar aqui</div>
-            <div class="opt-sub">Clubinho — acesso livre + jogos</div>
+            <div class="opt-title">Quero jogar livre no meu nível</div>
+            <div class="opt-sub">Clubinho — pelada diária sem aulas</div>
           </div>
           <div class="opt-arrow">→</div>
         </button>
@@ -496,6 +579,13 @@ fbq('track','PageView');
           </div>
           <div class="opt-arrow">→</div>
         </button>
+        <a class="opt" href="/wa/pilates/?utm_source=hub&utm_medium=quiz&utm_campaign=mat-pilates-areia&utm_content=step1-opt" style="text-decoration:none;color:inherit" onclick="try{fbq('trackCustom','PilatesOptClick',{source:'quiz_step1'});}catch(e){}">
+          <div class="opt-body">
+            <div class="opt-title">🧘‍♀️ Mat Pilates na Areia · 08/11</div>
+            <div class="opt-sub">Harmony Experience — garanta sua vaga</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </a>
       </div>
     </div>
 
@@ -529,6 +619,16 @@ fbq('track','PageView');
         <button class="chip" data-value="Fora de Campinas">Fora de Campinas</button>
       </div>
 
+      <div class="form-row" id="outro-bairro-row" style="display:none;margin-top:16px">
+        <label class="form-label" for="input-outro-bairro">Qual bairro em Campinas?</label>
+        <input type="text" id="input-outro-bairro" class="form-input" placeholder="Ex: Castelo, Mansões Santo Antônio, Jd. Guanabara..." autocomplete="address-level3" maxlength="60">
+      </div>
+
+      <div class="form-row" id="fora-cidade-row" style="display:none;margin-top:16px">
+        <label class="form-label" for="input-fora-cidade">Qual sua cidade?</label>
+        <input type="text" id="input-fora-cidade" class="form-input" placeholder="Ex: Valinhos, Vinhedo, Hortolândia..." autocomplete="address-level2" maxlength="60">
+      </div>
+
       <div class="step-nav">
         <button class="btn-back" data-back="2">voltar</button>
         <button class="cta" id="to-step4" disabled style="opacity:0.4;pointer-events:none">Continuar</button>
@@ -557,9 +657,11 @@ fbq('track','PageView');
       </div>
 
       <label class="lgpd-row">
-        <input type="checkbox" id="lgpd-ok" checked>
+        <input type="checkbox" id="lgpd-ok">
         <span>Autorizo contato da Nova Beach pelo WhatsApp.</span>
       </label>
+
+      <div id="step4-hint" style="margin-top:8px;font-size:11px;color:var(--nb-mute);min-height:14px;line-height:1.3"></div>
 
       <div class="step-nav">
         <button class="btn-back" data-back="3">voltar</button>
@@ -604,12 +706,6 @@ fbq('track','PageView');
 </div>
 
 <footer>
-  <div class="foot-info">
-    <span>📍 Av. Dr. Jesuíno Marcondes Machado, 869 · Nova Campinas</span>
-    <span>⏰ seg–qui 7h–22h · sex 7h–21h · sáb 8h–16h · dom 9h–15h</span>
-    <span>✅ Aceitamos <strong>Wellhub</strong></span>
-    <span><a href="https://www.instagram.com/novabeach.cps/" target="_blank" rel="noopener">📱 @novabeach.cps</a> · <a href="https://www.google.com/maps/search/?api=1&query=Nova+Beach+Campinas+Av+Jesuino+Marcondes+Machado+869" target="_blank" rel="noopener">Como chegar</a></span>
-  </div>
   <div>Nova Beach Campinas · 2026</div>
 </footer>
 
@@ -683,7 +779,7 @@ fbq('track','PageView');
   };
 
   // ===== STATE =====
-  let state = {step:1, path:null, choice:null, bairro:null, nome:'', tel:'', email:'', lgpd:true};
+  let state = {step:1, path:null, choice:null, bairro:null, nome:'', tel:'', email:'', lgpd:false};
 
   // ===== DOM =====
   const steps = document.querySelectorAll('.step');
@@ -731,8 +827,16 @@ fbq('track','PageView');
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload),
         keepalive: true
-      }).catch(()=>{});
-    } catch(e){}
+      }).then(r=>{
+        if(!r.ok){
+          try{fbq('trackCustom','LeadSaveError',{where:'supabase',status:r.status});}catch(e){}
+        }
+      }).catch(err=>{
+        try{fbq('trackCustom','LeadSaveError',{where:'supabase',msg:String(err&&err.message||err).slice(0,80)});}catch(e){}
+      });
+    } catch(e){
+      try{fbq('trackCustom','LeadSaveError',{where:'supabase_sync',msg:String(e.message||e).slice(0,80)});}catch(_){}
+    }
     // Sheets (espelho pra visualizacao e cobranca)
     if(SHEETS_URL){
       try {
@@ -742,20 +846,27 @@ fbq('track','PageView');
           headers:{'Content-Type':'text/plain;charset=utf-8'},
           body: JSON.stringify(payload),
           keepalive: true
-        }).catch(()=>{});
-      } catch(e){}
+        }).catch(err=>{
+          try{fbq('trackCustom','LeadSaveError',{where:'sheets',msg:String(err&&err.message||err).slice(0,80)});}catch(e){}
+        });
+      } catch(e){
+        try{fbq('trackCustom','LeadSaveError',{where:'sheets_sync',msg:String(e.message||e).slice(0,80)});}catch(_){}
+      }
     }
   }
   // Alias retrocompat
   const sendToSheets = sendLead;
 
-  // Tracking de abandono (beforeunload)
+  // Tracking de abandono (visibilitychange + sendBeacon — mobile-friendly)
   let converted = false;
-  window.addEventListener('beforeunload', ()=>{
-    if(!converted && state.step > 1){
-      try{fbq('trackCustom','QuizAbandoned',{step:state.step,path:state.path||'',has_contact:!!state.tel});}catch(e){}
-    }
-  });
+  let abandonSent = false;
+  function sendAbandon(){
+    if(abandonSent || converted || state.step <= 1) return;
+    abandonSent = true;
+    try{fbq('trackCustom','QuizAbandoned',{step:state.step,path:state.path||'',has_contact:!!state.tel});}catch(e){}
+  }
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState === 'hidden') sendAbandon(); });
+  window.addEventListener('pagehide', sendAbandon);
 
   function renderStep2(){
     const data = PATHS[state.path];
@@ -818,7 +929,7 @@ fbq('track','PageView');
     `;
 
     // "Fora de Campinas" = ainda captura, mas sinaliza
-    if(bairro === 'Fora de Campinas'){
+    if(bairro && bairro.indexOf('Fora de Campinas') === 0){
       step5Title.innerHTML = 'Pertinho de <em>Campinas?</em>';
       step5Sub.textContent = 'Estamos em Nova Campinas. Chama no WhatsApp pra confirmar se compensa pra você.';
       researcherBox.style.display = 'block';
@@ -837,12 +948,29 @@ fbq('track','PageView');
     } catch(e){}
   }
 
+  const step4Hint = document.getElementById('step4-hint');
   function validateContact(){
     const nameOk = (inputNome.value || '').trim().length >= 2;
     const telDigits = (inputTel.value || '').replace(/\D/g,'');
-    const telOk = telDigits.length >= 10;
+    // Celular BR: 11 digitos (DDD 2 + 9 + 8 digitos). Rejeita fixo.
+    const telOk = telDigits.length === 11 && telDigits.charAt(2) === '9';
+    const emailRaw = (inputEmail && inputEmail.value || '').trim();
+    // Email eh opcional — se preenchido, precisa ser valido
+    const emailOk = emailRaw === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailRaw);
     const lgpd = lgpdOk.checked;
-    const ok = nameOk && telOk && lgpd;
+    const ok = nameOk && telOk && emailOk && lgpd;
+
+    // Feedback visual: diz o que falta
+    if(step4Hint){
+      const faltam = [];
+      if(!nameOk) faltam.push('nome');
+      if(!telOk) faltam.push(telDigits.length>0 ? 'celular completo (11 dígitos)' : 'celular');
+      if(!emailOk) faltam.push('e-mail válido');
+      if(!lgpd) faltam.push('autorização LGPD');
+      step4Hint.textContent = ok ? '✓ pronto, pode seguir' : (faltam.length ? 'falta: '+faltam.join(' · ') : '');
+      step4Hint.style.color = ok ? 'var(--nb-accent-2)' : 'var(--nb-mute)';
+    }
+
     toStep5Btn.disabled = !ok;
     toStep5Btn.style.opacity = ok ? '1' : '0.4';
     toStep5Btn.style.pointerEvents = ok ? 'auto' : 'none';
@@ -870,6 +998,14 @@ fbq('track','PageView');
       document.querySelectorAll('.chip.selected').forEach(c=>c.classList.remove('selected'));
       const t4 = document.getElementById('to-step4');
       if(t4){t4.disabled=true;t4.style.opacity='0.4';t4.style.pointerEvents='none';}
+      const fcr = document.getElementById('fora-cidade-row');
+      const ifc = document.getElementById('input-fora-cidade');
+      if(fcr) fcr.style.display = 'none';
+      if(ifc) ifc.value = '';
+      const obr = document.getElementById('outro-bairro-row');
+      const iob = document.getElementById('input-outro-bairro');
+      if(obr) obr.style.display = 'none';
+      if(iob) iob.value = '';
       try{fbq('trackCustom','QuizChoice1',{path:state.path});}catch(e){}
       renderStep2();
       goStep(2);
@@ -877,16 +1013,56 @@ fbq('track','PageView');
   });
 
   // STEP 3 chips (bairro)
+  const foraCidadeRow = document.getElementById('fora-cidade-row');
+  const inputForaCidade = document.getElementById('input-fora-cidade');
+  const outroBairroRow = document.getElementById('outro-bairro-row');
+  const inputOutroBairro = document.getElementById('input-outro-bairro');
+  function enableStep4Btn(enabled){
+    toStep4Btn.disabled = !enabled;
+    toStep4Btn.style.opacity = enabled ? '1' : '0.4';
+    toStep4Btn.style.pointerEvents = enabled ? 'auto' : 'none';
+  }
   document.querySelectorAll('.step[data-step="3"] .chip').forEach(chip=>{
     chip.addEventListener('click', ()=>{
       document.querySelectorAll('.step[data-step="3"] .chip').forEach(c=>c.classList.remove('selected'));
       chip.classList.add('selected');
-      state.bairro = chip.dataset.value;
-      toStep4Btn.disabled = false;
-      toStep4Btn.style.opacity = '1';
-      toStep4Btn.style.pointerEvents = 'auto';
+      const val = chip.dataset.value;
+      if(val === 'Fora de Campinas'){
+        foraCidadeRow.style.display = 'block';
+        outroBairroRow.style.display = 'none';
+        inputOutroBairro.value = '';
+        const cidade = (inputForaCidade.value||'').trim();
+        state.bairro = cidade ? `Fora de Campinas - ${cidade}` : null;
+        enableStep4Btn(!!cidade);
+        try{inputForaCidade.focus();}catch(e){}
+      } else if(val === 'Outro bairro Campinas'){
+        outroBairroRow.style.display = 'block';
+        foraCidadeRow.style.display = 'none';
+        inputForaCidade.value = '';
+        const bairro = (inputOutroBairro.value||'').trim();
+        state.bairro = bairro ? `Campinas - ${bairro}` : null;
+        enableStep4Btn(!!bairro);
+        try{inputOutroBairro.focus();}catch(e){}
+      } else {
+        foraCidadeRow.style.display = 'none';
+        outroBairroRow.style.display = 'none';
+        inputForaCidade.value = '';
+        inputOutroBairro.value = '';
+        state.bairro = val;
+        enableStep4Btn(true);
+      }
       try{fbq('trackCustom','QuizChoice3',{bairro:state.bairro});}catch(e){}
     });
+  });
+  inputForaCidade.addEventListener('input', ()=>{
+    const cidade = (inputForaCidade.value||'').trim();
+    state.bairro = cidade ? `Fora de Campinas - ${cidade}` : null;
+    enableStep4Btn(!!cidade);
+  });
+  inputOutroBairro.addEventListener('input', ()=>{
+    const bairro = (inputOutroBairro.value||'').trim();
+    state.bairro = bairro ? `Campinas - ${bairro}` : null;
+    enableStep4Btn(!!bairro);
   });
 
   toStep4Btn.addEventListener('click', ()=>{
@@ -912,6 +1088,7 @@ fbq('track','PageView');
     e.target.value = formatPhone(e.target.value);
     validateContact();
   });
+  inputEmail.addEventListener('input', validateContact);
   lgpdOk.addEventListener('change', validateContact);
 
   toStep5Btn.addEventListener('click', ()=>{
@@ -957,11 +1134,22 @@ fbq('track','PageView');
 
   // STEP 5 CTA — redireciona pela rota /wa/* (pixel + wa.me handoff personalizado)
   toWaBtn.addEventListener('click', ()=>{
+    // Guard contra double-click
+    if(converted) return;
+    converted = true;
+    toWaBtn.disabled = true;
+    toWaBtn.style.opacity = '0.6';
+    toWaBtn.style.pointerEvents = 'none';
+
     const path = PATHS[state.path];
     const choice = state.choice;
     const nomeMsg = state.nome ? `Oi, aqui é ${state.nome}! ` : 'Oi! ';
     const customMsg = `${nomeMsg}${choice.msg.replace(/^Quero/,'quero')} Moro em ${state.bairro}.`;
     const adUtm = (function(){ try{return JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){return {}} })();
+
+    // EventID unico por lead — propagado pra rota /wa/* usar no fbq('track','Lead') + CAPI (dedup browser↔server)
+    const leadEventId = 'Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+
     const qParams = {
       utm_source: adUtm.utm_source || 'landing_hub',
       utm_medium: adUtm.utm_medium || 'quiz',
@@ -972,7 +1160,8 @@ fbq('track','PageView');
       nb_choice: choice.key,
       nb_msg: customMsg,
       nb_bairro: state.bairro,
-      nb_nome: state.nome
+      nb_nome: state.nome,
+      nb_event_id: leadEventId
     };
     if(state.email) qParams.nb_email = state.email;
     if(state.tel) qParams.nb_tel = state.tel;
@@ -982,72 +1171,15 @@ fbq('track','PageView');
 
     // Sem evento Lead aqui: a rota /wa/* dispara o Lead (evita contar a mesma pessoa 2-3x).
     // Nome e telefone NUNCA vao para o pixel (politica do Meta).
-    const qwaEventId = 'QuizWhatsApp-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
-    try{fbq('trackCustom','QuizWhatsApp',{path:state.path,choice:choice.key,bairro:state.bairro,eventId:qwaEventId},{eventID:qwaEventId});}catch(e){}
+    try{fbq('trackCustom','QuizWhatsApp',{path:state.path,choice:choice.key,bairro:state.bairro,eventId:leadEventId},{eventID:leadEventId});}catch(e){}
 
-    converted = true;
     setTimeout(()=>{ window.location.href = targetUrl; }, 180);
   });
-
-  // ===== Video popup (so no celular) =====
-  (function(){
-    const mq = window.matchMedia('(max-width:719px)');
-    const wrap = document.querySelector('.media-wrap');
-    const vid = document.getElementById('hero-video');
-    const backdrop = document.getElementById('vid-backdrop');
-    const closeBtn = document.getElementById('vid-close');
-    if(!wrap || !vid) return;
-    function openPopup(byUser){
-      wrap.classList.add('open'); backdrop.classList.add('show');
-      document.body.style.overflow='hidden';
-      if(byUser){ vid.muted=false; const sb=document.getElementById('sound-btn'); if(sb){sb.classList.add('active'); sb.querySelector('.sound-label').textContent='ouvindo';} }
-      vid.play().catch(()=>{});
-      try{fbq('trackCustom','VideoPopupOpen',{auto:!byUser});}catch(e){}
-    }
-    function closePopup(){
-      wrap.classList.remove('open'); backdrop.classList.remove('show');
-      document.body.style.overflow='';
-      vid.muted=true; const sb=document.getElementById('sound-btn'); if(sb){sb.classList.remove('active'); sb.querySelector('.sound-label').textContent='som';}
-      vid.play().catch(()=>{});
-    }
-    wrap.addEventListener('click', (e)=>{
-      if(!mq.matches || wrap.classList.contains('open')) return;
-      openPopup(true);
-    });
-    closeBtn.addEventListener('click', (e)=>{ e.stopPropagation(); closePopup(); });
-    backdrop.addEventListener('click', closePopup);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && wrap.classList.contains('open')) closePopup(); });
-    mq.addEventListener && mq.addEventListener('change', ()=>{ if(!mq.matches) closePopup(); });
-    // Abre sozinho 1x por sessao, ao entrar no celular (mudo — o navegador bloqueia som automatico)
-    let seen=false; try{seen=sessionStorage.getItem('nb_vid_popup')==='1';}catch(e){}
-    // Quem chega de anuncio (utm/fbclid) vai direto pro quiz: sem popup automatico
-    const qs = new URLSearchParams(window.location.search);
-    const fromAd = qs.has('utm_source') || qs.has('fbclid') || qs.has('gclid') || qs.has('p');
-    if(mq.matches && !seen && !fromAd){
-      setTimeout(()=>{ if(state.step===1) openPopup(false); }, 800);
-      try{sessionStorage.setItem('nb_vid_popup','1');}catch(e){}
-    }
-  })();
 
   // Back buttons
   document.querySelectorAll('.btn-back').forEach(btn=>{
     btn.addEventListener('click', ()=>{ goStep(+btn.dataset.back); });
   });
-
-  // Sound toggle on hero video
-  const video = document.getElementById('hero-video');
-  const soundBtn = document.getElementById('sound-btn');
-  if(video && soundBtn){
-    soundBtn.addEventListener('click', ()=>{
-      video.muted = !video.muted;
-      soundBtn.classList.toggle('active', !video.muted);
-      soundBtn.querySelector('.sound-label').textContent = video.muted ? 'som' : 'ouvindo';
-      if(!video.muted){
-        video.play().catch(()=>{});
-        try{fbq('trackCustom','VideoUnmuted');}catch(e){}
-      }
-    });
-  }
 
   // Link direto por intencao (anuncio): ?p=jogar pula a pergunta 1
   try{

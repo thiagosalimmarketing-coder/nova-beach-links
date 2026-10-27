@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nova Beach — Mat Pilates na Areia · Harmony Experience</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:#f3f5fa;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;position:relative}
+.pattern{position:fixed;inset:0;pointer-events:none;background-image:url('../../nb-ball.png');background-repeat:repeat;background-size:140px;opacity:0.035}
+.card{position:relative;z-index:1;background:#1a3066;border-radius:16px;padding:40px 48px;display:flex;flex-direction:column;align-items:center;gap:20px;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
+.logo{height:48px;width:auto;object-fit:contain}
+.msg{color:rgba(255,255,255,0.7);font-size:14px;letter-spacing:0.3px}
+.dots span{display:inline-block;animation:blink 1.2s infinite}
+.dots span:nth-child(2){animation-delay:0.2s}
+.dots span:nth-child(3){animation-delay:0.4s}
+@keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1397968278475446');
+fbq('track','PageView');
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  var qMsg=p.get('nb_msg');
+  var qBairro=p.get('nb_bairro');
+  var persisted={};try{persisted=JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){}
+  function pick(k){return p.get(k)||persisted[k]||'';}
+  var utm={utm_source:pick('utm_source'),utm_medium:pick('utm_medium'),utm_campaign:pick('utm_campaign'),utm_content:pick('utm_content'),utm_term:pick('utm_term'),fbclid:pick('fbclid')};
+  try{if(utm.utm_source||utm.fbclid)sessionStorage.setItem('nb_utms',JSON.stringify(utm));}catch(e){}
+
+  var defMsg='Quero garantir minha vaga no Mat Pilates na Areia (08/11) — Harmony Experience';
+  var msg=qMsg?decodeURIComponent(qMsg):('Oi! '+defMsg+'.');
+  if(qBairro)msg+=' (Moro em: '+decodeURIComponent(qBairro)+')';
+
+  function originTag(){
+    if(!utm.utm_source && !utm.fbclid) return ' ⟨origem: landing_hub⟩';
+    var parts=[];
+    if(utm.utm_source)parts.push(utm.utm_source);
+    if(utm.utm_campaign)parts.push(utm.utm_campaign);
+    if(utm.utm_content)parts.push(utm.utm_content);
+    if(utm.fbclid)parts.push('fbclid:'+utm.fbclid.slice(0,10));
+    return ' ⟨origem: '+parts.join(' · ')+'⟩';
+  }
+  msg += originTag();
+  var waUrl='https://wa.me/5519995575156?text='+encodeURIComponent(msg);
+
+  var eventId=p.get('nb_event_id')||('Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10));
+  function cookie(n){return (document.cookie.split('; ').find(function(r){return r.indexOf(n+'=')===0;})||'').split('=')[1]||null;}
+
+  var customData={content_name:'pilates',content_category:utm.utm_campaign||'direct',source:utm.utm_source||'landing_hub',utm_source:utm.utm_source,utm_medium:utm.utm_medium,utm_campaign:utm.utm_campaign,utm_content:utm.utm_content,utm_term:utm.utm_term,fbclid:utm.fbclid,bairro:qBairro||''};
+
+  try{
+    fetch('/api/capi',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({event_name:'Lead',event_id:eventId,event_time:Math.floor(Date.now()/1000),event_source_url:window.location.href,action_source:'website',user_data:{fbp:cookie('_fbp'),fbc:cookie('_fbc'),name:p.get('nb_nome')||undefined,phone:p.get('nb_tel')||undefined,email:p.get('nb_email')||undefined},custom_data:customData}),keepalive:true}).catch(function(){});
+  }catch(e){}
+
+  var delay=qMsg?500:1200;
+  setTimeout(function(){
+    try{fbq('track','Lead',customData,{eventID:eventId});}catch(e){}
+    window.location.href=waUrl;
+  },delay);
+})();
+</script>
+<noscript>
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
+<meta http-equiv="refresh" content="0;url=https://wa.me/5519995575156">
+</noscript>
+</head>
+<body>
+<div class="pattern"></div>
+<div class="card">
+<img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">
+<p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+</div>
+</body>
+</html>

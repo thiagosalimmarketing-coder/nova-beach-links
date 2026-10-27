@@ -7,7 +7,7 @@
 <meta name="description" content="Inscreva-se no Torneio de Beach Tennis da Nova Beach Campinas em parceria com TFSports e Track & Field.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="canonical" href="https://links.novabeachcampinas.com.br/torneio/">
-<link rel="icon" type="image/png" href="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/favicon-1-300x300.png">
+<link rel="icon" type="image/png" href="/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nova Beach Campinas">
 <meta property="og:title" content="Torneio de Beach Tennis — Nova Beach × TFSports × Track&amp;Field">
@@ -72,7 +72,7 @@ fbq('track','PageView');
       method:'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify({
-        event_name:'Lead',
+        event_name:'ViewContent',
         event_id:eventId,
         event_time:Math.floor(Date.now()/1000),
         event_source_url:window.location.href,
@@ -121,20 +121,20 @@ fbq('track','PageView');
   }
 
   setTimeout(function(){
-    try{fbq('track','Lead',customData,{eventID:eventId});}catch(e){}
+    try{fbq('track','ViewContent',customData,{eventID:eventId});}catch(e){}
     window.location.href=buildDest();
   },1200);
 })();
 </script>
 <noscript>
-<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=ViewContent&noscript=1"/>
 <meta http-equiv="refresh" content="0;url=https://link-prod.tfsports.com.br/events/nova-beach-torneio-de-beach-tennis-02609221558">
 </noscript>
 </head>
 <body>
 <div class="pattern"></div>
 <div class="card">
-<img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">
+<img class="logo" src="/logo-novabeach.png" alt="Nova Beach">
 <p class="msg">Abrindo inscrição no app TFSports<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
 </div>
 </body>

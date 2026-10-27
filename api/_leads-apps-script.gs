@@ -24,6 +24,9 @@ const SPREADSHEET_ID = '1eT_ES6ezk5dJltOmRR9RXCXhKO_dXhWSZu6JWd3gbMw';
 const SHEET_NAME = 'Leads Captacao Site';
 const DEDUP_WINDOW_MINUTES = 10;
 
+// === EMAIL ALERT (ATIVO) ===
+const ALERT_EMAIL = 'thiago.salim.marketing@gmail.com';
+
 // === PUSH WHATSAPP (opcional) ===
 const THIAGO_WHATSAPP = ''; // ex: '5519999999999' (com DDI 55, sem +)
 const CALLMEBOT_API_KEY = ''; // Cole aqui depois de ativar CallMeBot
@@ -79,6 +82,11 @@ function doPost(e) {
       body.utm_term || '', body.fbclid || '', (body.ua || '').toString().substring(0, 200)
     ]);
 
+    // ===== Email alert (ATIVO) =====
+    if (ALERT_EMAIL) {
+      sendEmailAlert(nome, formattedPhone, body.path, body.choice, body.bairro, body.utm_source, body.utm_campaign);
+    }
+
     // ===== Push WhatsApp (opcional) =====
     if (THIAGO_WHATSAPP && CALLMEBOT_API_KEY) {
       pushWhatsApp(nome, formattedPhone, body.path, body.choice, body.bairro, body.utm_source);
@@ -103,6 +111,42 @@ function formatPhone(digits) {
   if (d.length === 11) return '(' + d.substr(0,2) + ') ' + d.substr(2,5) + '-' + d.substr(7);
   if (d.length === 10) return '(' + d.substr(0,2) + ') ' + d.substr(2,4) + '-' + d.substr(6);
   return d;
+}
+
+function sendEmailAlert(nome, telefone, vertical, interesse, bairro, utmSource, utmCampaign) {
+  try {
+    const subject = `[Nova Beach] Novo lead: ${nome} · ${vertical || 'geral'}`;
+    const telDigits = String(telefone).replace(/\D/g, '');
+    const waLink = `https://wa.me/55${telDigits}?text=` + encodeURIComponent(`Oi ${nome}! Aqui e da Nova Beach. Recebi seu contato pelo site, tudo bem? Posso te ajudar?`);
+    const html = `
+      <div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;padding:24px;background:#f3f5fa">
+        <div style="background:#1a3066;color:#fff;padding:18px 24px;border-radius:12px 12px 0 0;font-weight:700;letter-spacing:0.5px">
+          🏖️ NOVO LEAD · Nova Beach
+        </div>
+        <div style="background:#fff;padding:24px;border-radius:0 0 12px 12px;border:1px solid #e5e7eb;border-top:0">
+          <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.6">
+            <tr><td style="color:#64708f;padding:4px 0;width:110px">Nome</td><td style="color:#0e1e42;font-weight:700">${nome}</td></tr>
+            <tr><td style="color:#64708f;padding:4px 0">Telefone</td><td style="color:#0e1e42;font-weight:700">${telefone}</td></tr>
+            <tr><td style="color:#64708f;padding:4px 0">Vertical</td><td style="color:#0e1e42">${vertical || '-'}</td></tr>
+            <tr><td style="color:#64708f;padding:4px 0">Interesse</td><td style="color:#0e1e42">${interesse || '-'}</td></tr>
+            <tr><td style="color:#64708f;padding:4px 0">Bairro</td><td style="color:#0e1e42">${bairro || '-'}</td></tr>
+            <tr><td style="color:#64708f;padding:4px 0">Origem</td><td style="color:#0e1e42">${utmSource || 'direto'}${utmCampaign ? ' · ' + utmCampaign : ''}</td></tr>
+          </table>
+          <div style="margin-top:20px;display:flex;gap:10px">
+            <a href="${waLink}" style="display:inline-block;background:#25d366;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px">Chamar no WhatsApp</a>
+            <a href="https://links.novabeachcampinas.com.br/dashboard/" style="display:inline-block;background:#0e1e42;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px">Ver dashboard</a>
+          </div>
+        </div>
+        <p style="color:#64708f;font-size:11px;text-align:center;margin-top:16px">Enviado automaticamente pelo captador de leads Nova Beach.</p>
+      </div>`;
+    MailApp.sendEmail({
+      to: ALERT_EMAIL,
+      subject: subject,
+      htmlBody: html
+    });
+  } catch (e) {
+    // silencia erro do email pra nao quebrar a gravacao
+  }
 }
 
 function pushWhatsApp(nome, telefone, vertical, interesse, bairro, utmSource) {

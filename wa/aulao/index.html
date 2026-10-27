@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Nova Beach — Quero fazer um aulão em grupo com café da manhã</title>
 <meta name="robots" content="noindex,nofollow">
-<link rel="icon" type="image/png" href="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/favicon-1-300x300.png">
+<link rel="icon" type="image/png" href="/favicon.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{min-height:100vh;background:#f3f5fa;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;position:relative}
@@ -51,14 +51,14 @@ fbq('track','PageView');
   var waUrl='https://wa.me/5519999178194?text='+encodeURIComponent(msg);
 
   // ===== Event ID + fbp/fbc for CAPI dedup =====
-  var eventId='Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+  var eventId=p.get('nb_event_id')||('Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10));
   function cookie(n){return (document.cookie.split('; ').find(function(r){return r.indexOf(n+'=')===0;})||'').split('=')[1]||null;}
 
   var customData={content_name:'aulao_grupo',content_category:utm.utm_campaign||'direct',source:utm.utm_source||'landing_hub',utm_source:utm.utm_source,utm_medium:utm.utm_medium,utm_campaign:utm.utm_campaign,utm_content:utm.utm_content,utm_term:utm.utm_term,fbclid:utm.fbclid,bairro:qBairro||''};
 
   // CAPI relay (keepalive so it survives redirect)
   try{
-    fetch('/api/capi',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({event_name:'Lead',event_id:eventId,event_time:Math.floor(Date.now()/1000),event_source_url:window.location.href,action_source:'website',user_data:{fbp:cookie('_fbp'),fbc:cookie('_fbc')},custom_data:customData}),keepalive:true}).catch(function(){});
+    fetch('/api/capi',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({event_name:'Lead',event_id:eventId,event_time:Math.floor(Date.now()/1000),event_source_url:window.location.href,action_source:'website',user_data:{fbp:cookie('_fbp'),fbc:cookie('_fbc'),name:p.get('nb_nome')||undefined,phone:p.get('nb_tel')||undefined,email:p.get('nb_email')||undefined},custom_data:customData}),keepalive:true}).catch(function(){});
   }catch(e){}
 
   var delay=qMsg?500:1200;
@@ -76,7 +76,7 @@ fbq('track','PageView');
 <body>
 <div class="pattern"></div>
 <div class="card">
-<img class="logo" src="../../logo-novabeach.png" alt="Nova Beach">
+<img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">
 <p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
 </div>
 </body>
