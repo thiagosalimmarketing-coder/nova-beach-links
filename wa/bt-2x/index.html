@@ -48,7 +48,9 @@ fbq('track','PageView');
     return ' ⟨origem: '+parts.join(' · ')+'⟩';
   }
   msg += originTag();
-  var waUrl='https://wa.me/5519995575156?text='+encodeURIComponent(msg);
+  var isPaid=!!utm.fbclid||/^(fb|facebook|ig|instagram|meta)/i.test(utm.utm_source||'');
+  var waPhone=isPaid?'5519989725983':'5519995575156';
+  var waUrl='https://wa.me/'+waPhone+'?text='+encodeURIComponent(msg);
 
   // ===== Event ID + fbp/fbc for CAPI dedup =====
   var eventId=p.get('nb_event_id')||('Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10));

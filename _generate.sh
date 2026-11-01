@@ -41,6 +41,9 @@ FUNCIONAL_PHONE="5519999178194"
 # ─────────────────────────────────────────────────────────────
 ENTRY_PHONE="${HUMAN_PHONE}"
 
+# 2026-11-01: trafego pago (Meta Ads) vai para o numero com API oficial do Reportana.
+ADS_PHONE="${CRM_PHONE}"
+
 BASE_URL="https://links.novabeachcampinas.com.br"
 
 # ─────────────────────────────────────────────────────────────
@@ -48,17 +51,17 @@ BASE_URL="https://links.novabeachcampinas.com.br"
 # slot | ads_phone | site_phone | content_name | product_label
 # ─────────────────────────────────────────────────────────────
 PRODUCTS=(
-  "bt|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
-  "bt-1x|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
-  "bt-2x|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
-  "clubinho|${ENTRY_PHONE}|${ENTRY_PHONE}|clubinho|Clubinho (jogo livre de Beach Tennis)"
-  "experimental|${ENTRY_PHONE}|${ENTRY_PHONE}|aula_experimental|aula experimental de Beach Tennis"
-  "quadra|${ENTRY_PHONE}|${ENTRY_PHONE}|locacao_quadra|locação de quadra avulsa"
-  "reservas|${ENTRY_PHONE}|${ENTRY_PHONE}|day_use_empresarial|Day Use Empresarial"
+  "bt|${ADS_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
+  "bt-1x|${ADS_PHONE}|${ENTRY_PHONE}|beach_tennis_1x_semana|plano Beach Tennis 1x por semana"
+  "bt-2x|${ADS_PHONE}|${ENTRY_PHONE}|beach_tennis_2x_semana|plano Beach Tennis 2x por semana"
+  "clubinho|${ADS_PHONE}|${ENTRY_PHONE}|clubinho|Clubinho (jogo livre de Beach Tennis)"
+  "experimental|${ADS_PHONE}|${ENTRY_PHONE}|aula_experimental|aula experimental de Beach Tennis"
+  "quadra|${ADS_PHONE}|${ENTRY_PHONE}|locacao_quadra|locação de quadra avulsa"
+  "reservas|${ADS_PHONE}|${ENTRY_PHONE}|day_use_empresarial|Day Use Empresarial"
   # funcional: modalidade encerrada (out/2026). Rota mantida so para nao quebrar links antigos -> cai em Beach Tennis.
-  "funcional|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
-  "day-use-individual|${ENTRY_PHONE}|${ENTRY_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
-  "aniversario|${ENTRY_PHONE}|${ENTRY_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
+  "funcional|${ADS_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
+  "day-use-individual|${ADS_PHONE}|${ENTRY_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
+  "aniversario|${ADS_PHONE}|${ENTRY_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
 )
 
 # ─────────────────────────────────────────────────────────────
