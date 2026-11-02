@@ -159,6 +159,60 @@
       opacity: 0.85;
       line-height: 1.5;
     }
+    .num-inactive {
+      filter: grayscale(0.65);
+      opacity: 0.72;
+    }
+    .num-inactive::after {
+      content: 'EM ATIVAÇÃO';
+      position: absolute;
+      top: 14px;
+      right: -32px;
+      transform: rotate(35deg);
+      background: #c7362b;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 36px;
+      box-shadow: 0 4px 12px rgba(199, 54, 43, 0.35);
+      z-index: 2;
+    }
+    .status-banner {
+      margin: 0 0 24px;
+      padding: 18px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff1ef 0%, #ffe4df 100%);
+      border-left: 4px solid #c7362b;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .status-banner .sb-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #8a1e14;
+      text-transform: uppercase;
+    }
+    .status-banner .sb-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4a1109;
+    }
+    .status-banner .sb-body {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #5a1a10;
+    }
+    .status-banner code {
+      background: rgba(199, 54, 43, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+    }
     h2 {
       font-size: 28px;
       font-weight: 800;
@@ -685,22 +739,31 @@
       <h1>Fluxo <em>NOVA</em> — todo lead passa pela IA antes do humano</h1>
       <p class="lead">Arquitetura unificada de atendimento: anúncios, site e bio caem no mesmo agente. A NOVA qualifica em até 3 perguntas e só encaminha para o time humano quando há intenção clara de fechar.</p>
       <div class="meta-strip">
-        <span>Versão <strong>2026-09-28</strong></span>
+        <span>Versão <strong>2026-11-02</strong></span>
         <span>Pixel <strong>1397968278475446</strong></span>
-        <span>Domínio <strong>nova-beach-links.vercel.app</strong></span>
-        <span>IA <strong>+55 19 99455-7698</strong></span>
-        <span>CRM <strong>+55 19 98972-5983</strong></span>
-        <span>Humano BT <strong>+55 19 99557-5156</strong></span>
-        <span>Humano Eventos <strong>+55 19 99917-8194</strong></span>
+        <span>Domínio <strong>links.novabeachcampinas.com.br</strong></span>
+        <span>IA <strong>+55 19 99455-7698</strong> · em ativação</span>
+        <span>CRM <strong>+55 19 98972-5983</strong> · ativo</span>
+        <span>Humano BT <strong>+55 19 99557-5156</strong> · ativo</span>
+        <span>Humano Eventos <strong>+55 19 99917-8194</strong> · em ativação</span>
       </div>
     </header>
 
+    <div class="status-banner">
+      <span class="sb-tag">Status operacional · 02/11/2026</span>
+      <span class="sb-title">Fluxo rodando parcialmente — 2 pontos ainda não estão ativos</span>
+      <span class="sb-body">
+        <strong>Ativos hoje:</strong> hub <code>links.novabeachcampinas.com.br</code>, pixel Meta trackeando Lead/Purchase, CRM Reportana <code>19 98972-5983</code> disparando reativação e Humano BT <code>19 99557-5156</code> recebendo leads qualificados.<br>
+        <strong>Em ativação:</strong> IA NOVA (Agi Genies) <code>19 99455-7698</code> e Humano Eventos <code>19 99917-8194</code>. Enquanto esses dois não entram no ar, os leads de ads/site/bio seguem direto pro Humano BT via <code>wa.me/5519995575156</code>, sem a camada de qualificação da IA e sem rota dedicada pra Eventos.
+      </span>
+    </div>
+
     <div class="numbers-hero">
-      <div class="num-card num-ai">
+      <div class="num-card num-ai num-inactive">
         <div class="num-badge">🤖 IA · Agi Genies</div>
         <div class="num-role">Atendente NOVA</div>
         <div class="num-phone">+55 19 99455-7698</div>
-        <div class="num-caption">Recebe TODO lead novo (anúncios, site, bio). Qualifica em até 3 perguntas e encaminha pro humano certo.</div>
+        <div class="num-caption">Vai receber TODO lead novo (anúncios, site, bio). Qualifica em até 3 perguntas e encaminha pro humano certo. <strong>Em ativação com a Agi Genies — ainda não está no ar.</strong></div>
       </div>
       <div class="num-card num-crm">
         <div class="num-badge">🔄 CRM · Reportana</div>
@@ -714,11 +777,11 @@
         <div class="num-phone">+55 19 99557-5156</div>
         <div class="num-caption">Fecha matrículas de BT, Clubinho e aulas experimentais. Recebe lead já qualificado pela IA.</div>
       </div>
-      <div class="num-card num-eventos">
+      <div class="num-card num-eventos num-inactive">
         <div class="num-badge">🎉 Humano · Eventos</div>
         <div class="num-role">Atendimento Eventos & Aulão</div>
         <div class="num-phone">+55 19 99917-8194</div>
-        <div class="num-caption">Cuida de Day Use Empresarial, aulão funcional pontual e reservas de aniversário. Também recebe qualificado pela IA.</div>
+        <div class="num-caption">Vai cuidar de Day Use Empresarial, aulão funcional pontual e reservas de aniversário. Também recebe qualificado pela IA. <strong>Linha ainda não ativada — demandas de evento seguem pelo Humano BT.</strong></div>
       </div>
     </div>
 
