@@ -119,6 +119,18 @@ module.exports = async (req, res) => {
     // Pra ativar: ALTER TABLE leads_captacao ADD COLUMN IF NOT EXISTS email text;
     if (email) row.email = email;
 
+    // ----- Reportana (CRM): entra na automação "NB Hub Quiz - CRM follow-up 5983" -----
+    // Roda em paralelo ao Supabase; falha aqui nunca bloqueia a gravação do lead.
+    const reportanaPromise = sendToReportana({
+      nome: row.nome,
+      telefone: toE164BR(telDigits),
+      email: email || null,
+      interesse: row.interesse,
+      vertical: row.vertical,
+      bairro: row.bairro,
+      origem: row.utm_source || 'hub_quiz'
+    });
+
     const r = await fetch(`${SUPABASE_URL}/rest/v1/leads_captacao`, {
       method: 'POST',
       headers: {
@@ -129,6 +141,8 @@ module.exports = async (req, res) => {
       },
       body: JSON.stringify(row)
     });
+
+    await reportanaPromise; // garante o envio antes da função encerrar
 
     if (!r.ok) {
       const txt = await r.text().catch(() => '');
@@ -143,6 +157,38 @@ module.exports = async (req, res) => {
     return res.status(500).json({ ok: false, error: 'exception', detail: String(err).slice(0, 200) });
   }
 };
+
+// URL do webhook da automação no Reportana (gatilho "Webhook" → copiar link).
+// Pode ser sobrescrita pela env var REPORTANA_WEBHOOK_URL na Vercel.
+const REPORTANA_WEBHOOK_URL = process.env.REPORTANA_WEBHOOK_URL ||
+  'https://app.reportana.com/webhooks/workflows/191600?token=Sdfhxc61sxGUo9YpUcj7zIhQGerl0eIe';
+
+async function sendToReportana(payload) {
+  if (!REPORTANA_WEBHOOK_URL) return;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 5000);
+  try {
+    const r = await fetch(REPORTANA_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: ctrl.signal
+    });
+    if (r.ok) console.log(`[lead] reportana ok tel=${payload.telefone.slice(-4)}`);
+    else console.error(`[lead] reportana error status=${r.status}`);
+  } catch (e) {
+    console.error(`[lead] reportana exception ${String(e).slice(0, 120)}`);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// Reportana espera telefone no formato +55DDDNUMERO
+function toE164BR(digits) {
+  const d = String(digits || '').replace(/\D/g, '');
+  if (d.startsWith('55') && d.length >= 12) return '+' + d;
+  return '+55' + d;
+}
 
 function formatPhone(digits) {
   const d = String(digits || '').replace(/\D/g, '');
