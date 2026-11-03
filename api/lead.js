@@ -123,9 +123,11 @@ module.exports = async (req, res) => {
     // Roda em paralelo ao Supabase; falha aqui nunca bloqueia a gravação do lead.
     const reportanaPromise = sendToReportana({
       nome: row.nome,
+      primeiro_nome: primeiroNome(row.nome),
       telefone: toE164BR(telDigits),
       email: email || null,
       interesse: row.interesse,
+      interesse_label: interesseLabel(row.vertical, row.interesse),
       vertical: row.vertical,
       bairro: row.bairro,
       origem: row.utm_source || 'hub_quiz'
@@ -195,4 +197,19 @@ function formatPhone(digits) {
   if (d.length === 11) return '(' + d.substr(0, 2) + ') ' + d.substr(2, 5) + '-' + d.substr(7);
   if (d.length === 10) return '(' + d.substr(0, 2) + ') ' + d.substr(2, 4) + '-' + d.substr(6);
   return d;
+}
+
+// ----- Rótulos legíveis para as mensagens do Reportana ({{2}} dos modelos) -----
+const INTERESSE_LABELS = {
+  jogar: { nunca: 'aula experimental de Beach Tennis', '1x': 'plano de Beach Tennis 1x por semana', '2x': 'plano de Beach Tennis 2x por semana' },
+  clubinho: { mensal: 'Clubinho no plano mensal', trimestral: 'Clubinho no plano trimestral', semestral: 'Clubinho no plano semestral' },
+  reservar: { quadra: 'reserva de quadra avulsa', empresarial: 'Day Use Empresarial', individual: 'Day Use Individual' },
+  evento: { aniversario: 'aniversário na Nova Beach', confrater: 'confraternização de empresa', aulao: 'aulão em grupo' }
+};
+function interesseLabel(vertical, interesse) {
+  return (INTERESSE_LABELS[vertical] || {})[interesse] || 'Nova Beach';
+}
+function primeiroNome(nome) {
+  const p = String(nome || '').trim().split(/\s+/)[0] || '';
+  return p ? p.charAt(0).toUpperCase() + p.slice(1).toLowerCase() : 'tudo bem';
 }
