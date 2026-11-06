@@ -21,7 +21,7 @@
  */
 
 const SPREADSHEET_ID = '1eT_ES6ezk5dJltOmRR9RXCXhKO_dXhWSZu6JWd3gbMw';
-const SHEET_NAME = 'Leads Captacao Site';
+const SHEET_GID = 590515581;
 const DEDUP_WINDOW_MINUTES = 10;
 
 // === EMAIL ALERT (ATIVO) ===
@@ -48,9 +48,11 @@ function doPost(e) {
     }
 
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    let sheet = ss.getSheetByName(SHEET_NAME);
+    const sheet = ss.getSheets().find(function(s) { return s.getSheetId() === SHEET_GID; });
     if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
+      return jsonOut({ ok: false, error: 'sheet_gid_not_found', gid: SHEET_GID });
+    }
+    if (sheet.getLastRow() === 0) {
       sheet.appendRow(HEADERS);
       sheet.setFrozenRows(1);
       const h = sheet.getRange(1, 1, 1, HEADERS.length);

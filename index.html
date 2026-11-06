@@ -1166,6 +1166,7 @@ fbq('track','PageView');
     };
     if(state.email) qParams.nb_email = state.email;
     if(state.tel) qParams.nb_tel = state.tel;
+    qParams.nb_cidade = 'Campinas'; // quiz já filtra bairros fora da RMC no step3; assume Campinas
     if(adUtm.fbclid) qParams.fbclid = adUtm.fbclid;
     const q = new URLSearchParams(qParams);
     const targetUrl = `${choice.redirect}?${q.toString()}`;

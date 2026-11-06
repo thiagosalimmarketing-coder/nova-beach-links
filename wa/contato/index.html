@@ -26,6 +26,15 @@ fbq('track','PageView');
   var p=new URLSearchParams(window.location.search);
   var qMsg=p.get('nb_msg');
   var qBairro=p.get('nb_bairro');
+  // Advanced Matching: injeta PII hash no init quando vier via query (hub quiz / crm link)
+  var qNome=p.get('nb_nome'), qTel=p.get('nb_tel'), qEmail=p.get('nb_email'), qCidade=p.get('nb_cidade');
+  var amInit={};
+  if(qEmail) amInit.em=qEmail.trim().toLowerCase();
+  if(qTel){ var d=qTel.replace(/\D/g,''); if(d) amInit.ph=d.length<=11?'55'+d:d; }
+  if(qNome) amInit.fn=qNome.trim().split(/\s+/)[0].toLowerCase();
+  if(qCidade) amInit.ct=qCidade.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,'').toLowerCase();
+  // Reinit com AM sobrescreve o init vazio acima
+  if(Object.keys(amInit).length>0){ try{fbq('init','1397968278475446',amInit);}catch(e){} }
   // ===== UTM: priority = URL param > sessionStorage (quiz) > fallback =====
   var persisted={};try{persisted=JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){}
   function pick(k){return p.get(k)||persisted[k]||'';}

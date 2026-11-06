@@ -73,6 +73,14 @@ module.exports = async (req, res) => {
     fbc = `fb.1.${clickTsMs}.${fbclid}`;
   }
 
+  // external_id: Meta usa pra cross-session matching. Usa o próprio event_id
+  // (ou fallback no phone normalizado) hasheado.
+  const externalIdRaw = u.external_id || body.event_id || phoneNormalized;
+
+  // Normaliza city (ct) e state (st) — hash lowercase sem acento/espaço, conforme spec Meta.
+  const normCity = (v) => v ? String(v).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,'').toLowerCase() : undefined;
+  const ctHash = u.city ? sha256(normCity(u.city)) : undefined;
+
   const payload = {
     data: [{
       event_name: body.event_name,
@@ -84,6 +92,8 @@ module.exports = async (req, res) => {
         em: u.email ? [sha256(u.email)] : undefined,
         ph: phoneNormalized ? [sha256(phoneNormalized)] : undefined,
         fn: u.name ? [sha256(u.name)] : undefined,
+        ct: ctHash ? [ctHash] : undefined,
+        external_id: externalIdRaw ? [sha256(externalIdRaw)] : undefined,
         fbp: u.fbp || undefined,
         fbc: fbc || undefined,
         client_ip_address: ip,
@@ -100,7 +110,7 @@ module.exports = async (req, res) => {
 
   if (TEST_CODE) payload.test_event_code = TEST_CODE;
 
-  const url = `https://graph.facebook.com/v20.0/${PIXEL_ID}/events?access_token=${TOKEN}`;
+  const url = `https://graph.facebook.com/v22.0/${PIXEL_ID}/events?access_token=${TOKEN}`;
 
   try {
     const r = await fetch(url, {
