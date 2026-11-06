@@ -1114,10 +1114,13 @@ fbq('track','PageView');
       });
     }catch(e){}
     // Enviar pra Supabase (/api/lead) + Sheets (SHEETS_URL) simultaneamente
+    // Gera eventId aqui pra propagar pro Sheets E depois pro /wa/* no handoff
+    if(!state.leadEventId) state.leadEventId = 'Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
     sendLead({
       path: state.path,
       choice: state.choice.key,
       bairro: state.bairro,
+      cidade: 'Campinas',
       nome: state.nome,
       tel: state.tel,
       email: state.email,
@@ -1127,6 +1130,8 @@ fbq('track','PageView');
       utm_term: utmParams.utm_term || state.bairro || '',
       fbclid: utmParams.fbclid || '',
       msg: `${state.nome ? 'Oi, aqui é '+state.nome+'! ' : 'Oi! '}${state.choice.msg} Moro em ${state.bairro}.`,
+      page_url: window.location.href,
+      nb_event_id: state.leadEventId,
       ua: navigator.userAgent
     });
     renderSummary();
@@ -1149,7 +1154,8 @@ fbq('track','PageView');
     const adUtm = (function(){ try{return JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){return {}} })();
 
     // EventID unico por lead — propagado pra rota /wa/* usar no fbq('track','Lead') + CAPI (dedup browser↔server)
-    const leadEventId = 'Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+    // Reusa o mesmo eventId que o sendLead do step 4 gravou (pra cross-ref Sheets ↔ Meta Events Manager)
+    const leadEventId = state.leadEventId || ('Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10));
 
     const qParams = {
       utm_source: adUtm.utm_source || 'landing_hub',
