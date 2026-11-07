@@ -263,7 +263,7 @@
       return '<option value="'+c+'">'+c+'</option>';
     }).join('');
     return (
-      '<img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">' +
+      '<img class="logo" src="/logo-novabeach.png" alt="Nova Beach">' +
       '<h2 style="color:#fff;font-size:18px;margin:6px 0 2px;text-align:center;font-weight:800">Antes de abrir o WhatsApp</h2>' +
       '<p style="color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:12px;text-align:center">Deixa teu contato pra gente responder rapidinho 👇</p>' +
       '<form id="nb-capture-form" style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px">' +
@@ -288,13 +288,13 @@
   }
   function renderLoaderHtml(){
     return (
-      '<img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">' +
+      '<img class="logo" src="/logo-novabeach.png" alt="Nova Beach">' +
       '<p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>'
     );
   }
   function renderOutOfAreaHtml(){
     return (
-      '<img class="logo" src="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png" alt="Nova Beach">' +
+      '<img class="logo" src="/logo-novabeach.png" alt="Nova Beach">' +
       '<h2 style="color:#fff;font-size:18px;margin:8px 0 6px;text-align:center;font-weight:800">Atendemos Campinas e região 🏖️</h2>' +
       '<p style="color:rgba(255,255,255,0.75);font-size:13px;line-height:1.5;text-align:center;max-width:300px">Nossa arena é presencial, na Av. Jesuíno Marcondes Machado, 869. Fica o convite pra conhecer quando estiver por aqui!</p>' +
       '<a href="https://www.instagram.com/novabeach.cps/" target="_blank" rel="noopener" style="color:#d7fd3f;font-weight:700;font-size:13px;margin-top:8px;text-decoration:none">Seguir no Instagram →</a>'
