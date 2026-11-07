@@ -13,134 +13,39 @@
 <meta property="og:title" content="Torneio de Beach Tennis — Nova Beach × TFSports × Track&amp;Field">
 <meta property="og:description" content="Inscrições abertas pelo app TFSports.">
 <meta property="og:url" content="https://links.novabeachcampinas.com.br/torneio/">
-<meta property="og:image" content="https://novabeachcampinas.com.br/wp-content/uploads/2025/12/logo_site.png">
+<meta property="og:image" content="/logo-novabeach.png">
 <meta property="og:locale" content="pt_BR">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:#f3f5fa;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;position:relative}
+body{min-height:100vh;background:#f3f5fa;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;position:relative;padding:20px}
 .pattern{position:fixed;inset:0;pointer-events:none;background-image:url('../nb-ball.png');background-repeat:repeat;background-size:140px;opacity:0.035}
-.card{position:relative;z-index:1;background:#1a3066;border-radius:16px;padding:40px 48px;display:flex;flex-direction:column;align-items:center;gap:20px;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
+.card{position:relative;z-index:1;background:#1a3066;border-radius:16px;padding:32px 36px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 8px 32px rgba(0,0,0,0.15);max-width:380px;width:100%}
 .logo{height:48px;width:auto;object-fit:contain}
 .msg{color:rgba(255,255,255,0.7);font-size:14px;letter-spacing:0.3px;text-align:center}
 .dots span{display:inline-block;animation:blink 1.2s infinite}
 .dots span:nth-child(2){animation-delay:0.2s}
 .dots span:nth-child(3){animation-delay:0.4s}
 @keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
+input:focus,select:focus{border-color:#d7fd3f !important;background:rgba(255,255,255,0.12) !important}
+input::placeholder{color:rgba(255,255,255,0.4)}
+select option{background:#1a3066;color:#fff}
 .event-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:#0d0d0d;color:#ffffff;font-weight:800;font-size:13px;padding:8px 14px;border-radius:999px;letter-spacing:0.3px;box-shadow:0 4px 16px rgba(0,0,0,0.3);margin-bottom:14px}
-.event-wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:20px}
+.event-wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;max-width:380px;width:100%}
 </style>
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1397968278475446');
-fbq('track','PageView');
-(function(){
-  var DEST='https://link-prod.tfsports.com.br/events/nova-beach-torneio-de-beach-tennis-02609221558';
-  var p=new URLSearchParams(window.location.search);
-
-  // ===== UTM: priority = URL param > sessionStorage > fallback =====
-  var persisted={};try{persisted=JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){}
-  function pick(k){return p.get(k)||persisted[k]||'';}
-  var utm={
-    utm_source:pick('utm_source'),
-    utm_medium:pick('utm_medium'),
-    utm_campaign:pick('utm_campaign'),
-    utm_content:pick('utm_content'),
-    utm_term:pick('utm_term'),
-    fbclid:pick('fbclid')
-  };
-  try{if(utm.utm_source||utm.fbclid)sessionStorage.setItem('nb_utms',JSON.stringify(utm));}catch(e){}
-
-  // ===== Event ID + fbp/fbc for CAPI dedup =====
-  var eventId='Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
-  function cookie(n){return (document.cookie.split('; ').find(function(r){return r.indexOf(n+'=')===0;})||'').split('=')[1]||null;}
-
-  var customData={
-    content_name:'torneio_beach_tennis_tfsports_tef',
-    content_category:utm.utm_campaign||'torneio',
-    source:utm.utm_source||'landing_hub',
-    utm_source:utm.utm_source,
-    utm_medium:utm.utm_medium,
-    utm_campaign:utm.utm_campaign,
-    utm_content:utm.utm_content,
-    utm_term:utm.utm_term,
-    fbclid:utm.fbclid,
-    vertical:'torneio',
-    partner:'tfsports_track_field'
-  };
-
-  // CAPI relay (keepalive so it survives redirect)
-  try{
-    fetch('/api/capi',{
-      method:'POST',
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify({
-        event_name:'ViewContent',
-        event_id:eventId,
-        event_time:Math.floor(Date.now()/1000),
-        event_source_url:window.location.href,
-        action_source:'website',
-        user_data:{fbp:cookie('_fbp'),fbc:cookie('_fbc')},
-        custom_data:customData
-      }),
-      keepalive:true
-    }).catch(function(){});
-  }catch(e){}
-
-  // Também gravar no Supabase/Sheets para contabilização paralela (sem contato — só origem)
-  try{
-    fetch('/api/lead',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        path:'torneio',
-        choice:'torneio_tfsports_track_field',
-        bairro:'',
-        nome:'',
-        tel:'',
-        utm_source:utm.utm_source||'',
-        utm_campaign:utm.utm_campaign||'',
-        utm_content:utm.utm_content||'',
-        utm_term:utm.utm_term||'',
-        fbclid:utm.fbclid||'',
-        msg:'Clique no banner Torneio TFSports × Track&Field',
-        ua:navigator.userAgent
-      }),
-      keepalive:true
-    }).catch(function(){});
-  }catch(e){}
-
-  // Monta URL final preservando UTMs no destino TFSports
-  function buildDest(){
-    try{
-      var u=new URL(DEST);
-      if(utm.utm_source) u.searchParams.set('utm_source',utm.utm_source);
-      if(utm.utm_medium) u.searchParams.set('utm_medium',utm.utm_medium);
-      if(utm.utm_campaign) u.searchParams.set('utm_campaign',utm.utm_campaign);
-      if(utm.utm_content) u.searchParams.set('utm_content',utm.utm_content);
-      if(utm.utm_term) u.searchParams.set('utm_term',utm.utm_term);
-      return u.toString();
-    }catch(e){return DEST;}
-  }
-
-  setTimeout(function(){
-    try{fbq('track','ViewContent',customData,{eventID:eventId});}catch(e){}
-    window.location.href=buildDest();
-  },1200);
-})();
-</script>
-<noscript>
-<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=ViewContent&noscript=1"/>
-<meta http-equiv="refresh" content="0;url=https://link-prod.tfsports.com.br/events/nova-beach-torneio-de-beach-tennis-02609221558">
-</noscript>
 </head>
-<body>
+<body data-slug="torneio" data-content-name="torneio_beach_tennis_tfsports" data-def-msg="Quero me inscrever no Torneio de Beach Tennis TFSports × Track&Field (27-29/11) no Nova Beach" data-value="0" data-dest-url="https://link-prod.tfsports.com.br/events/nova-beach-torneio-de-beach-tennis-02609221558" data-cta-label="Continuar para o app TFSports →" data-loader-label="Abrindo app TFSports">
 <div class="pattern"></div>
 <div class="event-wrap">
 <div class="event-badge">🏆 <strong>Torneio TFSports × Track&amp;Field · 27-29/11</strong></div>
 <div class="card">
 <img class="logo" src="/logo-novabeach.png" alt="Nova Beach">
-<p class="msg">Abrindo inscrição no app TFSports<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+<p class="msg">Carregando<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
 </div>
 </div>
+<script src="/wa/_capture.js" defer></script>
+<noscript>
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
+<meta http-equiv="refresh" content="0;url=https://link-prod.tfsports.com.br/events/nova-beach-torneio-de-beach-tennis-02609221558">
+</noscript>
 </body>
 </html>

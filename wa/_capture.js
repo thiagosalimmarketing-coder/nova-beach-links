@@ -33,6 +33,10 @@
   var CONTENT_NAME = body.dataset.contentName || SLUG;
   var DEF_MSG = body.dataset.defMsg || 'Oi! Quero saber mais sobre a Nova Beach';
   var VALUE = parseFloat(body.dataset.value || '0') || 0;
+  // Destino externo opcional (Byma, TFSports, etc). Se setado, form envia pra la ao inves do WhatsApp.
+  var DEST_URL = body.dataset.destUrl || null;
+  var CTA_LABEL = body.dataset.ctaLabel || (DEST_URL ? 'Continuar inscrição →' : 'Abrir conversa no WhatsApp →');
+  var LOADER_LABEL = body.dataset.loaderLabel || (DEST_URL ? 'Abrindo inscrição' : 'Abrindo WhatsApp');
 
   var params = new URLSearchParams(window.location.search);
   var qMsg = params.get('nb_msg');
@@ -96,6 +100,24 @@
     if (utm.fbclid)       parts.push('fbclid:' + utm.fbclid.slice(0,10));
     msg += parts.length ? (' ⟨origem: ' + parts.join(' · ') + '⟩') : ' ⟨origem: landing_hub⟩';
     return WHATSAPP + '?text=' + encodeURIComponent(msg);
+  }
+
+  // ===== Montar URL destino externo (Byma, TFSports) preservando UTMs =====
+  function buildExtDestUrl(){
+    try {
+      var u = new URL(DEST_URL);
+      if (utm.utm_source)   u.searchParams.set('utm_source', utm.utm_source);
+      if (utm.utm_medium)   u.searchParams.set('utm_medium', utm.utm_medium);
+      if (utm.utm_campaign) u.searchParams.set('utm_campaign', utm.utm_campaign);
+      if (utm.utm_content)  u.searchParams.set('utm_content', utm.utm_content);
+      if (utm.utm_term)     u.searchParams.set('utm_term', utm.utm_term);
+      return u.toString();
+    } catch(e) { return DEST_URL; }
+  }
+
+  // ===== URL final: destino externo se setado, senao WhatsApp =====
+  function buildFinalUrl(extras){
+    return DEST_URL ? buildExtDestUrl() : buildWaUrl(extras);
   }
 
   // ===== Disparar Lead (browser pixel + CAPI) + sendLead opcional =====
@@ -204,7 +226,7 @@
   function flowDirectRedirect(){
     fireLead({ saveLead: false }); // sendLead já foi chamado pelo hub
     var delay = qMsg ? 500 : 1200;
-    setTimeout(function(){ window.location.href = buildWaUrl(); }, delay);
+    setTimeout(function(){ window.location.href = buildFinalUrl(); }, delay);
   }
 
   // ===== Fluxo 2: sem contato → mostra form de captura mínima =====
@@ -247,7 +269,7 @@
 
       // Mostra "abrindo WhatsApp" por 800ms e redireciona
       container.innerHTML = renderLoaderHtml();
-      setTimeout(function(){ window.location.href = buildWaUrl({cidade: cidade}); }, 800);
+      setTimeout(function(){ window.location.href = buildFinalUrl({cidade: cidade}); }, 800);
     });
 
     function showErr(m){ out.textContent = m; out.style.display = 'block'; }
@@ -275,7 +297,7 @@
           opts +
           '<option value="__outra__">Outra / fora da região</option>' +
         '</select>' +
-        '<button type="submit" style="background:#d7fd3f;color:#0d0d0d;border:0;padding:12px 16px;border-radius:10px;font-weight:800;font-size:14px;cursor:pointer;letter-spacing:0.2px;margin-top:4px">Abrir conversa no WhatsApp →</button>' +
+        '<button type="submit" style="background:#d7fd3f;color:#0d0d0d;border:0;padding:12px 16px;border-radius:10px;font-weight:800;font-size:14px;cursor:pointer;letter-spacing:0.2px;margin-top:4px">' + CTA_LABEL + '</button>' +
         '<div id="nb-capture-error" style="display:none;color:#ff6b6b;font-size:12px;text-align:center;margin-top:4px"></div>' +
       '</form>'
     );
@@ -289,7 +311,7 @@
   function renderLoaderHtml(){
     return (
       '<img class="logo" src="/logo-novabeach.png" alt="Nova Beach">' +
-      '<p class="msg">Abrindo WhatsApp<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>'
+      '<p class="msg">' + LOADER_LABEL + '<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>'
     );
   }
   function renderOutOfAreaHtml(){
