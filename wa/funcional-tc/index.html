@@ -20,13 +20,19 @@ body{min-height:100vh;background:#f3f5fa;display:flex;align-items:center;justify
 input:focus,select:focus{border-color:#d7fd3f !important;background:rgba(255,255,255,0.12) !important}
 input::placeholder{color:rgba(255,255,255,0.4)}
 select option{background:#1a3066;color:#fff}
+.event-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:#0d0d0d;color:#d7fd3f;font-weight:800;font-size:13px;padding:8px 14px;border-radius:999px;letter-spacing:0.3px;box-shadow:0 4px 16px rgba(13,13,13,0.3);margin-bottom:14px}
+.event-badge strong{font-weight:800}
+.event-wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;max-width:380px;width:100%;padding:20px}
 </style>
 </head>
 <body data-slug="funcional-tc" data-content-name="funcional_tc" data-def-msg="Quero garantir minha vaga na Experiencia Funcional Team Thomaz Castilho (14/11) no Nova Beach" data-value="120">
 <div class="pattern"></div>
+<div class="event-wrap">
+<div class="event-badge">💪 <strong>Funcional Team Thomaz Castilho · Sábado 14/11</strong></div>
 <div class="card">
 <img class="logo" src="/logo-novabeach.png" alt="Nova Beach">
 <p class="msg">Carregando<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+</div>
 </div>
 <script src="../_capture.js" defer></script>
 <noscript>
