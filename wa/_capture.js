@@ -18,11 +18,9 @@
   var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxHj2ZmFdWwFJ9Yhc5lodg1Kn_BtHK9qOjiOM-GlzGYJ3eZEHFMMJrQRq4wcLFub9UIzQ/exec';
   var WHATSAPP = 'https://wa.me/5519995575156';
 
-  // Região Metropolitana de Campinas (RMC) — 20 municípios
+  // Cidades realmente proximas (~<25min do Nova Campinas). Lista enxuta pra evitar leads fora de raio util.
   var RMC = [
-    'Campinas','Valinhos','Vinhedo','Hortolândia','Sumaré','Paulínia','Indaiatuba',
-    'Monte Mor','Nova Odessa','Americana','Santa Bárbara d\'Oeste','Jaguariúna',
-    'Pedreira','Cosmópolis','Artur Nogueira','Engenheiro Coelho','Holambra','Itatiba','Morungaba'
+    'Campinas','Valinhos','Vinhedo','Hortolândia','Sumaré','Paulínia','Indaiatuba'
   ];
 
   // ===== Pixel loader =====
@@ -252,16 +250,17 @@
       if (email && !/^.+@.+\..+$/.test(email)) return showErr('Email inválido.');
       if (!cidade) return showErr('Selecione sua cidade.');
 
+      // "Outra" → tenta ler input livre; se vazio, pede pra digitar
       if (cidade === '__outra__') {
-        showOutroBairro();
-        return;
-      }
-      if (!isRMC(cidade)) {
-        showOutroBairro();
-        return;
+        var cidadeLivre = (fd.get('cidade_outra')||'').trim();
+        if (!cidadeLivre || cidadeLivre.length < 2) {
+          showOutraInput();
+          return;
+        }
+        cidade = cidadeLivre;
       }
 
-      // Lead válido — dispara tudo
+      // Lead válido — dispara tudo (sem gating de RMC — lista enxuta ja filtra na UI)
       fireLead({
         nome: nome, tel: tel, email: email, cidade: cidade, bairro: '',
         saveLead: true
@@ -273,9 +272,22 @@
     });
 
     function showErr(m){ out.textContent = m; out.style.display = 'block'; }
-    function showOutroBairro(){
-      container.innerHTML = renderOutOfAreaHtml();
-      try { fbq('trackCustom','LeadFarAway', {path: CONTENT_NAME, source: 'wa_capture'}); } catch(e) {}
+    function showOutraInput(){
+      // Revela input text pra digitar cidade livre (se ainda nao existir)
+      if (document.getElementById('nb-cidade-outra')) {
+        showErr('Digite o nome da sua cidade.');
+        return;
+      }
+      var select = form.querySelector('select[name="cidade"]');
+      var extra = document.createElement('input');
+      extra.id = 'nb-cidade-outra';
+      extra.name = 'cidade_outra';
+      extra.type = 'text';
+      extra.placeholder = 'Digite sua cidade';
+      extra.required = true;
+      extra.setAttribute('style', inputCss());
+      select.parentNode.insertBefore(extra, select.nextSibling);
+      extra.focus();
     }
   }
 
