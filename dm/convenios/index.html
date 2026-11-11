@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Beach Campinas</title>
+  <meta name="robots" content="noindex,nofollow">
+  <noscript><meta http-equiv="refresh" content="0;url=/?utm_source=instagram&utm_medium=dm-automacao&utm_campaign=convenios"></noscript>
+  <script>
+    // Link curto da automacao de DM do Instagram: aplica a UTM completa e abre o hub.
+    // Valores podem ser sobrescritos pela query string (ex.: ?utm_content=...). fbclid e demais params sao preservados.
+    (function(){
+      var qs = new URLSearchParams(window.location.search);
+      var out = new URLSearchParams();
+      out.set('utm_source', qs.get('utm_source') || 'instagram');
+      out.set('utm_medium', qs.get('utm_medium') || 'dm-automacao');
+      out.set('utm_campaign', qs.get('utm_campaign') || 'convenios');
+      qs.forEach(function(v, k){ if(!out.has(k)) out.set(k, v); });
+      window.location.replace('/?' + out.toString());
+    })();
+  </script>
+</head>
+<body style="margin:0;background:#1a3066"></body>
+</html>
