@@ -193,6 +193,15 @@ function parseCsvLine(line) {
 
 function parseDate(s) {
   if (!s) return null;
+  s = String(s).trim();
+  // Formato BR: DD/MM/YYYY [HH:MM[:SS]]  ou  DD-MM-YYYY
+  const br = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);
+  if (br) {
+    let [, dd, mm, yyyy, h, mi, se] = br;
+    if (yyyy.length === 2) yyyy = (parseInt(yyyy,10) > 50 ? '19' : '20') + yyyy;
+    const d = new Date(+yyyy, +mm - 1, +dd, +(h||0), +(mi||0), +(se||0));
+    return isNaN(d) ? null : d;
+  }
   const d = new Date(s);
   return isNaN(d) ? null : d;
 }
