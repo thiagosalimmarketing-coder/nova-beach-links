@@ -60,7 +60,8 @@ PRODUCTS=(
   "day-use-individual|${ENTRY_PHONE}|${ENTRY_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
   "aniversario|${ENTRY_PHONE}|${ENTRY_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
   # Black Friday aulas da manha (nov/2026, ate 30/11) — 1x por semana, trimestral R$325 / semestral R$300
-  "black-friday|${HUMAN_PHONE}|${HUMAN_PHONE}|black_friday_manha|a Black Friday das aulas da manhã (Beach Tennis 1x por semana)"
+  # black-friday: paginas de FORMULARIO feitas a mao (ads/social/site/crm/black-friday), nao gerar aqui
+  # "black-friday|${HUMAN_PHONE}|${HUMAN_PHONE}|black_friday_manha|a Black Friday das aulas da manhã (Beach Tennis 1x por semana)"
 )
 
 # ─────────────────────────────────────────────────────────────
@@ -83,7 +84,7 @@ CRM_PATHS=(
   "reativacao-bt|${ENTRY_PHONE}|Lead|crm_reativacao_bt|Oi! Quero voltar a jogar Beach Tennis na Nova Beach."
   "reativacao-clubinho|${ENTRY_PHONE}|Lead|crm_reativacao_clubinho|Oi! Quero voltar pro Clubinho da Nova Beach."
   "oferta-mes|${ENTRY_PHONE}|Lead|crm_oferta_mes|Oi! Vi a oferta do mês e quero saber mais."
-  "black-friday|${HUMAN_PHONE}|Lead|crm_black_friday_manha|Oi! Recebi a mensagem da Black Friday e quero garantir minha vaga nas aulas da manhã (Beach Tennis 1x por semana)."
+  # "black-friday|${HUMAN_PHONE}|Lead|crm_black_friday_manha|Oi! Recebi a mensagem da Black Friday e quero garantir minha vaga nas aulas da manhã (Beach Tennis 1x por semana)."
 )
 
 # ─────────────────────────────────────────────────────────────
