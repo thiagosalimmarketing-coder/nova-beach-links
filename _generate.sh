@@ -59,6 +59,8 @@ PRODUCTS=(
   "funcional|${ENTRY_PHONE}|${ENTRY_PHONE}|beach_tennis|Beach Tennis"
   "day-use-individual|${ENTRY_PHONE}|${ENTRY_PHONE}|day_use_individual|Day Use individual (uso das quadras por um dia)"
   "aniversario|${ENTRY_PHONE}|${ENTRY_PHONE}|reserva_aniversario|reserva de aniversário / evento particular"
+  # Black Friday aulas da manha (nov/2026, ate 30/11) — 1x por semana, trimestral R$325 / semestral R$300
+  "black-friday|${HUMAN_PHONE}|${HUMAN_PHONE}|black_friday_manha|a Black Friday das aulas da manhã (Beach Tennis 1x por semana)"
 )
 
 # ─────────────────────────────────────────────────────────────
@@ -81,6 +83,7 @@ CRM_PATHS=(
   "reativacao-bt|${ENTRY_PHONE}|Lead|crm_reativacao_bt|Oi! Quero voltar a jogar Beach Tennis na Nova Beach."
   "reativacao-clubinho|${ENTRY_PHONE}|Lead|crm_reativacao_clubinho|Oi! Quero voltar pro Clubinho da Nova Beach."
   "oferta-mes|${ENTRY_PHONE}|Lead|crm_oferta_mes|Oi! Vi a oferta do mês e quero saber mais."
+  "black-friday|${HUMAN_PHONE}|Lead|crm_black_friday_manha|Oi! Recebi a mensagem da Black Friday e quero garantir minha vaga nas aulas da manhã (Beach Tennis 1x por semana)."
 )
 
 # ─────────────────────────────────────────────────────────────
@@ -105,6 +108,7 @@ HANDOFFS=(
   "reservas|${FUNCIONAL_PHONE}|Purchase|day_use_empresarial|Olá! Tenho interesse no Day Use Empresarial. Gostaria de receber uma proposta."
   "day-use-individual|${HUMAN_PHONE}|Purchase|day_use_individual|Olá! Quero passar o dia usando as quadras. Como faço para reservar?"
   "aniversario|${FUNCIONAL_PHONE}|Purchase|reserva_aniversario|Olá! Quero fazer minha reserva de aniversário na Nova Beach."
+  "black-friday|${HUMAN_PHONE}|Purchase|matricula_black_friday_manha|Olá! Quero fechar minha matrícula na Black Friday das aulas da manhã (Beach Tennis 1x por semana)."
 )
 
 # ─────────────────────────────────────────────────────────────
