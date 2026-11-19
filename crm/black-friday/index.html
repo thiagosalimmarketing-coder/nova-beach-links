@@ -3,41 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Nova Beach - Black Friday Aulas da Manhã</title>
-<meta name="robots" content="noindex,nofollow">
+<title>Black Friday · Aulas da manhã · Nova Beach</title>
+<meta name="description" content="Beach tennis 1x por semana a partir de R$ 300/mês. Só 20 vagas, até 30/11.">
+<meta property="og:title" content="Black Friday · Aulas da manhã · Nova Beach">
+<meta property="og:description" content="Beach tennis 1x por semana a partir de R$ 300/mês. Só 20 vagas, até 30/11.">
+<meta property="og:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+<meta property="og:url" content="https://links.novabeachcampinas.com.br/crm/black-friday/">
 <link rel="icon" type="image/png" href="/favicon.png">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:#f3f5fa;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;position:relative;padding:20px}
-.pattern{position:fixed;inset:0;pointer-events:none;background-image:url('/nb-ball.png');background-repeat:repeat;background-size:140px;opacity:0.035}
-.card{position:relative;z-index:1;background:#1a3066;border-radius:16px;padding:32px 36px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 8px 32px rgba(0,0,0,0.15);max-width:380px;width:100%}
-.logo{height:48px;width:auto;object-fit:contain}
-.msg{color:rgba(255,255,255,0.7);font-size:14px;letter-spacing:0.3px}
-.dots span{display:inline-block;animation:blink 1.2s infinite}
-.dots span:nth-child(2){animation-delay:0.2s}
-.dots span:nth-child(3){animation-delay:0.4s}
-@keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
-input:focus,select:focus{border-color:#d7fd3f !important;background:rgba(255,255,255,0.12) !important}
-input::placeholder{color:rgba(255,255,255,0.4)}
-select option{background:#1a3066;color:#fff}
-.event-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:#0b0b0b;color:#d7fd3f;font-weight:800;font-size:13px;padding:8px 14px;border-radius:999px;letter-spacing:0.3px;box-shadow:0 4px 16px rgba(26,16,51,0.25);margin-bottom:14px}
-.event-badge strong{font-weight:800}
-.event-wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;max-width:380px;width:100%;padding:20px}
-</style>
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f3f5fa;font-family:system-ui,sans-serif}.c{background:#1a3066;color:#fff;border-radius:16px;padding:28px 32px;text-align:center}img{height:44px}a{color:#d7fd3f}</style>
 </head>
-<body data-slug="black-friday" data-content-name="black_friday_manha" data-def-msg="Quero garantir minha vaga na Black Friday das aulas da manhã (Beach Tennis 1x por semana)" data-value="325">
-<div class="pattern"></div>
-<div class="event-wrap">
-<div class="event-badge">🔥 <strong>Black Friday · Aulas da manhã</strong></div>
-<div class="card">
-<img class="logo" src="/logo-novabeach.png" alt="Nova Beach">
-<p class="msg">Carregando<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
-</div>
-</div>
-<script>(function(){try{var q=new URLSearchParams(location.search);if(!q.get("utm_source")&&!q.get("fbclid")){sessionStorage.setItem("nb_utms",JSON.stringify({utm_source:"reportana",utm_medium:"whatsapp",utm_campaign:"black-friday-manha",utm_content:"crm",utm_term:"",fbclid:""}));}}catch(e){}})();</script>
-<script src="/wa/_capture.js" defer></script>
-<noscript>
-<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1397968278475446&ev=Lead&noscript=1"/>
-</noscript>
+<body>
+<div class="c"><img src="/logo-novabeach.png" alt="Nova Beach"><p>Abrindo…</p><noscript><p><a href="/?p=blackfriday">Toque aqui para continuar</a></p></noscript></div>
+<script>
+// Atalho por canal: abre o quiz do hub ja na oferta, preservando UTMs do anuncio/stories.
+// Sem dado pessoal na URL. Origem padrao quando o link vem sem UTM: {"utm_source": "reportana", "utm_medium": "whatsapp", "utm_campaign": "black-friday-manha", "utm_content": "crm"}
+(function(){
+  var q = new URLSearchParams(location.search);
+  var d = {"utm_source": "reportana", "utm_medium": "whatsapp", "utm_campaign": "black-friday-manha", "utm_content": "crm"};
+  if(!q.get('utm_source') && !q.get('fbclid')) Object.keys(d).forEach(function(k){ q.set(k, d[k]); });
+  else Object.keys(d).forEach(function(k){ if(!q.get(k) && k!=='utm_source') q.set(k, d[k]); });
+  q.set('p','blackfriday');
+  location.replace('/?' + q.toString());
+})();
+</script>
 </body>
 </html>

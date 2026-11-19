@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Black Friday · Aulas da manhã · Nova Beach</title>
+<meta name="description" content="Beach tennis 1x por semana a partir de R$ 300/mês. Só 20 vagas, até 30/11.">
+<meta property="og:title" content="Black Friday · Aulas da manhã · Nova Beach">
+<meta property="og:description" content="Beach tennis 1x por semana a partir de R$ 300/mês. Só 20 vagas, até 30/11.">
+<meta property="og:image" content="https://links.novabeachcampinas.com.br/logo-novabeach.png">
+<meta property="og:url" content="https://links.novabeachcampinas.com.br/black-friday/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f3f5fa;font-family:system-ui,sans-serif}.c{background:#1a3066;color:#fff;border-radius:16px;padding:28px 32px;text-align:center}img{height:44px}a{color:#d7fd3f}</style>
+</head>
+<body>
+<div class="c"><img src="/logo-novabeach.png" alt="Nova Beach"><p>Abrindo…</p><noscript><p><a href="/?p=blackfriday">Toque aqui para continuar</a></p></noscript></div>
+<script>
+// Atalho por canal: abre o quiz do hub ja na oferta, preservando UTMs do anuncio/stories.
+// Sem dado pessoal na URL. Origem padrao quando o link vem sem UTM: {"utm_source": "link_direto", "utm_medium": "atalho", "utm_campaign": "black-friday-manha", "utm_content": "link_curto"}
+(function(){
+  var q = new URLSearchParams(location.search);
+  var d = {"utm_source": "link_direto", "utm_medium": "atalho", "utm_campaign": "black-friday-manha", "utm_content": "link_curto"};
+  if(!q.get('utm_source') && !q.get('fbclid')) Object.keys(d).forEach(function(k){ q.set(k, d[k]); });
+  else Object.keys(d).forEach(function(k){ if(!q.get(k) && k!=='utm_source') q.set(k, d[k]); });
+  q.set('p','blackfriday');
+  location.replace('/?' + q.toString());
+})();
+</script>
+</body>
+</html>

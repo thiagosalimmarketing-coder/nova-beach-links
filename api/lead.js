@@ -108,6 +108,7 @@ module.exports = async (req, res) => {
       bairro: String(body.bairro || '').slice(0, 60),
       mensagem_wa: String(body.msg || '').slice(0, 500),
       utm_source: String(body.utm_source || '').slice(0, 80),
+      utm_medium: String(body.utm_medium || '').slice(0, 80),
       utm_campaign: String(body.utm_campaign || '').slice(0, 120),
       utm_content: String(body.utm_content || '').slice(0, 120),
       utm_term: String(body.utm_term || '').slice(0, 80),
@@ -130,10 +131,10 @@ module.exports = async (req, res) => {
       interesse_label: interesseLabel(row.vertical, row.interesse),
       vertical: row.vertical,
       bairro: row.bairro,
-      origem: row.utm_source || 'hub_quiz'
+      origem: [row.utm_source || 'hub_quiz', row.utm_medium].filter(Boolean).join(' / ')
     });
 
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/leads_captacao`, {
+    const insert = (payload) => fetch(`${SUPABASE_URL}/rest/v1/leads_captacao`, {
       method: 'POST',
       headers: {
         apikey: SUPABASE_KEY,
@@ -141,8 +142,17 @@ module.exports = async (req, res) => {
         'Content-Type': 'application/json',
         Prefer: 'return=minimal'
       },
-      body: JSON.stringify(row)
+      body: JSON.stringify(payload)
     });
+    let r = await insert(row);
+    // Coluna utm_medium/email pode ainda nao existir no schema: tenta de novo sem ela (nunca perde o lead).
+    // Pra ativar de vez: ALTER TABLE leads_captacao ADD COLUMN IF NOT EXISTS utm_medium text;
+    if (!r.ok && r.status === 400) {
+      const fallback = Object.assign({}, row);
+      delete fallback.utm_medium;
+      if (!email) delete fallback.email;
+      r = await insert(fallback);
+    }
 
     await reportanaPromise; // garante o envio antes da função encerrar
 
@@ -204,7 +214,9 @@ const INTERESSE_LABELS = {
   jogar: { nunca: 'aula experimental de Beach Tennis', '1x': 'plano de Beach Tennis 1x por semana', '2x': 'plano de Beach Tennis 2x por semana' },
   clubinho: { mensal: 'Clubinho no plano mensal', trimestral: 'Clubinho no plano trimestral', semestral: 'Clubinho no plano semestral' },
   reservar: { quadra: 'reserva de quadra avulsa', empresarial: 'Day Use Empresarial', individual: 'Day Use Individual' },
-  evento: { aniversario: 'aniversário na Nova Beach', confrater: 'confraternização de empresa', aulao: 'aulão em grupo' }
+  evento: { aniversario: 'aniversário na Nova Beach', confrater: 'confraternização de empresa', aulao: 'aulão em grupo' },
+  blackfriday: { bf_trimestral: 'Black Friday das aulas da manhã no plano trimestral (R$ 325/mês)', bf_semestral: 'Black Friday das aulas da manhã no plano semestral (R$ 300/mês)' },
+  convenio: { wellhub: 'uso do Wellhub na Nova Beach', totalpass: 'uso do TotalPass na Nova Beach (Day Use)' }
 };
 function interesseLabel(vertical, interesse) {
   return (INTERESSE_LABELS[vertical] || {})[interesse] || 'Nova Beach';

@@ -73,9 +73,9 @@ module.exports = async (req, res) => {
     fbc = `fb.1.${clickTsMs}.${fbclid}`;
   }
 
-  // external_id: Meta usa pra cross-session matching. Usa o próprio event_id
-  // (ou fallback no phone normalizado) hasheado.
-  const externalIdRaw = u.external_id || body.event_id || phoneNormalized;
+  // external_id: Meta usa pra cross-session matching. Precisa ser ESTAVEL por pessoa:
+  // usa o telefone normalizado (hasheado). event_id so como ultimo recurso.
+  const externalIdRaw = u.external_id || phoneNormalized || body.event_id;
 
   // Normaliza city (ct) e state (st) — hash lowercase sem acento/espaço, conforme spec Meta.
   const normCity = (v) => v ? String(v).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,'').toLowerCase() : undefined;

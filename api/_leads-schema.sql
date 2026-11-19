@@ -38,3 +38,6 @@ alter table public.leads_captacao disable row level security;
 -- from public.leads_captacao
 -- group by 1, 2
 -- order by 1 desc, 2;
+
+-- 2026-11-18: origem completa (pago / stories / organico / disparo)
+ALTER TABLE leads_captacao ADD COLUMN IF NOT EXISTS utm_medium text;

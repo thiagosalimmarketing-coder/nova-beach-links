@@ -501,7 +501,7 @@ fbq('track','PageView');
       <img class="hub-logo" src="logo-novabeach.png" alt="Nova Beach">
       <span class="hub-loc">Nova Campinas</span>
     </div>
-    <a href="/wa/black-friday/?utm_source=hub&utm_medium=banner&utm_campaign=black-friday-manha&utm_content=ate-30nov" class="tour-banner" style="background:linear-gradient(135deg,#0d0d0d 0%,#1f1f1f 100%);color:#ffffff;border:2px solid #d7fd3f" onclick="try{fbq('trackCustom','BlackFridayBannerClick',{source:'hub_home'});}catch(e){}">
+    <a href="/?p=blackfriday" class="tour-banner" style="background:linear-gradient(135deg,#0d0d0d 0%,#1f1f1f 100%);color:#ffffff;border:2px solid #d7fd3f" onclick="try{fbq('trackCustom','BlackFridayBannerClick',{source:'hub_home'});}catch(e){} if(window.nbQuizGo){event.preventDefault(); window.nbQuizGo('blackfriday');}">
       <span class="tour-tag" style="background:#d7fd3f;color:#0d0d0d">🔥 BLACK FRIDAY</span>
       <div class="tour-body">
         <strong style="color:#ffffff">Aulas da manhã a partir de R$ 300/mês</strong>
@@ -558,6 +558,13 @@ fbq('track','PageView');
       <p class="step-sub">Rápido pra te conectar com quem pode te ajudar melhor.</p>
 
       <div class="opts">
+        <button class="opt" data-choice="blackfriday" style="border:2px solid #d7fd3f;background:#0d0d0d;color:#fff">
+          <div class="opt-body">
+            <div class="opt-title" style="color:#fff">🔥 Black Friday · aulas da manhã</div>
+            <div class="opt-sub" style="color:rgba(255,255,255,.75)">A partir de R$ 300/mês · só 20 vagas · até 30/11</div>
+          </div>
+          <div class="opt-arrow" style="color:#d7fd3f">→</div>
+        </button>
         <button class="opt" data-choice="jogar">
           <div class="opt-body">
             <div class="opt-title">Quero jogar Beach Tennis</div>
@@ -583,6 +590,13 @@ fbq('track','PageView');
           <div class="opt-body">
             <div class="opt-title">Fazer um evento aqui</div>
             <div class="opt-sub">Aniversário, confraternização, aulão</div>
+          </div>
+          <div class="opt-arrow">→</div>
+        </button>
+        <button class="opt" data-choice="convenio">
+          <div class="opt-body">
+            <div class="opt-title">Tenho Wellhub ou TotalPass</div>
+            <div class="opt-sub">Usar meu app de benefícios na Nova Beach</div>
           </div>
           <div class="opt-arrow">→</div>
         </button>
@@ -713,6 +727,34 @@ fbq('track','PageView');
 (function(){
   // ===== DATA =====
   const PATHS = {
+    blackfriday: {
+      vertical: 'Black Friday Manhã',
+      phone: '19995575156',
+      target: 'ia',
+      step2: {
+        eyebrow:'🔥 Black Friday · até 30/11',
+        title:'Qual <em>plano?</em>',
+        sub:'Aulas da manhã · Beach Tennis 1× por semana · todos os níveis · só 20 vagas.',
+        opts:[
+          {key:'bf_trimestral',redirect:'/wa/black-friday/',title:'Trimestral · R$ 325/mês',sub:'De R$ 375 por R$ 325/mês',priceLabel:'Black Friday trimestral',priceValue:'R$ 325 /mês',priceTag:'De R$ 375 · condição até 30/11 · consulte professores participantes',msg:'Quero garantir minha vaga na Black Friday das aulas da manhã (Beach Tennis 1x por semana) no plano trimestral de R$ 325/mês.'},
+          {key:'bf_semestral',redirect:'/wa/black-friday/',title:'Semestral · R$ 300/mês',sub:'De R$ 350 por R$ 300/mês · ⭐ maior economia',priceLabel:'Black Friday semestral',priceValue:'R$ 300 /mês',priceTag:'De R$ 350 · economia de R$ 300 no período · até 30/11',msg:'Quero garantir minha vaga na Black Friday das aulas da manhã (Beach Tennis 1x por semana) no plano semestral de R$ 300/mês.'}
+        ]
+      }
+    },
+    convenio: {
+      vertical: 'Convênio',
+      phone: '19995575156',
+      target: 'ia',
+      step2: {
+        eyebrow:'Wellhub · TotalPass',
+        title:'Qual <em>app você usa?</em>',
+        sub:'A gente confirma se o seu plano está liberado e já indica o melhor horário.',
+        opts:[
+          {key:'wellhub',redirect:'/wa/wellhub/',title:'Wellhub (Gympass)',sub:'Aceitamos Wellhub',priceLabel:'Wellhub',priceValue:'Pelo seu plano Wellhub',priceTag:'O atendimento confirma se o seu plano está liberado',msg:'Quero usar meu Wellhub na Nova Beach.'},
+          {key:'totalpass',redirect:'/wa/totalpass/',title:'TotalPass',sub:'A partir do TP3 no Day Use',priceLabel:'TotalPass',priceValue:'Pelo seu plano TotalPass',priceTag:'A partir do TP3 · Day Use',msg:'Quero usar meu TotalPass na Nova Beach (Day Use).'}
+        ]
+      }
+    },
     jogar: {
       vertical: 'Jogar BT',
       phone: '19995575156', // Recepcao (humano)
@@ -803,6 +845,11 @@ fbq('track','PageView');
   const lgpdOk = document.getElementById('lgpd-ok');
 
   // ===== HELPERS =====
+  // "Fora de Campinas - Valinhos" -> "Valinhos"; qualquer bairro de Campinas -> "Campinas"
+  function cidadeFrom(bairro){
+    const b = String(bairro||'');
+    return b.indexOf('Fora de Campinas - ') === 0 ? b.slice('Fora de Campinas - '.length).trim() : 'Campinas';
+  }
   function goStep(n){
     state.step = n;
     steps.forEach(s=>s.classList.toggle('active', +s.dataset.step===n));
@@ -943,7 +990,7 @@ fbq('track','PageView');
     // Preview da mensagem
     try {
       const nomeMsg = state.nome ? `Oi, aqui é ${state.nome}! ` : 'Oi! ';
-      const msgText = `${nomeMsg}${choice.msg.replace(/^Quero/,'quero')} Moro em ${bairro}.`;
+      const msgText = `${nomeMsg}${choice.msg} Moro em ${bairro}.`;
       document.getElementById('msg-preview-text').textContent = msgText;
     } catch(e){}
   }
@@ -1119,14 +1166,15 @@ fbq('track','PageView');
       path: state.path,
       choice: state.choice.key,
       bairro: state.bairro,
-      cidade: 'Campinas',
+      cidade: cidadeFrom(state.bairro),
       nome: state.nome,
       tel: state.tel,
       email: state.email,
       utm_source: utmParams.utm_source || '',
+      utm_medium: utmParams.utm_medium || '',
       utm_campaign: utmParams.utm_campaign || '',
       utm_content: utmParams.utm_content || '',
-      utm_term: utmParams.utm_term || state.bairro || '',
+      utm_term: utmParams.utm_term || '',
       fbclid: utmParams.fbclid || '',
       msg: `${state.nome ? 'Oi, aqui é '+state.nome+'! ' : 'Oi! '}${state.choice.msg} Moro em ${state.bairro}.`,
       page_url: window.location.href,
@@ -1146,32 +1194,34 @@ fbq('track','PageView');
     toWaBtn.style.opacity = '0.6';
     toWaBtn.style.pointerEvents = 'none';
 
-    const path = PATHS[state.path];
     const choice = state.choice;
     const nomeMsg = state.nome ? `Oi, aqui é ${state.nome}! ` : 'Oi! ';
-    const customMsg = `${nomeMsg}${choice.msg.replace(/^Quero/,'quero')} Moro em ${state.bairro}.`;
+    const customMsg = `${nomeMsg}${choice.msg} Moro em ${state.bairro}.`;
     const adUtm = (function(){ try{return JSON.parse(sessionStorage.getItem('nb_utms')||'{}');}catch(e){return {}} })();
 
     // EventID unico por lead — propagado pra rota /wa/* usar no fbq('track','Lead') + CAPI (dedup browser↔server)
-    // Reusa o mesmo eventId que o sendLead do step 4 gravou (pra cross-ref Sheets ↔ Meta Events Manager)
     const leadEventId = state.leadEventId || ('Lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10));
+
+    // Dados pessoais (nome, tel, email, msg, bairro) vao pela sessionStorage — NUNCA pela URL
+    // (URL vai pro Pixel/CAPI como event_source_url = vazamento de dado pessoal pra Meta).
+    const slug = (choice.redirect.split('/').filter(Boolean).pop()) || '';
+    try{
+      sessionStorage.setItem('nb_handoff', JSON.stringify({
+        slug: slug, ts: Date.now(), msg: customMsg, nome: state.nome, tel: state.tel,
+        email: state.email || '', bairro: state.bairro, cidade: cidadeFrom(state.bairro), event_id: leadEventId
+      }));
+    }catch(e){}
 
     const qParams = {
       utm_source: adUtm.utm_source || 'landing_hub',
       utm_medium: adUtm.utm_medium || 'quiz',
       utm_campaign: adUtm.utm_campaign || state.path,
       utm_content: adUtm.utm_content || choice.key,
-      utm_term: state.bairro,
       nb_path: state.path,
       nb_choice: choice.key,
-      nb_msg: customMsg,
-      nb_bairro: state.bairro,
-      nb_nome: state.nome,
       nb_event_id: leadEventId
     };
-    if(state.email) qParams.nb_email = state.email;
-    if(state.tel) qParams.nb_tel = state.tel;
-    qParams.nb_cidade = 'Campinas'; // quiz já filtra bairros fora da RMC no step3; assume Campinas
+    if(adUtm.utm_term) qParams.utm_term = adUtm.utm_term;
     if(adUtm.fbclid) qParams.fbclid = adUtm.fbclid;
     const q = new URLSearchParams(qParams);
     const targetUrl = `${choice.redirect}?${q.toString()}`;
@@ -1188,15 +1238,24 @@ fbq('track','PageView');
     btn.addEventListener('click', ()=>{ goStep(+btn.dataset.back); });
   });
 
-  // Link direto por intencao (anuncio): ?p=jogar pula a pergunta 1
+  // Link direto por intencao (anuncio/stories/atalhos): ?p=blackfriday pula a pergunta 1;
+  // ?p=blackfriday&o=bf_semestral (ou o=semestral) ja escolhe a opcao e cai no bairro.
+  function startPath(pre, opt, origin){
+    if(!PATHS[pre]) return false;
+    state.path = pre; state.choice = null; state.bairro = null;
+    renderStep2();
+    const opts = PATHS[pre].step2.opts;
+    const found = opt ? opts.find(o=>o.key===opt || o.key===pre.slice(0,2)+'_'+opt || o.key.replace(/^bf_/,'')===opt) : null;
+    try{fbq('trackCustom','QuizDeepLink',{path:pre,choice:found?found.key:'',origin:origin||'url'});}catch(e){}
+    if(found){ state.choice = found; goStep(3); } else { goStep(2); }
+    try{ const q=document.querySelector('.quiz-progress'); if(q) q.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
+    return true;
+  }
+  window.nbQuizGo = function(pre, opt){ return startPath(pre, opt, 'banner'); };
   try{
-    const pre = new URLSearchParams(window.location.search).get('p');
-    if(pre && PATHS[pre]){
-      state.path = pre;
-      try{fbq('trackCustom','QuizDeepLink',{path:pre});}catch(e){}
-      renderStep2();
-      goStep(2);
-    }
+    const sp = new URLSearchParams(window.location.search);
+    const pre = sp.get('p');
+    if(pre) startPath(pre, sp.get('o'), 'url');
   }catch(e){}
 
   // Capture UTM

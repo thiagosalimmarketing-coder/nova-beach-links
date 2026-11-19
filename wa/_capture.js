@@ -37,12 +37,27 @@
   var LOADER_LABEL = body.dataset.loaderLabel || (DEST_URL ? 'Abrindo inscrição' : 'Abrindo WhatsApp');
 
   var params = new URLSearchParams(window.location.search);
-  var qMsg = params.get('nb_msg');
-  var qBairro = params.get('nb_bairro');
-  var qNome = params.get('nb_nome');
-  var qTel = params.get('nb_tel');
-  var qEmail = params.get('nb_email');
-  var qCidade = params.get('nb_cidade');
+  // Dados do lead vindos do quiz: chegam pela sessionStorage (nb_handoff), NUNCA pela URL.
+  // URL com nome/telefone vaza dado pessoal pro Pixel/CAPI (event_source_url) — proibido pela Meta.
+  var handoff = {};
+  try {
+    var h = JSON.parse(sessionStorage.getItem('nb_handoff') || '{}');
+    if (h && h.ts && (Date.now() - h.ts) < 30*60*1000 && (!h.slug || h.slug === SLUG)) handoff = h;
+  } catch(e) {}
+  function hv(k){ return handoff[k] || params.get('nb_'+k) || null; } // fallback: links antigos com nb_* na URL
+  var qMsg = hv('msg');
+  var qBairro = hv('bairro');
+  var qNome = hv('nome');
+  var qTel = hv('tel');
+  var qEmail = hv('email');
+  var qCidade = hv('cidade');
+  var qEventId = hv('event_id');
+  // Limpa qualquer dado pessoal da barra de endereco ANTES do pixel carregar
+  try {
+    var dirty = false;
+    ['nb_msg','nb_bairro','nb_nome','nb_tel','nb_email','nb_cidade'].forEach(function(k){ if(params.has(k)){ params.delete(k); dirty = true; } });
+    if (dirty) history.replaceState(null, '', location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash);
+  } catch(e) {}
 
   // UTMs persistidas via sessionStorage
   var persisted = {};
@@ -86,11 +101,14 @@
   // ===== Montar mensagem WhatsApp com origem =====
   function buildWaUrl(extras){
     extras = extras || {};
-    var msg = qMsg ? decodeURIComponent(qMsg) : ('Oi! ' + DEF_MSG + '.');
+    var msg = qMsg ? qMsg : ('Oi! ' + DEF_MSG + '.');
     var bairro = extras.bairro || qBairro;
     var cidade = extras.cidade || qCidade;
-    if (bairro)  msg += ' (Moro em: ' + decodeURIComponent(bairro) + ')';
-    if (cidade && !bairro) msg += ' (Cidade: ' + cidade + ')';
+    // Mensagem do quiz ja traz "Moro em ..." — so acrescenta local quando a msg e a padrao da pagina
+    if (!qMsg) {
+      if (bairro)  msg += ' (Moro em: ' + bairro + ')';
+      else if (cidade) msg += ' (Cidade: ' + cidade + ')';
+    }
     var parts = [];
     if (utm.utm_source)   parts.push(utm.utm_source);
     if (utm.utm_campaign) parts.push(utm.utm_campaign);
@@ -121,7 +139,7 @@
   // ===== Disparar Lead (browser pixel + CAPI) + sendLead opcional =====
   function fireLead(contact){
     contact = contact || {};
-    var eventId = params.get('nb_event_id') || ('Lead-' + Date.now() + '-' + Math.random().toString(36).slice(2,10));
+    var eventId = qEventId || params.get('nb_event_id') || ('Lead-' + Date.now() + '-' + Math.random().toString(36).slice(2,10));
     var nome = contact.nome || qNome || '';
     var tel = contact.tel || qTel || '';
     var email = contact.email || qEmail || '';
@@ -161,8 +179,7 @@
             name: nome || undefined,
             phone: tel ? phoneDigits(tel) : undefined,
             email: email ? emailLower(email) : undefined,
-            city: cidade || undefined,
-            external_id: eventId
+            city: cidade || undefined
           },
           custom_data: customData
         }),
@@ -223,6 +240,7 @@
   // ===== Fluxo 1: já veio com contato (quiz completo) → redirect direto =====
   function flowDirectRedirect(){
     fireLead({ saveLead: false }); // sendLead já foi chamado pelo hub
+    try { sessionStorage.removeItem('nb_handoff'); } catch(e) {}
     var delay = qMsg ? 500 : 1200;
     setTimeout(function(){ window.location.href = buildFinalUrl(); }, delay);
   }
